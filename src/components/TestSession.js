@@ -1,7 +1,45 @@
-import React from 'react'
-import '../styles/testSession.css'
+import React from 'react';
+import '../styles/testSession.css';
+import Chart from 'chart.js/auto';
 
 const TestSession = () => {
+
+    const ctx = document.getElementById('myChart');
+
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
     const [income, setIncome] = React.useState({
         income1: "",
@@ -12,19 +50,30 @@ const TestSession = () => {
         phone: "",
     });
 
-    let filteredIncome = Object.values(income).filter(num => !isNaN(num));
+    let totalIncome = Object.values(income).filter(item => {
+        return parseInt(item);
+    });
 
-    let totalIncome = filteredIncome.filter(num => !isNaN(num)).reduce((a, b) => {
-        return parseInt(a) + parseInt(b);
-    })
+    let totalExpenses = Object.values(expenses).filter(item => {
+        return parseInt(item);
+    });
 
 
-    //  totalIncome = Object.values(income).reduce((a, b) => {
-    //     return parseInt(a) + parseInt(b);
-    // });
+    // Add values of filtered array to display;
+    function addValues(arr) {
+        let calculables;
+        if (arr.length === 1) return arr[0];
 
-    let totalExpenses = Object.values(expenses).reduce((a, b) => a + b);
+        if (arr.length > 0) {
+            calculables = arr.reduce((a, b) => {
+                return parseInt(a) + parseInt(b);
+            })
+        }
+        return calculables
+    };
 
+
+    // console.log(addValues(totalIncome));
 
 
     function handleChange(e) {
@@ -32,10 +81,11 @@ const TestSession = () => {
         const className = e.target.className;
         let value = e.target.value;
 
+        // Check that value is Number only.
         if (isNaN(value)) return;
 
-
-        console.log(value)
+        //If value is empty string return zero
+        // if (value === "") value = 0;
 
 
         if (name.includes('income')) {
@@ -63,10 +113,16 @@ const TestSession = () => {
     return (
         <div className='test-container'>
             <section className='main-display'>
-                <h1>Budget imagery here</h1>
-                <h3>Income: {totalIncome}</h3>
-                <h3>Allocated: {totalExpenses}</h3>
-                <h3>Remaining: {totalIncome - totalExpenses}</h3>
+                <div className='stats'>
+                    <h1>Budget imagery here</h1>
+                    <h3>Income: {addValues(totalIncome)}</h3>
+                    <h3>Allocated: {addValues(totalExpenses)}</h3>
+                    <h3>Remaining: {addValues(totalIncome) - addValues(totalExpenses)}</h3>
+                </div>
+                <div className='chart'>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+
+                </div>
             </section>
 
 

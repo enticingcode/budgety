@@ -7,12 +7,22 @@
 }
 
 .main-display {
+    display: flex;
+    align-items: center;
     height: 300px;
     border: solid black 1px;
-    max-width: 1000px;
+    width: 90%;
+    margin-top: 20px;
 }
 
 .input-sections {
     display: flex;
     flex-direction: column;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 70px;
 }
