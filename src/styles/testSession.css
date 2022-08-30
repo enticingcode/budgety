@@ -1,0 +1,18 @@
+.test-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-display {
+    height: 300px;
+    border: solid black 1px;
+    max-width: 1000px;
+}
+
+.input-sections {
+    display: flex;
+    flex-direction: column;
+}

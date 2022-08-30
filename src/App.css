@@ -1,38 +1,88 @@
-.App {
+.parallax-wrapper {
+  height: 100vh;
+  perspective: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+
+
+.parallax {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+
+
+.background,
+.foreground {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+.title {
+  font-size: 4rem;
+}
+
+.background {
+  transform: translateZ(-10px) scale(2)
+}
+
+.foreground {
+  transform: translateZ(-5px) scale(1.5);
+}
+
+.bg-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  position: relative;
+  padding: 10px 50px;
+  top: 100px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg-1test {
+  background-color: #f1e4d1;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bg-2 {
+  height: 160vh;
+  z-index: -2;
+  background-color: #bfdbdc;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hp-icon1 {
+  width: 800px;
+  position: relative;
+  top: 700px;
+}
+
+.hp-icon1-text {
+  position: relative;
+  top: 500px;
+  left: 900px;
+}
+
+.hp-footer {
+  position: fixed;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
+  bottom: 0;
 }
