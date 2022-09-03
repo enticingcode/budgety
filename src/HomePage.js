@@ -13,7 +13,10 @@ function HomePage() {
         <img src={budge1}></img>
         <div className='background bg-1test'></div>
         <h1 className='title'>Feeling Budgety?</h1>
+        <a href='/testSession'>Try a Preview!</a>
+
       </div>
+
 
 
       <section className='bg-divider'>

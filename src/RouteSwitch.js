@@ -10,6 +10,7 @@ import SignUp from './components/SignUp';
 
 import Dashboard from './components/Dashboard';
 import NotFound from './components/NotFound';
+import ReqAuth from './components/ReqAuth';
 
 const RouteSwitch = () => {
     return (
@@ -19,7 +20,10 @@ const RouteSwitch = () => {
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/about' element={<About />} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={
+                        <ReqAuth>
+                            <Login />
+                        </ReqAuth>} />
                     <Route path='/signup' element={<SignUp />} />
                     <Route path='/testSession' element={<TestSession />} />
                     <Route path='/dashboard' element={<Dashboard />} />

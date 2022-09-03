@@ -13,10 +13,6 @@ const Header = () => {
                     <li className='nav-link'><a href='/about'>About</a></li>
                     <li className='nav-link'><a href='/login'>Login</a></li>
                     <li className='nav-link'><a href='/signup'>SignUp</a></li>
-
-
-                    {/* place test run somewhere else?  home page probably*/}
-                    <li className='nav-link'><a href='/testSession'>Test Run</a></li>
                 </ul>
             </nav>
         </header>
