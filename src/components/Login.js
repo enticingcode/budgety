@@ -1,9 +1,25 @@
-import React from 'react'
+import React from "react";
 
 const Login = () => {
-    return (
-        <div>Login</div>
-    )
-}
+  const [credentials, setCredentials] = React.useState({
+    email: "",
+    password: "",
+  });
 
-export default Login
+  return (
+    <div>
+      <section className="login-design"></section>
+      <section className="login-container">
+        <form>
+          <label htmlFor="email">Email:</label>
+          <input id="email" name="email" type="email"></input>
+
+          <label htmlFor="password">Password:</label>
+          <input id="password" name="password" type="password"></input>
+        </form>
+      </section>
+    </div>
+  );
+};
+
+export default Login;

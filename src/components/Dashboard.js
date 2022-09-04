@@ -1,17 +1,15 @@
-import React from 'react'
-import { useAuth } from './auth';
+import React from "react";
+import { useAuth } from "./auth";
 
 const Dashboard = () => {
+  const auth = useAuth();
 
-    const auth = useAuth();
+  return (
+    <div>
+      this is the dashboard
+      <p>{auth.msg}</p>
+    </div>
+  );
+};
 
-    return (
-        <div>
-            this is the dashboard
-            <p>{auth.msg}</p>
-        </div>
-
-    )
-}
-
-export default Dashboard
+export default Dashboard;
