@@ -1,0 +1,31 @@
+body {
+  background-color: grey;
+}
+
+.budget-app {
+  display: flex;
+}
+.chart-container {
+  flex-grow: 1;
+}
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.income-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 40px;
+}
+.expense-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 40px;
+}

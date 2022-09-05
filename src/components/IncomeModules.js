@@ -1,42 +1,55 @@
 import React from "react";
-import uniqid from "uniqid";
 
-function IncomeModules() {
-  const [incomeSources, setIncomeSources] = React.useState([
-    { income: 0, id: uniqid() },
-  ]);
+function IncomeModules(props) {
+  function handleChange(e) {
+    let value = e.target.value;
+    let nodeTarget = e.target.id;
 
-  function addIncomeInput(e) {
-    e.preventDefault();
-    setIncomeSources((prev) => {
-      return [...prev, { income: 0 }];
+    //Check for number value, if NaN return;
+
+    if (isNaN(value)) return;
+
+    //Use input target id, to reference income object in state array, and update matching obj
+    props.setIncomeSources((prev) => {
+      return prev.map((obj) => {
+        if (obj.id === nodeTarget) {
+          return { ...obj, income: value };
+        }
+        return obj;
+      });
     });
   }
 
-  function handleChange(e) {}
-
-  let incomePrompts = incomeSources.map((item) => {
+  let incomePrompts = props.incomeSources.map((item) => {
     return (
-      <>
-        <label htmlFor=""></label>
+      <div key={item.id}>
+        <label htmlFor={item.id}>Income:</label>
         <input
           onChange={handleChange}
-          key={item.id}
           id={item.id}
           value={item.income}
           name=""
           className="income-input"
         ></input>
-      </>
+      </div>
     );
   });
 
   return (
-    <div>
+    <div className="income-container">
+      <h2>Monthly Incomes:</h2>
       {incomePrompts}
-      <button onClick={addIncomeInput}>Add Income</button>
+      {/* <button onClick={addIncomeInput}>Add Income</button> */}
     </div>
   );
 }
 
 export default IncomeModules;
+
+// function addIncomeInput(e) {
+//   e.preventDefault();
+//   setIncomeSources((prev) => {
+//     console.log(prev);
+//     return [...prev, { income: "", id: uniqid() }];
+//   });
+// }
