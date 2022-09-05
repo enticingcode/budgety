@@ -2,9 +2,9 @@
   display: flex;
 }
 .chart-container {
-  flex-grow: 1;
+  max-width: 40vw;
 }
-.input-container {
+.input-containers {
   display: flex;
   flex-wrap: wrap;
 }

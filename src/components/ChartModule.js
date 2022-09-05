@@ -19,12 +19,14 @@ const ChartModule = (props) => {
     return item.name;
   });
 
+  console.log(addValues(totalExpenses));
+
   // Add values of filtered array to display;
   function addValues(arr) {
     let final;
     let newArr = arr.filter((item) => parseInt(item));
 
-    if (newArr.length === 1) return arr[0];
+    if (newArr.length === 1) return parseInt(arr[0]);
 
     if (newArr.length > 1) {
       final = newArr.reduce((a, b) => {
@@ -33,16 +35,14 @@ const ChartModule = (props) => {
     }
     return final;
   }
-  console.log(addValues(totalIncome));
 
   // PIE CHART DATA HERE
   const data = {
-    labels: ["Income", ...expenseNames],
-
+    labels: [...expenseNames],
     datasets: [
       {
         label: "Budget Tracker",
-        data: [addValues(totalIncome), ...totalExpenses],
+        data: [...totalExpenses],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -63,7 +63,14 @@ const ChartModule = (props) => {
       },
     ],
   };
-  return <Pie data={data} />;
+  return (
+    <div className="chart-container">
+      <h2>Total Income: ${addValues(totalIncome)}</h2>
+      <h2>Total Expenses: ${addValues(totalExpenses)}</h2>
+      <h2>Remaining: $ {addValues(totalIncome) - addValues(totalExpenses)}</h2>
+      <Pie data={data} />
+    </div>
+  );
 };
 
 export default ChartModule;
