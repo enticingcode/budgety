@@ -3,37 +3,46 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 const ChartModule = (props) => {
+  const { incomeSources, expenses } = props;
   // PIE CHART DATA
   ChartJS.register(ArcElement, Tooltip, Legend);
 
-  let totalIncome = props.incomeSources.filter((item) => {
-    return parseInt(item.income);
+  let totalIncome = incomeSources.map((item) => {
+    return item.income;
   });
 
-  console.log(totalIncome);
+  let totalExpenses = expenses.map((item) => {
+    return item.expense;
+  });
+
+  let expenseNames = expenses.map((item) => {
+    return item.name;
+  });
+
   // Add values of filtered array to display;
   function addValues(arr) {
-    let calculables;
-    if (arr.length === 1) return arr[0];
+    let final;
+    let newArr = arr.filter((item) => parseInt(item));
 
-    if (arr.length > 0) {
-      calculables = arr.reduce((a, b) => {
+    if (newArr.length === 1) return arr[0];
+
+    if (newArr.length > 1) {
+      final = newArr.reduce((a, b) => {
         return parseInt(a) + parseInt(b);
       });
     }
-    return calculables;
+    return final;
   }
   console.log(addValues(totalIncome));
 
-  //   console.log(totalIncome);
-
+  // PIE CHART DATA HERE
   const data = {
-    labels: ["Income", "Rent", "Phone", "Utilities"],
+    labels: ["Income", ...expenseNames],
 
     datasets: [
       {
         label: "Budget Tracker",
-        data: [addValues(totalIncome)],
+        data: [addValues(totalIncome), ...totalExpenses],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",

@@ -1,6 +1,7 @@
 import React from "react";
 
 function IncomeModules(props) {
+  const { incomeSources, setIncomeSources } = props;
   function handleChange(e) {
     let value = e.target.value;
     let nodeTarget = e.target.id;
@@ -10,7 +11,7 @@ function IncomeModules(props) {
     if (isNaN(value)) return;
 
     //Use input target id, to reference income object in state array, and update matching obj
-    props.setIncomeSources((prev) => {
+    setIncomeSources((prev) => {
       return prev.map((obj) => {
         if (obj.id === nodeTarget) {
           return { ...obj, income: value };
@@ -20,7 +21,7 @@ function IncomeModules(props) {
     });
   }
 
-  let incomePrompts = props.incomeSources.map((item) => {
+  let incomePrompts = incomeSources.map((item) => {
     return (
       <div key={item.id}>
         <label htmlFor={item.id}>Income:</label>

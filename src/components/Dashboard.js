@@ -12,6 +12,15 @@ const Dashboard = () => {
     { income: "", id: uniqid() },
     { income: "", id: uniqid() },
   ]);
+
+  const [expenses, setExpenses] = React.useState([
+    { name: "Rent", expense: "", id: uniqid() },
+    { name: "Utilities", expense: "", id: uniqid() },
+    { name: "Phone", expense: "", id: uniqid() },
+    { name: "Gas", expense: "", id: uniqid() },
+    { name: "Food", expense: "", id: uniqid() },
+  ]);
+
   const auth = useAuth();
 
   //Dashboard is going to have many individual components to function it.
@@ -25,14 +34,14 @@ const Dashboard = () => {
 
       <div className="budget-app">
         <div className="chart-container">
-          <ChartModule incomeSources={incomeSources} />
+          <ChartModule incomeSources={incomeSources} expenses={expenses} />
         </div>
         <div className="input-containers">
           <IncomeModules
             incomeSources={incomeSources}
             setIncomeSources={setIncomeSources}
           />
-          <ExpenseModules />
+          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
           {/* <SavingsModules /> */}
         </div>
       </div>

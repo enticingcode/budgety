@@ -2,20 +2,14 @@ import React from "react";
 import uniqid from "uniqid";
 import LabelRename from "./LabelRename";
 
-function ExpenseModules() {
-  const [expenses, setExpenses] = React.useState([
-    { name: "Rent", expense: "", id: uniqid(), num: 1 },
-    { name: "Utilities", expense: "", id: uniqid(), num: 2 },
-    { name: "Phone", expense: "", id: uniqid(), num: 3 },
-    { name: "Gas", expense: "", id: uniqid(), num: 4 },
-    { name: "Food", expense: "", id: uniqid(), num: 5 },
-  ]);
+function ExpenseModules(props) {
+  const { expenses, setExpenses } = props;
 
   function addExpense(e) {
     e.preventDefault();
     setExpenses((prev) => {
       console.log(prev);
-      return [...prev, { expense: "", id: uniqid(), num: prev[0].num + 1 }];
+      return [...prev, { expense: "", id: uniqid() }];
     });
   }
 
@@ -25,6 +19,8 @@ function ExpenseModules() {
   function handleChange(e) {
     let value = e.target.value;
     let nodeTarget = e.target.id;
+
+    if (isNaN(value)) return;
     // get id of node target, and compare to expense state array.
     //iterate through array and check every object for matching id.
     //if id matches, update object expense to the value of the target
@@ -66,7 +62,7 @@ function ExpenseModules() {
   return (
     <div className="expense-container">
       {expensePrompts}
-      {/* <button onClick={addExpense}>Add Expense</button> */}
+      <button onClick={addExpense}>Add Expense</button>
     </div>
   );
 }
