@@ -9,7 +9,7 @@ function ExpenseModules(props) {
     e.preventDefault();
     setExpenses((prev) => {
       console.log(prev);
-      return [...prev, { expense: "", id: uniqid() }];
+      return [...prev, { name: "New Expense", expense: "", id: uniqid() }];
     });
   }
 
@@ -47,7 +47,6 @@ function ExpenseModules(props) {
           name={item.name}
           htmlFor={item.id}
         />
-        {/* <label htmlFor={item.id}>{item.name}</label> */}
         <input
           onChange={handleChange}
           id={item.id}

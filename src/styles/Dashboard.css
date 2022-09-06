@@ -1,27 +1,59 @@
+.dash > h1 {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
 .budget-app {
   display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  padding: 45px;
+  overflow: hidden;
+  margin: 20px 20px;
 }
 .chart-container {
-  max-width: 40vw;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .input-containers {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  margin-right: 60px;
 }
 
 .income-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: flex-end;
   flex-direction: column;
-  padding: 40px;
+  padding: 10px;
+  margin: 20px;
 }
 .expense-container {
   display: flex;
-  justify-content: center;
   align-items: flex-end;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: 40px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.chart-item {
+  margin: 10px;
+}
+
+label {
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+label:hover {
+  background-color: rgb(238, 238, 238);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  cursor: text;
 }

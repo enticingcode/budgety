@@ -23,6 +23,8 @@ const Dashboard = () => {
 
   const auth = useAuth();
 
+  console.log(expenses);
+
   //Dashboard is going to have many individual components to function it.
   // state of modules will most likely have to be put here.
 
@@ -35,16 +37,14 @@ const Dashboard = () => {
       <div className="budget-app">
         <div className="chart-container">
           <h2>Expense Tracker</h2>
-          <div className="budget-figures"></div>
           <ChartModule incomeSources={incomeSources} expenses={expenses} />
         </div>
         <div className="input-containers">
-          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
-
           <IncomeModules
             incomeSources={incomeSources}
             setIncomeSources={setIncomeSources}
           />
+          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
           {/* <SavingsModules /> */}
         </div>
       </div>

@@ -64,12 +64,15 @@ const ChartModule = (props) => {
     ],
   };
   return (
-    <div className="chart-container">
+    <>
+      <Pie className="chart-item" data={data} responsive={"true"} />
+
       <h2>Total Income: ${addValues(totalIncome)}</h2>
       <h2>Total Expenses: ${addValues(totalExpenses)}</h2>
-      <h2>Remaining: $ {addValues(totalIncome) - addValues(totalExpenses)}</h2>
-      <Pie data={data} />
-    </div>
+      <h2>
+        Remaining: ${addValues(totalIncome) - addValues(totalExpenses) || ""}
+      </h2>
+    </>
   );
 };
 

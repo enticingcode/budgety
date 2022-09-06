@@ -1,0 +1,12 @@
+.rename-option {
+  width: 50px;
+  background-color: transparent;
+  border: none;
+}
+
+.rename-option:hover {
+}
+
+.rename-input {
+  width: 70px;
+}
