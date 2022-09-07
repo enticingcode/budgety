@@ -37,28 +37,34 @@ const Login = () => {
       <section className="credentials-wrapper">
         <h3>Login to Budgety</h3>
         <form className="form-container">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email"></label>
           <input
+            className="credentials"
+            placeholder="Email"
             onChange={handleChange}
             id="email"
             name="email"
             type="email"
           ></input>
 
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password"></label>
           <input
+            className="credentials"
+            placeholder="Password"
             onChange={handleChange}
             id="password"
             name="password"
             type="password"
           ></input>
-          <button onClick={handleLogin}>Login</button>
+          <button className="loginbtn btn" onClick={handleLogin}>
+            Login
+          </button>
         </form>
 
         <div>
           <p>
             New Here?
-            <Link to="/signup">Sign up for an account today!</Link>
+            <Link to="/signup"> Sign up for an account today!</Link>
           </p>
         </div>
       </section>

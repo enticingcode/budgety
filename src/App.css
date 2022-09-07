@@ -10,7 +10,6 @@ body {
 }
 
 a {
-  text-decoration: none;
   color: black;
 }
 
@@ -113,4 +112,12 @@ hr {
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 10px 5px;
+  border-bottom: 1px solid black;
 }
