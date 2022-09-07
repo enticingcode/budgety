@@ -24,7 +24,8 @@ function IncomeModules(props) {
   let incomePrompts = incomeSources.map((item) => {
     return (
       <div key={item.id}>
-        <label htmlFor={item.id}>Income:</label>
+        {/* <LabelRename /> */}
+        <label htmlFor={item.id}>Income </label>
         <input
           onChange={handleChange}
           id={item.id}
@@ -38,7 +39,7 @@ function IncomeModules(props) {
 
   return (
     <div className="income-container">
-      <h2>Monthly Incomes:</h2>
+      <h2>Monthly Incomes</h2>
       {incomePrompts}
       {/* <button onClick={addIncomeInput}>Add Income</button> */}
     </div>

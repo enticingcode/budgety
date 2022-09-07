@@ -35,15 +35,13 @@ function ExpenseModules(props) {
     });
   }
 
-  // console.log(expenses);
-
   let expensePrompts = expenses.map((item) => {
     return (
       <div className="expense-item" key={item.id}>
         {/* this label has to be editable component */}
         <LabelRename
-          expenses={expenses}
-          setExpenses={setExpenses}
+          category={expenses}
+          stateSetter={setExpenses}
           name={item.name}
           htmlFor={item.id}
         />

@@ -1,7 +1,10 @@
 import React from "react";
 import "../styles/LabelRename.css";
 
+// RE-USED COMPONENT //
 const LabelRename = (props) => {
+  const { category, stateSetter } = props;
+
   const [editLabel, setEditLabel] = React.useState(false);
 
   function changeLabel(e) {
@@ -13,9 +16,8 @@ const LabelRename = (props) => {
     let currentLabelVal = e.target.value;
     let nextSibling = e.target.nextSibling;
 
-    console.log(e.target);
-
-    props.setExpenses((prevArray) => {
+    // PARAMETER BASED HERE
+    stateSetter((prevArray) => {
       return prevArray.map((obj) => {
         //this comparison needs a creative method of implementation.
         //using sibling element which is the input of expense number
@@ -49,7 +51,7 @@ const LabelRename = (props) => {
           ></input>
         </>
       ) : (
-        <label htmlFor={props.id} onClick={changeLabel}>
+        <label className="user-labels" htmlFor={props.id} onClick={changeLabel}>
           {props.name}
         </label>
       )}
