@@ -1,4 +1,6 @@
 import React from "react";
+import { auth } from "./FirebaseAuth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
 
@@ -7,6 +9,27 @@ const SignUp = () => {
     email: "",
     password: "",
   });
+
+  function submitSignup(e) {
+    e.preventDefault();
+    createUserWithEmailAndPassword(
+      auth,
+      credentials.email,
+      credentials.password
+    )
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+
+        //
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  }
 
   function handleChange(e) {
     let value = e.target.value;
@@ -20,10 +43,6 @@ const SignUp = () => {
     });
   }
 
-  function handleLogin(e) {
-    e.preventDefault();
-  }
-
   return (
     <div className="login-page">
       <section className="login-design">
@@ -35,6 +54,7 @@ const SignUp = () => {
 
       <section className="credentials-wrapper">
         <h3>Sign up for Budgety</h3>
+
         <form className="form-container">
           <label htmlFor="email"></label>
           <input
@@ -64,7 +84,7 @@ const SignUp = () => {
             name="confirmPassword"
             type="password"
           ></input>
-          <button className="loginbtn btn" onClick={handleLogin}>
+          <button className="loginbtn btn" onClick={submitSignup}>
             Sign Up
           </button>
         </form>

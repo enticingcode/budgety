@@ -57,11 +57,11 @@ function ExpenseModules(props) {
   });
 
   return (
-    <div className="expense-container">
+    <>
       <h2>Monthly Expenses</h2>
       {expensePrompts}
       <button onClick={addExpense}>Add Expense</button>
-    </div>
+    </>
   );
 }
 

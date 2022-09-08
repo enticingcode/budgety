@@ -12,8 +12,6 @@ const ChartModule = (props) => {
     return item.name;
   });
 
-  console.log(stateNames);
-
   // PIE CHART DATA HERE
   const data = {
     labels: [...dataNames],

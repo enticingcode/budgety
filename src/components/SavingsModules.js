@@ -58,7 +58,7 @@ const SavingsModules = (props) => {
 
   return (
     <>
-      <div className="savings-containers">
+      <div className="input-containers">
         <h2>Allocations</h2>
         {allocationPrompts}
         <button onClick={addSavingsInput}>Add Allocation</button>

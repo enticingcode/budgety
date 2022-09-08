@@ -6,13 +6,14 @@ import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import "../styles/Dashboard.css";
 import ChartModule from "./ChartModule";
+import InflationAPI from "./InflationAPI";
 
 // important note.
 // Savings allocation is dependent on free cash flow.
 // figure out implementation
 
 const Dashboard = () => {
-  const auth = useAuth();
+  const refAuth = useAuth();
 
   const [incomeSources, setIncomeSources] = React.useState([
     { income: "", id: uniqid() },
@@ -51,7 +52,7 @@ const Dashboard = () => {
     let final;
     let newArr = arr.filter((item) => parseInt(item));
 
-    if (newArr.length === 1) return parseInt(arr[0]);
+    if (newArr.length === 1) return parseInt(newArr[0]);
 
     if (newArr.length > 1) {
       final = newArr.reduce((a, b) => {
@@ -61,15 +62,23 @@ const Dashboard = () => {
     return final;
   }
 
+  console.log(addValues(totalExpenses));
+
   //Dashboard is going to have many individual components to function it.
   // state of modules will most likely have to be put here.
 
+  let remaining = addValues(totalIncome) - addValues(totalExpenses);
+
+  let remainingAfterSavings =
+    addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
+
   return (
     <div className="dash">
-      <h1>Welcome {auth.user}</h1>
+      <h1>Welcome {refAuth.user}</h1>
 
-      <div className="cashFlow module">
-        <div className="chart-container">
+      {/* INCOME-EXPENSE MODULE */}
+      <section className="cashFlow module">
+        <div className="chart-container expenses">
           <h2>Expense Tracker</h2>
           <ChartModule
             type={"Pie"}
@@ -78,11 +87,9 @@ const Dashboard = () => {
           />
           <h2>Total Income: ${addValues(totalIncome)}</h2>
           <h2>Total Expenses: ${addValues(totalExpenses)}</h2>
-          <h2>
-            Remaining: $
-            {addValues(totalIncome) - addValues(totalExpenses) || ""}
-          </h2>
+          <h2>Remaining: ${remainingAfterSavings || remaining || ""}</h2>
         </div>
+
         <div className="input-containers">
           <IncomeModules
             incomeSources={incomeSources}
@@ -90,9 +97,13 @@ const Dashboard = () => {
           />
           <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
         </div>
-      </div>
+        <div className="ext-info">
+          <InflationAPI />
+        </div>
+      </section>
 
-      <div className="savings module">
+      {/* SAVINGS MODULE */}
+      <section className="savings module">
         <div className="chart-container">
           <h2>Savings Allocation</h2>
           <ChartModule
@@ -104,7 +115,13 @@ const Dashboard = () => {
           savingsAllocation={savingsAllocation}
           setSavingsAllocation={setSavingsAllocation}
         />
-      </div>
+      </section>
+
+      {/* FUN MONEY MODULE */}
+      <section className="fun-money module">
+        <h2>Fun Money</h2>
+        <p> ${remainingAfterSavings}</p>
+      </section>
     </div>
   );
 };

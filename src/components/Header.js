@@ -12,9 +12,9 @@ const Header = () => {
           <li className="nav-link">
             <a href="/">Home</a>
           </li>
-          <li className="nav-link">
+          {/* <li className="nav-link">
             <a href="/about">About</a>
-          </li>
+          </li> */}
           <li className="nav-link">
             <a href="/login">Login</a>
           </li>

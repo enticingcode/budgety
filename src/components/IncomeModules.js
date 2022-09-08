@@ -38,11 +38,11 @@ function IncomeModules(props) {
   });
 
   return (
-    <div className="income-container">
+    <>
       <h2>Monthly Incomes</h2>
       {incomePrompts}
       {/* <button onClick={addIncomeInput}>Add Income</button> */}
-    </div>
+    </>
   );
 }
 
