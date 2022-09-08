@@ -4,8 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/components/FirebaseAuth.js
-
+.env
 # testing
 /coverage
 
