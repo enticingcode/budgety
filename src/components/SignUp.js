@@ -71,8 +71,8 @@ const SignUp = () => {
 
         <div>
           <p>
-            New Here?
-            <Link to="/signup"> Sign up for an account today!</Link>
+            Already a member?
+            <Link to="/login"> Login here</Link>
           </p>
         </div>
       </section>

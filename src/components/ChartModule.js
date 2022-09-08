@@ -3,14 +3,16 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 const ChartModule = (props) => {
-  const { chartData } = props;
+  const { chartData, stateNames } = props;
 
   // PIE CHART DATA
   ChartJS.register(ArcElement, Tooltip, Legend);
 
-  let dataNames = chartData.map((item) => {
+  let dataNames = stateNames.map((item) => {
     return item.name;
   });
+
+  console.log(stateNames);
 
   // PIE CHART DATA HERE
   const data = {

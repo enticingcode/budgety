@@ -71,7 +71,11 @@ const Dashboard = () => {
       <div className="cashFlow module">
         <div className="chart-container">
           <h2>Expense Tracker</h2>
-          <ChartModule type={"Pie"} chartData={totalExpenses} />
+          <ChartModule
+            type={"Pie"}
+            stateNames={expenses}
+            chartData={totalExpenses}
+          />
           <h2>Total Income: ${addValues(totalIncome)}</h2>
           <h2>Total Expenses: ${addValues(totalExpenses)}</h2>
           <h2>
@@ -91,7 +95,10 @@ const Dashboard = () => {
       <div className="savings module">
         <div className="chart-container">
           <h2>Savings Allocation</h2>
-          <ChartModule chartData={totalSavings} />
+          <ChartModule
+            stateNames={savingsAllocation}
+            chartData={totalSavings}
+          />
         </div>
         <SavingsModules
           savingsAllocation={savingsAllocation}
