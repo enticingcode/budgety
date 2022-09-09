@@ -26,7 +26,6 @@ const Login = () => {
     });
   }
 
-  console.log(localStorage.getItem("user"));
   function handleLogin(e) {
     e.preventDefault();
     signInWithEmailAndPassword(auth, credentials.email, credentials.password)

@@ -16,8 +16,8 @@ const RouteSwitch = () => {
   const localAuth = useAuth();
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route
             path="/"
