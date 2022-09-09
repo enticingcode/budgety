@@ -76,6 +76,14 @@ const Dashboard = () => {
 
       {/* INCOME-EXPENSE MODULE */}
       <section className="cashFlow module">
+        <div className="ext-info">
+          <h2>Track your Income and Expenses Easily!</h2>
+          <p>Here's a list of functionality:</p>
+          <ul>
+            <li>Add new custom expenses</li>
+            <li>Experience infographic chart provided by ChartJS</li>
+          </ul>
+        </div>
         <div className="chart-container expenses">
           <h2>Expense Tracker</h2>
           <ChartModule
@@ -95,13 +103,13 @@ const Dashboard = () => {
           />
           <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
         </div>
-        <div className="ext-info">
-          <InflationAPI />
-        </div>
       </section>
 
       {/* SAVINGS MODULE */}
       <section className="savings module">
+        <div className="ext-info">
+          <InflationAPI />
+        </div>
         <div className="chart-container">
           <h2>Savings Allocation</h2>
           <ChartModule
