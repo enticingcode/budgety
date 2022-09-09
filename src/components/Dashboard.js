@@ -62,8 +62,6 @@ const Dashboard = () => {
     return final;
   }
 
-  console.log(addValues(totalExpenses));
-
   //Dashboard is going to have many individual components to function it.
   // state of modules will most likely have to be put here.
 

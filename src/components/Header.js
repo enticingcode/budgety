@@ -10,7 +10,8 @@ const Header = () => {
       <nav className="nav">
         <ul>
           <li className="nav-link">
-            <a href="/">Home</a>
+            <NavLink to="/">Home</NavLink>
+            {/* <a href="/">Home</a> */}
           </li>
           {/* <li className="nav-link">
             <a href="/about">About</a>

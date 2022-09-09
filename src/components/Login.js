@@ -1,13 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./FirebaseAuth";
 import "../styles/Login.css";
+import { AuthContext } from "./auth";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = React.useState({
     email: "",
     password: "",
   });
+
+  const localAuth = useContext(AuthContext);
 
   function handleChange(e) {
     let value = e.target.value;
@@ -21,8 +26,25 @@ const Login = () => {
     });
   }
 
+  console.log(localStorage.getItem("user"));
   function handleLogin(e) {
     e.preventDefault();
+    signInWithEmailAndPassword(auth, credentials.email, credentials.password)
+      .then((userCredential) => {
+        const user = userCredential.user.uid;
+        localAuth.setUser(user);
+        navigate("/dashboard");
+        return user;
+        // Signed in
+      })
+      .then((user) => {
+        JSON.stringify(localStorage.setItem("user", user));
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
   }
 
   return (
