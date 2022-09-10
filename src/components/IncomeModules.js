@@ -31,7 +31,7 @@ function IncomeModules(props) {
           id={item.id}
           value={item.income}
           name=""
-          className="income-input"
+          className="money-input"
         ></input>
       </div>
     );

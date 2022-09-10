@@ -50,7 +50,7 @@ const SavingsModules = (props) => {
           id={item.id}
           value={item.allocation}
           name={item.name}
-          className="expense-input"
+          className="money-input"
         ></input>
       </div>
     );
@@ -61,7 +61,9 @@ const SavingsModules = (props) => {
       <div className="input-containers">
         <h2>Allocations</h2>
         {allocationPrompts}
-        <button onClick={addSavingsInput}>Add Allocation</button>
+        <button className="add-money-input" onClick={addSavingsInput}>
+          Add Allocation
+        </button>
       </div>
     </>
   );

@@ -72,14 +72,14 @@ const Dashboard = () => {
 
   return (
     <div className="dash">
-      <h1>Welcome {refAuth.user}</h1>
+      <h1>Welcome [user here] </h1>
 
       {/* INCOME-EXPENSE MODULE */}
       <section className="cashFlow module">
         <div className="ext-info">
           <h2>Track your Income and Expenses Easily!</h2>
           <p>Here's a list of functionality:</p>
-          <ul>
+          <ul className="functionality-list">
             <li>Add new custom expenses</li>
             <li>Experience infographic chart provided by ChartJS</li>
           </ul>

@@ -50,7 +50,7 @@ function ExpenseModules(props) {
           id={item.id}
           value={item.expense}
           name={item.name}
-          className="expense-input"
+          className="money-input"
         ></input>
       </div>
     );
@@ -60,7 +60,9 @@ function ExpenseModules(props) {
     <>
       <h2>Monthly Expenses</h2>
       {expensePrompts}
-      <button onClick={addExpense}>Add Expense</button>
+      <button className="add-money-input" onClick={addExpense}>
+        Add Expense
+      </button>
     </>
   );
 }

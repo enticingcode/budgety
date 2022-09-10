@@ -40,7 +40,7 @@ li {
 }
 
 .header-logo {
-  width: 50px;
+  width: 65px;
   padding: 10px;
 }
 
@@ -49,4 +49,10 @@ li {
   border: none;
   outline: none;
   width: 40px;
+  top: 2px;
+  position: relative;
+}
+
+.logoutbtn:hover {
+  transform: scale(1.1);
 }

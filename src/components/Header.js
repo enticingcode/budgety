@@ -10,6 +10,8 @@ const Header = () => {
 
   function logout(e) {
     e.preventDefault();
+    localStorage.removeItem("user");
+    localAuth.setUser(null);
   }
 
   return (
