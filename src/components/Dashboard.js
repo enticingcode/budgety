@@ -73,9 +73,9 @@ const Dashboard = () => {
   return (
     <div className="dash">
       <h1>Welcome [user here] </h1>
-
       {/* INCOME-EXPENSE MODULE */}
-      <section className="cashFlow module">
+
+      <section className="information module">
         <div className="ext-info">
           <h2>Track your Income and Expenses Easily!</h2>
           <p>Here's a list of functionality:</p>
@@ -84,6 +84,9 @@ const Dashboard = () => {
             <li>Experience infographic chart provided by ChartJS</li>
           </ul>
         </div>
+      </section>
+
+      <section className="cashFlow module">
         <div className="chart-container expenses">
           <h2>Expense Tracker</h2>
           <ChartModule

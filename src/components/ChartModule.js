@@ -39,9 +39,18 @@ const ChartModule = (props) => {
       },
     ],
   };
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: "right",
+      },
+    },
+  };
   return (
     <>
-      <Pie className="chart-item" data={data} responsive={"true"} />
+      <Pie className="chart-item" data={data} options={options} />
     </>
   );
 };

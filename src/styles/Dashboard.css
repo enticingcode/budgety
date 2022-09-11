@@ -1,14 +1,13 @@
 .dash > h1 {
   margin-top: 30px;
   margin-left: 30px;
-  width: 100%;
+  font-size: 1.4rem;
 }
 
 .dash {
 }
 .module {
   display: flex;
-  justify-content: space-around;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 10px;
   padding: 45px;
@@ -17,13 +16,16 @@
   background-color: rgb(255, 255, 255);
 }
 
+.information.module {
+}
+
 .ext-info {
   display: flex;
   flex-direction: column;
 }
 .chart-container {
   display: flex;
-  flex: 1 1 auto;
+  width: 40%;
   flex-direction: column;
   align-items: center;
 }
@@ -32,8 +34,8 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-items: flex-end;
-  margin-right: 60px;
   max-height: 800px;
+  margin: 5px 25px;
 }
 
 .income-container {
@@ -66,7 +68,7 @@
 .user-labels:hover {
   background-color: rgb(238, 238, 238);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-  cursor: text;
+  cursor: pointer;
 }
 
 .rename-input {
