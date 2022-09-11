@@ -3,7 +3,10 @@ import React from "react";
 const BuyingPowerAPI = () => {
   //   THIS CODE GETS BUYING POWER OF USD WITH DATES
 
-  const [apiData, setAPIData] = React.useState();
+  const [apiData, setAPIData] = React.useState({
+    cumulativeRatePercentage: "",
+    dollarsAfterInflation: "",
+  });
 
   const [userInput, setUserInput] = React.useState({
     initialYear: "",
@@ -68,40 +71,49 @@ const BuyingPowerAPI = () => {
       options
     )
       .then((response) => response.json())
-      .then((response) => console.log(response))
+      .then((response) => setAPIData(response))
       .catch((err) => console.error(err));
   }
   return (
-    <div className="inflation-info">
-      <p>Inflation Calculator</p>
-      <label htmlFor="from-date">From:</label>
-      <input
-        onChange={handleChange}
-        name="from-date"
-        id="from-date"
-        type="date"
-      ></input>
-
-      <label htmlFor="to-date">To:</label>
-      <input
-        onChange={handleChange}
-        name="to-date"
-        id="to-date"
-        type="date"
-      ></input>
-      <label htmlFor="dollar-amount"></label>
-      <div>
-        $
+    <div className="inflation-container">
+      <div className="inflation-inputs">
+        <p>Inflation Calculator</p>
+        <label htmlFor="from-date">From:</label>
         <input
           onChange={handleChange}
-          name="dollar-amount"
-          type="number"
-          id="dollar-amount"
+          name="from-date"
+          id="from-date"
+          type="date"
         ></input>
-      </div>
-      <button onClick={fetchInflationData}>Get Data</button>
 
-      <h3>Buying Power:</h3>
+        <label htmlFor="to-date">To:</label>
+        <input
+          onChange={handleChange}
+          name="to-date"
+          id="to-date"
+          type="date"
+        ></input>
+        <label htmlFor="dollar-amount"></label>
+        <div>
+          $
+          <input
+            onChange={handleChange}
+            name="dollar-amount"
+            type="number"
+            id="dollar-amount"
+          ></input>
+        </div>
+        <button onClick={fetchInflationData}>Get Data</button>
+      </div>
+      <div className="inflation-results">
+        <h3>
+          Something that would have cost: ${userInput.totalDollars || "$0"}
+        </h3>
+        <h3>Dollars after inflation:</h3>
+        <h3>{apiData.dollarsAfterInflation}</h3>
+        <h3>Cumulative Rate Percentage:</h3>
+        <h3>{apiData.cumulativeRatePercentage}</h3>
+      </div>
     </div>
   );
 };

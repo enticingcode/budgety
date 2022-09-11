@@ -143,6 +143,20 @@
   list-style-type: disc;
 }
 
+.inflation-container {
+  display: flex;
+}
+.inflation-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.inflation-results {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+
 @media (min-width: 768px) {
   .add-money-input {
     padding: 10px 30px;
