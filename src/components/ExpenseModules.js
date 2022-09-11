@@ -37,7 +37,7 @@ function ExpenseModules(props) {
 
   let expensePrompts = expenses.map((item) => {
     return (
-      <div className="expense-item" key={item.id}>
+      <div className="input-item" key={item.id}>
         {/* this label has to be editable component */}
         <LabelRename
           category={expenses}

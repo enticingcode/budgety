@@ -38,6 +38,10 @@
   margin: 5px 25px;
 }
 
+.input-item {
+  margin: 5px 30px;
+}
+
 .income-container {
   display: flex;
   flex-wrap: wrap;
@@ -107,6 +111,7 @@
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
   box-sizing: border-box;
+  margin-left: 30px;
   margin-top: 10px;
   color: #fff;
   cursor: pointer;
