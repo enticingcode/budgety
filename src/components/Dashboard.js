@@ -89,7 +89,9 @@ const Dashboard = () => {
 
   return (
     <div className="dash">
-      <h1>Welcome [user here] </h1>
+      {/* should be state considering its an api call  upon login*/}
+
+      <h1>Welcome {refAuth.personName} </h1>
 
       {/* INCOME-EXPENSE MODULE */}
       <section className="information module">

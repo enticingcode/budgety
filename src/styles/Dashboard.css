@@ -17,8 +17,6 @@
 }
 
 .information.module {
-  justify-content: space-around;
-  text-align: center;
 }
 
 .ext-info {
@@ -77,6 +75,10 @@
   cursor: pointer;
 }
 
+.rename-input {
+  margin: 0 7px;
+}
+
 .savings-containers {
   display: flex;
   flex-direction: column;
@@ -86,15 +88,12 @@
 
 .fun-money {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .inflation-info p {
   font-size: 1.5rem;
-}
-
-.inflation-inputs .money-input {
-  max-width: 200px;
 }
 
 .money-input {
@@ -104,12 +103,6 @@
   height: 40px;
   margin: 5px;
   font-size: 1.4rem;
-}
-
-.free-funds {
-  display: flex;
-  flex-direction: column;
-  margin: 0 70px;
 }
 
 .add-money-input {

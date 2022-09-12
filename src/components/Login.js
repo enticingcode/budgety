@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./FirebaseAuth";
 import "../styles/Login.css";
+import { getPersonName } from "./FirebaseAuth";
 import { AuthContext } from "./auth";
 
 const Login = () => {
@@ -38,6 +39,11 @@ const Login = () => {
       })
       .then((user) => {
         JSON.stringify(localStorage.setItem("user", user));
+        let name = getPersonName(user);
+        return name;
+      })
+      .then((name) => {
+        localAuth.setPersonName(name);
       })
       .catch((error) => {
         const errorCode = error.code;

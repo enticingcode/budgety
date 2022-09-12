@@ -76,7 +76,6 @@ const BuyingPowerAPI = () => {
       });
   }
 
-  console.log(userInput);
   return (
     <div className="inflation-container">
       <div className="inflation-inputs">

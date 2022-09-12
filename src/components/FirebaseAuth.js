@@ -1,9 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+
+import { useAuth } from "./auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -38,4 +40,18 @@ async function connectUserNameAcc(userName, userId) {
   });
 }
 
-export { connectUserNameAcc };
+// cannot use auth context because not inside react function.
+
+// need a way to update this somehow.
+async function getPersonName(userId) {
+  try {
+    let document = await getDoc(doc(db, "users", userId));
+    let data = document.data();
+    let name = data.name;
+    return name;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export { connectUserNameAcc, getPersonName };
