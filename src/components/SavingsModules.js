@@ -7,6 +7,7 @@ const SavingsModules = (props) => {
 
   function addSavingsInput(e) {
     e.preventDefault();
+    if (savingsAllocation.length > 25) return alert("Maximum limit reached");
     setSavingsAllocation((prev) => {
       console.log(prev);
       return [

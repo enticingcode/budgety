@@ -15,7 +15,6 @@ const LabelRename = (props) => {
   function handleChange(e) {
     let currentLabelVal = e.target.value;
     let nextSibling = e.target.nextSibling;
-
     // PARAMETER BASED HERE
     stateSetter((prevArray) => {
       return prevArray.map((obj) => {

@@ -63,8 +63,6 @@ const BuyingPowerAPI = () => {
     body: `{"initialYear":${userInput.initialYear},"initialMonth":${userInput.initialMonth},"finalYear":${userInput.finalYear},"finalMonth":${userInput.finalMonth},"totalDollars":${userInput.totalDollars}}`,
   };
 
-  console.log(options.body);
-
   function fetchInflationData() {
     fetch(
       "https://u-s-dollar-inflation.p.rapidapi.com/calculateBuyingPower",
@@ -72,22 +70,29 @@ const BuyingPowerAPI = () => {
     )
       .then((response) => response.json())
       .then((response) => setAPIData(response))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
   }
+
+  console.log(userInput);
   return (
     <div className="inflation-container">
       <div className="inflation-inputs">
         <p>Inflation Calculator</p>
+        (Note: Latest date must be at least two months prior to today)
         <label htmlFor="from-date">From:</label>
         <input
+          className="money-input"
           onChange={handleChange}
           name="from-date"
           id="from-date"
           type="date"
         ></input>
-
         <label htmlFor="to-date">To:</label>
         <input
+          className="money-input"
           onChange={handleChange}
           name="to-date"
           id="to-date"
@@ -95,8 +100,8 @@ const BuyingPowerAPI = () => {
         ></input>
         <label htmlFor="dollar-amount"></label>
         <div>
-          $
           <input
+            className="money-input"
             onChange={handleChange}
             name="dollar-amount"
             type="number"
@@ -105,14 +110,18 @@ const BuyingPowerAPI = () => {
         </div>
         <button onClick={fetchInflationData}>Get Data</button>
       </div>
+
       <div className="inflation-results">
         <h3>
-          Something that would have cost: ${userInput.totalDollars || "$0"}
+          Something that would have cost:
+          {(userInput.totalDollars && " $" + userInput.totalDollars) || " $0"}
         </h3>
-        <h3>Dollars after inflation:</h3>
-        <h3>{apiData.dollarsAfterInflation}</h3>
+
+        <h3>Now costs:$ {apiData.dollarsAfterInflation} after inflation. </h3>
+
         <h3>Cumulative Rate Percentage:</h3>
-        <h3>{apiData.cumulativeRatePercentage}</h3>
+
+        <h3>$ {apiData.cumulativeRatePercentage}</h3>
       </div>
     </div>
   );

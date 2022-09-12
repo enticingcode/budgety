@@ -3,15 +3,18 @@ import { auth } from "./FirebaseAuth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
+import { connectUserNameAcc } from "./FirebaseAuth";
 
 const SignUp = () => {
   const [credentials, setCredentials] = React.useState({
+    name: "",
     email: "",
     password: "",
   });
 
   function submitSignup(e) {
     e.preventDefault();
+    let user;
     createUserWithEmailAndPassword(
       auth,
       credentials.email,
@@ -19,9 +22,9 @@ const SignUp = () => {
     )
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
+        user = userCredential.user.uid;
         console.log(user);
-
+        connectUserNameAcc(credentials.name, user);
         //
       })
       .catch((error) => {
@@ -30,6 +33,7 @@ const SignUp = () => {
         console.log(errorCode, errorMessage);
       });
   }
+  console.log(credentials);
 
   function handleChange(e) {
     let value = e.target.value;
@@ -56,6 +60,16 @@ const SignUp = () => {
         <h3>Sign up for Budgety</h3>
 
         <form className="form-container">
+          <label htmlFor="name"></label>
+          <input
+            className="credentials"
+            placeholder="Name"
+            onChange={handleChange}
+            id="name"
+            name="name"
+            type="text"
+          ></input>
+
           <label htmlFor="email"></label>
           <input
             className="credentials"

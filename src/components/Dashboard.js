@@ -8,9 +8,6 @@ import "../styles/Dashboard.css";
 import ChartModule from "./ChartModule";
 import CPIData from "./CPIData";
 import BuyingPowerAPI from "./BuyingPowerAPI";
-// important note.
-// Savings allocation is dependent on free cash flow.
-// figure out implementation
 
 const Dashboard = () => {
   const refAuth = useAuth();
@@ -93,15 +90,26 @@ const Dashboard = () => {
   return (
     <div className="dash">
       <h1>Welcome [user here] </h1>
-      {/* INCOME-EXPENSE MODULE */}
 
+      {/* INCOME-EXPENSE MODULE */}
       <section className="information module">
         <div className="ext-info">
           <h2>Track your Income and Expenses Easily!</h2>
           <p>Here's a list of functionality:</p>
           <ul className="functionality-list">
-            <li>Add new custom expenses</li>
+            <li>Add custom named expenses & allocations</li>
             <li>Experience infographic chart provided by ChartJS</li>
+            <li>Get inflation information from sourced API</li>
+          </ul>
+        </div>
+
+        <div className="ext-info">
+          <h2>Features coming soon:</h2>
+          <ul className="functionality-list">
+            <li>Financial goal planning</li>
+            <li>Monthly Budget Tracking</li>
+            <li>Transactional tracking</li>
+            <li>iOS application</li>
           </ul>
         </div>
       </section>
@@ -130,9 +138,6 @@ const Dashboard = () => {
 
       {/* SAVINGS MODULE */}
       <section className="savings module">
-        <div className="ext-info">
-          <CPIData />
-        </div>
         <div className="chart-container">
           <h2>Savings Allocation</h2>
           <ChartModule
@@ -148,12 +153,14 @@ const Dashboard = () => {
 
       {/* FUN MONEY MODULE */}
       <section className="fun-money module">
-        <h2>Financial Forecast</h2>
-        <div>
-          <h3>After savings fun:</h3>
-          <p> ${remainingAfterSavings}</p>
+        <div className="free-funds">
+          <h2>Financial Forecast</h2>
+          <h3>Free funds:</h3>
+          <h3> ${remainingAfterSavings}</h3>
         </div>
+
         <BuyingPowerAPI />
+        <CPIData />
       </section>
     </div>
   );
