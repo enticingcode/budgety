@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import icon from "./assets/images/budgeticon.png";
@@ -6,19 +5,18 @@ import budge1 from "./assets/images/budge1.png";
 
 function HomePage() {
   return (
-    <div className="home-container parallax-wrapper">
-      <div className="parallax">
-        <img alt="budget style icon" src={budge1}></img>
-        <div className="background bg-1test"></div>
-        <span className="title-container">
-          <h1 className="title">Feeling Budgety?</h1>
-          <Link className="preview-link" to="/testSession">
+    <div className="container bg-{blue}-{700} text-white">
+      <div className="container d-flex align-items-center">
+        <img alt="budgeting clipart" src={budge1}></img>
+        <span className="ms-5">
+          <h1 className="">Feeling Budgety?</h1>
+          <Link className="" to="/testSession">
             Try a Preview!
           </Link>
         </span>
       </div>
 
-      <section className="bg-divider">
+      <section className="">
         <h2>Start Budgeting today with Budgety!</h2>
         <hr />
         <p>Your solution to every day budgeting needs!</p>
@@ -29,11 +27,11 @@ function HomePage() {
         </p>
       </section>
 
-      <div className="background bg-2">
-        <img className="hp-icon1" alt="budget icon" src={icon}></img>
-        <h2 className="hp-icon1-text">Coming soon to iOS</h2>
+      <div className=" ">
+        <img className="" alt="budget icon" src={icon}></img>
+        <h2 className="">Coming soon to iOS</h2>
 
-        <section className="hp-footer">
+        <section className="">
           <p>Copyright @ MT</p>
         </section>
       </div>

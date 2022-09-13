@@ -2,7 +2,6 @@ import React from "react";
 import { auth } from "./FirebaseAuth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
-import "../styles/Login.css";
 import { connectUserNameAcc } from "./FirebaseAuth";
 
 const SignUp = () => {

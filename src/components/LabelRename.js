@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/LabelRename.css";
 
 // RE-USED COMPONENT //
 const LabelRename = (props) => {
