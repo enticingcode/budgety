@@ -52,15 +52,15 @@ const Login = () => {
   }
 
   return (
-    <div className="login-page">
-      <section className="login-design">
+    <div className="login-page  d-flex">
+      <section className="login-design bg-primary d-flex flex-column  container">
         <div>
           <h2>Welcome to Budgety</h2>
           <p>Your personal budgeting resource</p>
         </div>
       </section>
 
-      <section className="credentials-wrapper">
+      <section className="credentials-wrapper d-flex flex-column container">
         <h3>Login to Budgety</h3>
         <form className="form-container">
           <label htmlFor="email"></label>

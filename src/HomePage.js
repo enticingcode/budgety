@@ -7,7 +7,9 @@ function HomePage() {
   return (
     <div className="container-fluid p-0  text-black">
       <div className="container-fluid d-flex bg-tan p-0 m-0 align-items-center">
-        <img alt="budgeting clipart" src={budge1}></img>
+        <div className="container">
+          <img className="img-fluid" alt="budgeting clipart" src={budge1}></img>
+        </div>
         <span className="ms-5">
           <h1 className="">Feeling Budgety?</h1>
           <Link className="" to="/testSession">
@@ -16,7 +18,7 @@ function HomePage() {
         </span>
       </div>
 
-      <section className="container-fluid bg-white">
+      <section className="d-flex py-5 text-center align-items-center container-fluid bg-white">
         <h2>Start Budgeting today with Budgety!</h2>
         <hr />
         <p>Your solution to every day budgeting needs!</p>
@@ -27,13 +29,11 @@ function HomePage() {
         </p>
       </section>
 
-      <div className="container-fluid p-0 bg-primary">
-        <img className="" alt="budget icon" src={icon}></img>
+      <div className="container-fluid d-flex p-5 align-items-center px3 bg-bluey">
+        <div className="container-sm">
+          <img className="img-fluid mw-25" alt="budget icon" src={icon}></img>
+        </div>
         <h2 className="">Coming soon to iOS</h2>
-
-        <section className="">
-          <p>Copyright @ MT</p>
-        </section>
       </div>
     </div>
   );

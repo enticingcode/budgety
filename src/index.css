@@ -1,3 +1,16 @@
 .bg-tan {
   background-color: #f1e4d1;
 }
+
+.bg-bluey {
+  background-color: #bfdbdc;
+}
+
+hr {
+  width: 7rem;
+  transform: rotate(90deg);
+}
+
+.copyright {
+  top: 100vh !important;
+}
