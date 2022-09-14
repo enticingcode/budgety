@@ -87,13 +87,13 @@ const Dashboard = () => {
     addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
 
   return (
-    <div className="">
+    <div className="d-flex flex-column ">
       {/* should be state considering its an api call  upon login*/}
 
       <h1>Welcome {refAuth.personName} </h1>
 
       {/* INCOME-EXPENSE MODULE */}
-      <section className="">
+      <section className="module d-flex justify-content-around m-3 rounded">
         <div className="">
           <h2 className="">Track your Income and Expenses Easily!</h2>
           <ul className="">
@@ -114,8 +114,8 @@ const Dashboard = () => {
         </div>
       </section>
 
-      <section className="cashFlow module">
-        <div className="chart-container expenses">
+      <section className="module d-flex justify-content-center m-3 rounded">
+        <div className="w-50 text-center">
           <h2>Expense Tracker</h2>
           <ChartModule
             type={"Pie"}
@@ -127,7 +127,7 @@ const Dashboard = () => {
           <h2>Remaining: ${remainingAfterSavings || remaining || ""}</h2>
         </div>
 
-        <div className="input-containers">
+        <div className="d-flex flex-column align-items-end">
           <IncomeModules
             incomeSources={incomeSources}
             setIncomeSources={setIncomeSources}
@@ -137,22 +137,24 @@ const Dashboard = () => {
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="savings module">
-        <div className="chart-container">
+      <section className="module d-flex justify-content-center m-3 rounded">
+        <div className="w-50">
           <h2>Savings Allocation</h2>
           <ChartModule
             stateNames={savingsAllocation}
             chartData={totalSavings}
           />
         </div>
-        <SavingsModules
-          savingsAllocation={savingsAllocation}
-          setSavingsAllocation={setSavingsAllocation}
-        />
+        <div className="d-flex flex-column align-items-end">
+          <SavingsModules
+            savingsAllocation={savingsAllocation}
+            setSavingsAllocation={setSavingsAllocation}
+          />
+        </div>
       </section>
 
       {/* FUN MONEY MODULE */}
-      <section className="fun-money module">
+      <section className="module d-flex flex-column align-items-center m-3 rounded">
         <div className="free-funds">
           <h2>Financial Forecast</h2>
           <h3>Free funds:</h3>

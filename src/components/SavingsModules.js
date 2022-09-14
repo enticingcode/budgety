@@ -59,13 +59,14 @@ const SavingsModules = (props) => {
 
   return (
     <>
-      <div className="input-containers">
-        <h2>Allocations</h2>
-        {allocationPrompts}
-        <button className="add-money-input" onClick={addSavingsInput}>
-          Add Allocation
-        </button>
-      </div>
+      <h2>Allocations</h2>
+      {allocationPrompts}
+      <button
+        className="add-money-input btn btn-success"
+        onClick={addSavingsInput}
+      >
+        Add Allocation
+      </button>
     </>
   );
 };

@@ -1,3 +1,7 @@
+#root {
+  height: 100vh;
+}
+
 .bg-tan {
   background-color: #f1e4d1;
 }
@@ -13,4 +17,29 @@ hr {
 
 .copyright {
   top: 100vh !important;
+}
+
+.bg-greenery {
+  background-color: #a1d076;
+}
+
+.btn-green {
+  background-color: #09804c;
+}
+
+.input-item {
+  margin-left: 2rem;
+}
+
+.money-input {
+  margin-left: 2rem;
+}
+
+.module {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 2rem;
+}
+
+.btn {
+  margin-top: 1.3rem;
 }

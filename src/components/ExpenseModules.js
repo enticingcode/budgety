@@ -62,7 +62,7 @@ function ExpenseModules(props) {
     <>
       <h2>Monthly Expenses</h2>
       {expensePrompts}
-      <button className="add-money-input" onClick={addExpense}>
+      <button className="add-money-input btn btn-success" onClick={addExpense}>
         Add Expense
       </button>
     </>

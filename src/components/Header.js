@@ -15,7 +15,7 @@ const Header = () => {
   }
 
   return (
-    <header className="d-flex container-fluid justify-content-between align-items-center p-3">
+    <header className="d-flex container-fluid justify-content-between align-items-center p-3 shadow mb-4">
       <div className="mw-25">
         <img
           alt="budgety logo"

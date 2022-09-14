@@ -52,20 +52,20 @@ const Login = () => {
   }
 
   return (
-    <div className="login-page  d-flex">
-      <section className="login-design  d-flex flex-column  container">
+    <div className="login-page h-100  d-flex">
+      <section className="login-design d-flex justify-content-center align-items-center flex-column container bg-greenery">
         <div>
           <h2>Welcome to Budgety</h2>
           <p>Your personal budgeting resource</p>
         </div>
       </section>
 
-      <section className="credentials-wrapper d-flex flex-column container">
+      <section className="credentials-wrapper d-flex flex-column justify-content-center align-items-center container">
         <h3>Login to Budgety</h3>
-        <form className="form-container">
+        <form className="form-container d-flex flex-column m-1">
           <label htmlFor="email"></label>
           <input
-            className="credentials"
+            className="my-2"
             placeholder="Email"
             onChange={handleChange}
             id="email"
@@ -75,14 +75,14 @@ const Login = () => {
 
           <label htmlFor="password"></label>
           <input
-            className="credentials"
+            className="my-2"
             placeholder="Password"
             onChange={handleChange}
             id="password"
             name="password"
             type="password"
           ></input>
-          <button className="loginbtn btn" onClick={handleLogin}>
+          <button className="btn btn-success" onClick={handleLogin}>
             Login
           </button>
         </form>
