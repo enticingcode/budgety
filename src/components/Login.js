@@ -53,7 +53,7 @@ const Login = () => {
 
   return (
     <div className="login-page  d-flex">
-      <section className="login-design bg-primary d-flex flex-column  container">
+      <section className="login-design  d-flex flex-column  container">
         <div>
           <h2>Welcome to Budgety</h2>
           <p>Your personal budgeting resource</p>
