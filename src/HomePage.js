@@ -5,7 +5,7 @@ import budge1 from "./assets/images/budge1.png";
 
 function HomePage() {
   return (
-    <div className="container bg-primary: gray-300 text-white">
+    <div className="container bg-tan text-white">
       <div className="container d-flex align-items-center">
         <img alt="budgeting clipart" src={budge1}></img>
         <span className="ms-5">
