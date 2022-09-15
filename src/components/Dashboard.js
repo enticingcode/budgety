@@ -158,7 +158,7 @@ const Dashboard = () => {
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="module d-flex   m-3 rounded">
+      <section className="module d-flex m-3 rounded">
         <div className="w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
@@ -178,15 +178,13 @@ const Dashboard = () => {
       </section>
 
       {/* FUN MONEY MODULE */}
-      <section className="module d-flex flex-column align-items-center m-3 rounded">
-        <div className="free-funds">
-          <h2>Financial Forecast</h2>
-          <h3>Free funds:</h3>
-          <h3> ${remainingAfterSavings}</h3>
-        </div>
+      <section className="module d-flex flex-column m-3 rounded">
+        <h2>Financial Forecast</h2>
 
-        <BuyingPowerAPI />
-        <CPIData />
+        <div className="d-flex">
+          <BuyingPowerAPI />
+          <CPIData />
+        </div>
       </section>
     </div>
   );

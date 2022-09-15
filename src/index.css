@@ -97,12 +97,10 @@ hr {
   border-radius: 5px;
   background-color: rgb(241, 241, 241);
 }
-/* @media (min-width: 768px) {
-  .rename-option {
-    padding: 10px 30px;
-  }
-} */
 
+.nav-item {
+  margin: 1rem 0;
+}
 @media only screen and (max-width: 400px) {
   .w-25 {
     width: 100% !important;
