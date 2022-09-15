@@ -43,7 +43,7 @@ const TestSession = () => {
 
   function handleChange(e) {
     const name = e.target.name;
-    const className = e.target.className;
+    const id = e.target.id;
     let value = e.target.value;
 
     // Check that value is Number only.
@@ -59,7 +59,7 @@ const TestSession = () => {
           [name]: value,
         };
       });
-    } else if (className.includes("expense")) {
+    } else if (id.includes("expense")) {
       setExpenses((prev) => {
         return {
           ...prev,
@@ -110,30 +110,29 @@ const TestSession = () => {
   return (
     // PREVIEW OF APPLICATION //
     <>
-      <div className="test-container">
-        <section className="main-display">
-          <div className="stats">
+      <div className="test-container d-flex align-items-center justify-content-around mt-5">
+        <section className="main-display ">
+          <div className="">
+            <Pie data={data} />
+          </div>
+          <div className="stats text-center">
             <h1>Overview:</h1>
             <h3>Income: {addValues(totalIncome)}</h3>
-            <h3>Allocated: {addValues(totalExpenses)}</h3>
+            <h3>Expenses: {addValues(totalExpenses)}</h3>
             <h3>
               Remaining:{" "}
               {addValues(totalIncome) - addValues(totalExpenses) || ""}
             </h3>
           </div>
-          <div className="chart">
-            <Pie data={data} />
-          </div>
         </section>
 
-        <section className="userInputs">
+        <section className="userInputs d-flex align-items-start">
           {/* Incomes */}
-          <div className="input-sections income-inputs">
+          <div className="input-sections d-flex flex-column mx-5">
             <h2>Income:</h2>
             <label htmlFor="income1">Income 1:</label>
             <input
               id="income1"
-              className="input-item"
               name="income1"
               onChange={handleChange}
               value={income.income1}
@@ -142,7 +141,6 @@ const TestSession = () => {
             <label htmlFor="income2">Income 2:</label>
             <input
               id="income2"
-              className="input-item"
               name="income2"
               onChange={handleChange}
               value={income.income2}
@@ -150,12 +148,11 @@ const TestSession = () => {
           </div>
 
           {/* Expenses */}
-          <div className="input-sections expense-inputs">
+          <div className="input-sections d-flex flex-column">
             <h2>Expenses:</h2>
             <label htmlFor="rent-expense">Rent:</label>
             <input
               id="rent-expense"
-              className="expense input-item"
               name="rent"
               onChange={handleChange}
               value={expenses.rent}
@@ -164,7 +161,6 @@ const TestSession = () => {
             <label htmlFor="phone-expense">Phone:</label>
             <input
               id="phone-expense"
-              className="expense input-item"
               name="phone"
               onChange={handleChange}
               value={expenses.phone}
@@ -173,7 +169,6 @@ const TestSession = () => {
             <label htmlFor="utilities-expense">Utilities:</label>
             <input
               id="utilities-expense"
-              className="expense input-item"
               name="utilities"
               onChange={handleChange}
               value={expenses.utilities}
@@ -182,12 +177,16 @@ const TestSession = () => {
         </section>
       </div>
 
-      <div className="full-app-preview">
-        <h2>Register for full featured application</h2>
+      <div className="full-app-link text-center mt-5 position-absolute translate-middle start-50 top-100">
+        <a href="/signup">
+          <h2 className="text-success text-decoration-none">
+            Register for full featured application
+          </h2>
+        </a>
 
         <section>
           {/* preview video of application functionality? */}
-          <p>preview of full app here</p>
+          <p></p>
         </section>
       </div>
     </>

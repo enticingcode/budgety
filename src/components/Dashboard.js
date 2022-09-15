@@ -90,7 +90,7 @@ const Dashboard = () => {
     <div className="d-flex flex-column ">
       {/* should be state considering its an api call  upon login*/}
 
-      <h1>Welcome {refAuth.personName} </h1>
+      <h1 className="ms-3 mt-5">Welcome {refAuth.personName} </h1>
 
       {/* INCOME-EXPENSE MODULE */}
       <section className="module d-flex justify-content-around m-3 rounded">
@@ -114,8 +114,8 @@ const Dashboard = () => {
         </div>
       </section>
 
-      <section className="module d-flex justify-content-center m-3 rounded">
-        <div className="w-50 text-center">
+      <section className="module d-flex justify-content-start m-3 rounded">
+        <div className="w-25 text-center">
           <h2>Expense Tracker</h2>
           <ChartModule
             type={"Pie"}
@@ -137,8 +137,8 @@ const Dashboard = () => {
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="module d-flex justify-content-center m-3 rounded">
-        <div className="w-50">
+      <section className="module d-flex justify-content-start  m-3 rounded">
+        <div className="w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
             stateNames={savingsAllocation}

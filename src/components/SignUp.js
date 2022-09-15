@@ -47,21 +47,21 @@ const SignUp = () => {
   }
 
   return (
-    <div className="login-page">
-      <section className="login-design">
+    <div className="login-page h-100 d-flex">
+      <section className="login-design d-flex justify-content-center align-items-center flex-column container bg-greenery">
         <div>
           <h2>Welcome to Budgety</h2>
           <p>Your personal budgeting resource</p>
         </div>
       </section>
 
-      <section className="credentials-wrapper">
+      <section className="credentials-wrapper d-flex flex-column justify-content-center align-items-center container">
         <h3>Sign up for Budgety</h3>
 
-        <form className="form-container">
+        <form className="form-container d-flex flex-column m-1">
           <label htmlFor="name"></label>
           <input
-            className="credentials"
+            className="my-2"
             placeholder="Name"
             onChange={handleChange}
             id="name"
@@ -71,7 +71,7 @@ const SignUp = () => {
 
           <label htmlFor="email"></label>
           <input
-            className="credentials"
+            className="my-2"
             placeholder="Email"
             onChange={handleChange}
             id="email"
@@ -81,7 +81,7 @@ const SignUp = () => {
 
           <label htmlFor="password"></label>
           <input
-            className="credentials"
+            className="my-2"
             placeholder="Password"
             onChange={handleChange}
             id="password"
@@ -90,14 +90,14 @@ const SignUp = () => {
           ></input>
           <label htmlFor="confirmPassword"></label>
           <input
-            className="credentials"
+            className="my-2"
             placeholder="Confirm Password"
             onChange={handleChange}
             id="confirmPassword"
             name="confirmPassword"
             type="password"
           ></input>
-          <button className="loginbtn btn" onClick={submitSignup}>
+          <button className="btn btn-success" onClick={submitSignup}>
             Sign Up
           </button>
         </form>

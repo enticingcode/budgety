@@ -77,10 +77,13 @@ const BuyingPowerAPI = () => {
   }
 
   return (
-    <div className="inflation-container">
-      <div className="inflation-inputs">
-        <p>Inflation Calculator</p>
-        (Note: Latest date must be at least two months prior to today)
+    <div className="d-flex">
+      <div className="d-flex flex-column mx-5 align-items-start ">
+        <h5>
+          Inflation Calculator <br />
+          (Note: Latest date must be at least two months prior to today)
+        </h5>
+
         <label htmlFor="from-date">From:</label>
         <input
           className="money-input"
@@ -98,7 +101,7 @@ const BuyingPowerAPI = () => {
           type="date"
         ></input>
         <label htmlFor="dollar-amount"></label>
-        <div>
+        <div className="mt-4">
           <input
             className="money-input"
             onChange={handleChange}
@@ -107,20 +110,22 @@ const BuyingPowerAPI = () => {
             id="dollar-amount"
           ></input>
         </div>
-        <button onClick={fetchInflationData}>Get Data</button>
+        <button className="btn btn-success w-25" onClick={fetchInflationData}>
+          Get Data
+        </button>
       </div>
 
-      <div className="inflation-results">
-        <h3>
+      <div className="mx-5">
+        <h5>
           Something that would have cost:
           {(userInput.totalDollars && " $" + userInput.totalDollars) || " $0"}
-        </h3>
+        </h5>
 
-        <h3>Now costs:$ {apiData.dollarsAfterInflation} after inflation. </h3>
+        <h5>Now costs:$ {apiData.dollarsAfterInflation} after inflation. </h5>
 
-        <h3>Cumulative Rate Percentage:</h3>
+        <h5>Cumulative Rate Percentage:</h5>
 
-        <h3>$ {apiData.cumulativeRatePercentage}</h3>
+        <h5>$ {apiData.cumulativeRatePercentage}</h5>
       </div>
     </div>
   );

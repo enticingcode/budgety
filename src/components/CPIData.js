@@ -27,7 +27,7 @@ const CPIData = () => {
   }, []);
 
   return (
-    <div className="inflation-info">
+    <div className="m-5">
       <h2>Yearly Inflation Percentage:</h2>
       {cpiData ? <p>{cpiData}%</p> : <p>Fetching Data...</p>}
     </div>

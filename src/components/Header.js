@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import BudgetLogo from "../assets/images/budgety.png";
 import { useAuth } from "./auth";
 import signoutSVG from "../assets/images/logout.svg";
-import Button from "react-bootstrap/Button";
 
 const Header = () => {
   const localAuth = useAuth();
@@ -15,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <header className="d-flex container-fluid justify-content-between align-items-center p-3 shadow mb-4">
+    <header className="d-flex container-fluid justify-content-between align-items-center p-3 shadow">
       <div className="mw-25">
         <img
           alt="budgety logo"
@@ -30,6 +29,11 @@ const Header = () => {
           <li className="nav-item">
             <NavLink className="nav-link fs-4" to="/">
               Home
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link fs-4" to="/">
+              Tracker
             </NavLink>
           </li>
           {!localAuth.user && (

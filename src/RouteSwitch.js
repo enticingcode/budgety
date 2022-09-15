@@ -17,29 +17,31 @@ const RouteSwitch = () => {
     <>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={localAuth.user ? <Dashboard /> : <HomePage />}
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/testSession" element={<TestSession />} />
+        <div className="app">
+          <Routes>
+            <Route
+              path="/"
+              element={localAuth.user ? <Dashboard /> : <HomePage />}
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/testSession" element={<TestSession />} />
 
-          {/* Auth required paths */}
-          <Route
-            path="/dashboard"
-            element={
-              <ReqAuth>
-                <Dashboard />
-              </ReqAuth>
-            }
-          />
+            {/* Auth required paths */}
+            <Route
+              path="/dashboard"
+              element={
+                <ReqAuth>
+                  <Dashboard />
+                </ReqAuth>
+              }
+            />
 
-          {/* 404 PATH */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* 404 PATH */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </>
   );
