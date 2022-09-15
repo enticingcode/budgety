@@ -77,7 +77,7 @@ const BuyingPowerAPI = () => {
   }
 
   return (
-    <div className="d-flex">
+    <>
       <div className="d-flex flex-column mx-5 align-items-start ">
         <h5>
           Inflation Calculator <br />
@@ -125,9 +125,9 @@ const BuyingPowerAPI = () => {
 
         <h5>Cumulative Rate Percentage:</h5>
 
-        <h5>$ {apiData.cumulativeRatePercentage}</h5>
+        <h5>{apiData.cumulativeRatePercentage} %</h5>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -37,12 +37,7 @@ function IncomeModules(props) {
     );
   });
 
-  return (
-    <>
-      <h2>Monthly Incomes</h2>
-      {incomePrompts}
-    </>
-  );
+  return <>{incomePrompts}</>;
 }
 
 export default IncomeModules;

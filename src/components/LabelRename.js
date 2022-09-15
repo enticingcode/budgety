@@ -43,6 +43,7 @@ const LabelRename = (props) => {
             &#10003;
           </button>
           <input
+            autoFocus
             className="rename-input"
             value={props.name}
             onChange={handleChange}

@@ -12,7 +12,7 @@ function ExpenseModules(props) {
 
     setExpenses((prev) => {
       console.log(prev);
-      return [...prev, { name: "New Expense", expense: "", id: uniqid() }];
+      return [...prev, { name: "Expense", expense: "", id: uniqid() }];
     });
   }
 
@@ -60,9 +60,8 @@ function ExpenseModules(props) {
 
   return (
     <>
-      <h2>Monthly Expenses</h2>
       {expensePrompts}
-      <button className="add-money-input btn btn-success" onClick={addExpense}>
+      <button className="btn btn-success" onClick={addExpense}>
         Add Expense
       </button>
     </>

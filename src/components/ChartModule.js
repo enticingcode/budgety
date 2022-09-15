@@ -44,7 +44,7 @@ const ChartModule = (props) => {
     plugins: {
       legend: {
         display: true,
-        position: "right",
+        position: "bottom",
       },
     },
   };

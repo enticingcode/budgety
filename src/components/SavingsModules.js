@@ -59,7 +59,6 @@ const SavingsModules = (props) => {
 
   return (
     <>
-      <h2>Allocations</h2>
       {allocationPrompts}
       <button
         className="add-money-input btn btn-success"

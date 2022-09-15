@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
 import ReqAuth from "./components/ReqAuth";
 import { useAuth } from "./components/auth";
+import MonthlyTracker from "./components/MonthlyTracker";
 
 const RouteSwitch = () => {
   const localAuth = useAuth();
@@ -37,6 +38,7 @@ const RouteSwitch = () => {
                 </ReqAuth>
               }
             />
+            <Route path="/monthly-tracker" element={<MonthlyTracker />} />
 
             {/* 404 PATH */}
             <Route path="*" element={<NotFound />} />

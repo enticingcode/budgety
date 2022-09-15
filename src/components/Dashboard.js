@@ -92,29 +92,40 @@ const Dashboard = () => {
 
       <h1 className="ms-3 mt-5">Welcome {refAuth.personName} </h1>
 
+      {/* informational modules */}
+      <div className="d-md-flex">
+        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded">
+          <div className="">
+            <h2 className="">Track your Income and Expenses Easily!</h2>
+            <ul className="">
+              <li>Add custom named expenses & allocations</li>
+              <li>Experience infographic chart provided by ChartJS</li>
+              <li>Get inflation information from sourced API</li>
+            </ul>
+          </div>
+        </section>
+        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded">
+          <div className="ext-info">
+            <h2 className="text-blue-500 text-2xl">Features coming soon:</h2>
+            <ul className="functionality-list">
+              <li>Financial goal planning</li>
+              <li>Monthly Budget Tracking</li>
+              <li>Transactions Tracking</li>
+              <li>iOS application</li>
+            </ul>
+          </div>
+        </section>
+        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded">
+          <div className="ext-info">
+            <h2 className="text-blue-500 text-2xl">Have any suggestions? </h2>
+            <p>Please feel free to reach out to us</p>
+            <a href="mialto:trujillomarvin@hotmail.com">Email</a>
+          </div>
+        </section>
+      </div>
+
       {/* INCOME-EXPENSE MODULE */}
-      <section className="module d-flex justify-content-around m-3 rounded">
-        <div className="">
-          <h2 className="">Track your Income and Expenses Easily!</h2>
-          <ul className="">
-            <li>Add custom named expenses & allocations</li>
-            <li>Experience infographic chart provided by ChartJS</li>
-            <li>Get inflation information from sourced API</li>
-          </ul>
-        </div>
-
-        <div className="ext-info">
-          <h2 className="text-blue-500 text-2xl">Features coming soon:</h2>
-          <ul className="functionality-list">
-            <li>Financial goal planning</li>
-            <li>Monthly Budget Tracking</li>
-            <li>Transactional tracking</li>
-            <li>iOS application</li>
-          </ul>
-        </div>
-      </section>
-
-      <section className="module d-flex justify-content-start m-3 rounded">
+      <section className="module d-md-flex justify-content-start m-3 rounded ">
         <div className="w-25 text-center">
           <h2>Expense Tracker</h2>
           <ChartModule
@@ -127,17 +138,27 @@ const Dashboard = () => {
           <h2>Remaining: ${remainingAfterSavings || remaining || ""}</h2>
         </div>
 
-        <div className="d-flex flex-column align-items-end">
-          <IncomeModules
-            incomeSources={incomeSources}
-            setIncomeSources={setIncomeSources}
-          />
-          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
+        <div className="d-flex w-50 flex-column  ms-5">
+          <div className="my-3">
+            <h2>Monthly Incomes</h2>
+            <div className="d-flex flex-wrap">
+              <IncomeModules
+                incomeSources={incomeSources}
+                setIncomeSources={setIncomeSources}
+              />
+            </div>
+          </div>
+          <div className="my-3">
+            <h2>Monthly Expenses</h2>
+            <div className="d-flex flex-wrap align-items-end">
+              <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="module d-flex justify-content-start  m-3 rounded">
+      <section className="module d-flex   m-3 rounded">
         <div className="w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
@@ -145,11 +166,14 @@ const Dashboard = () => {
             chartData={totalSavings}
           />
         </div>
-        <div className="d-flex flex-column align-items-end">
-          <SavingsModules
-            savingsAllocation={savingsAllocation}
-            setSavingsAllocation={setSavingsAllocation}
-          />
+        <div className="my-3">
+          <h2>Allocations</h2>
+          <div className="d-flex flex-wrap align-items-end">
+            <SavingsModules
+              savingsAllocation={savingsAllocation}
+              setSavingsAllocation={setSavingsAllocation}
+            />
+          </div>
         </div>
       </section>
 

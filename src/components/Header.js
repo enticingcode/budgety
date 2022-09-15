@@ -27,7 +27,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg">
         <div class="container-fluid">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarToggler"
@@ -45,11 +45,7 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link fs-4" to="/tracker">
-                  Tracker
-                </NavLink>
-              </li>
+
               {!localAuth.user && (
                 <>
                   <li className="nav-item">
@@ -66,11 +62,21 @@ const Header = () => {
               )}
 
               {localAuth.user && (
-                <li className="">
-                  <button className="bg-transparent border-0" onClick={logout}>
-                    <img width="40px" alt="logout button" src={signoutSVG} />
-                  </button>
-                </li>
+                <>
+                  <li className="nav-item">
+                    <NavLink className="nav-link fs-4" to="/monthly-tracker">
+                      Tracker
+                    </NavLink>
+                  </li>
+                  <li className="">
+                    <button
+                      className="bg-transparent border-0"
+                      onClick={logout}
+                    >
+                      <img width="40px" alt="logout button" src={signoutSVG} />
+                    </button>
+                  </li>
+                </>
               )}
             </ul>
           </div>
