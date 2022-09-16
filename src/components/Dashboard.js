@@ -166,7 +166,7 @@ const Dashboard = () => {
             chartData={totalSavings}
           />
         </div>
-        <div className="my-3">
+        <div className="my-3 ms-5">
           <h2>Allocations</h2>
           <div className="d-flex flex-wrap align-items-end">
             <SavingsModules

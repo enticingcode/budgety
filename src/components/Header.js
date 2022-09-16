@@ -14,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-md">
+    <nav className="navbar navbar-expand-md shadow">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
           <img
@@ -73,7 +73,7 @@ const Header = () => {
 
             {localAuth.user && (
               <>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <NavLink className="nav-link fs-4" to="/monthly-tracker">
                     <span
                       data-bs-toggle="collapse"
@@ -82,7 +82,7 @@ const Header = () => {
                       Tracker
                     </span>
                   </NavLink>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <button
                     className="bg-transparent border-0  fs-4"

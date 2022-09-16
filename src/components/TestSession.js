@@ -8,12 +8,12 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 const TestSession = () => {
   const [income, setIncome] = React.useState({
-    income1: "",
+    income1: "1000",
     income2: "",
   });
 
   const [expenses, setExpenses] = React.useState({
-    rent: "",
+    rent: "1000",
     phone: "",
     utilities: "",
   });
@@ -110,7 +110,7 @@ const TestSession = () => {
   return (
     // PREVIEW OF APPLICATION //
     <>
-      <div className="test-container d-flex align-items-center justify-content-around mt-5">
+      <div className="test-container d-flex  align-items-center justify-content-around mt-5">
         <section className="main-display ">
           <div className="">
             <Pie data={data} />

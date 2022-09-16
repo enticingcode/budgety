@@ -39,15 +39,17 @@ const LabelRename = (props) => {
     <>
       {editLabel ? (
         <>
-          <button className="rename-option" id="save" onClick={handleLabel}>
-            &#10003;
-          </button>
-          <input
-            autoFocus
-            className="rename-input"
-            value={props.name}
-            onChange={handleChange}
-          ></input>
+          <div className="input-div d-flex">
+            <input
+              autoFocus
+              className="rename-input"
+              value={props.name}
+              onChange={handleChange}
+            ></input>
+            <button className="rename-option" id="save" onClick={handleLabel}>
+              &#10003;
+            </button>
+          </div>
         </>
       ) : (
         <label className="user-labels" htmlFor={props.id} onClick={changeLabel}>
