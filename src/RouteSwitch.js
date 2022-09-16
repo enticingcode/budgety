@@ -38,7 +38,14 @@ const RouteSwitch = () => {
                 </ReqAuth>
               }
             />
-            <Route path="/monthly-tracker" element={<MonthlyTracker />} />
+            <Route
+              path="/monthly-tracker"
+              element={
+                <ReqAuth>
+                  <MonthlyTracker />
+                </ReqAuth>
+              }
+            />
 
             {/* 404 PATH */}
             <Route path="*" element={<NotFound />} />

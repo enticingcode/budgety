@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.getItem("username") || ""
   );
 
-  console.log(personName);
   return (
     <AuthContext.Provider value={{ user, setUser, personName, setPersonName }}>
       {children}

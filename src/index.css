@@ -101,7 +101,7 @@ hr {
 .nav-item {
   margin: 1rem 0;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 700px) {
   .w-25 {
     width: 100% !important;
   }
@@ -117,4 +117,12 @@ hr {
     margin: 0 !important;
     align-items: center !important;
   }
+
+  .cpi-data {
+    flex-direction: column !important;
+  }
+}
+
+.navbar-collapse {
+  flex-grow: 0;
 }

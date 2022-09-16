@@ -94,7 +94,7 @@ const Dashboard = () => {
 
       {/* informational modules */}
       <div className="d-md-flex">
-        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded">
+        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded bg-light">
           <div className="">
             <h2 className="">Track your Income and Expenses Easily!</h2>
             <ul className="">
@@ -104,7 +104,7 @@ const Dashboard = () => {
             </ul>
           </div>
         </section>
-        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded">
+        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded bg-light">
           <div className="ext-info">
             <h2 className="text-blue-500 text-2xl">Features coming soon:</h2>
             <ul className="functionality-list">
@@ -115,7 +115,7 @@ const Dashboard = () => {
             </ul>
           </div>
         </section>
-        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded">
+        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded bg-light">
           <div className="ext-info">
             <h2 className="text-blue-500 text-2xl">Have any suggestions? </h2>
             <p>Please feel free to reach out to us</p>
@@ -125,7 +125,7 @@ const Dashboard = () => {
       </div>
 
       {/* INCOME-EXPENSE MODULE */}
-      <section className="module d-md-flex justify-content-start m-3 rounded ">
+      <section className="module d-md-flex justify-content-start m-3 rounded bg-light">
         <div className="w-25 text-center">
           <h2>Expense Tracker</h2>
           <ChartModule
@@ -133,9 +133,9 @@ const Dashboard = () => {
             stateNames={expenses}
             chartData={totalExpenses}
           />
-          <h2>Total Income: ${addValues(totalIncome)}</h2>
-          <h2>Total Expenses: ${addValues(totalExpenses)}</h2>
-          <h2>Remaining: ${remainingAfterSavings || remaining || ""}</h2>
+          <h4>Total Income: ${addValues(totalIncome)}</h4>
+          <h4>Total Expenses: ${addValues(totalExpenses)}</h4>
+          <h4>Remaining: ${remainingAfterSavings || remaining || ""}</h4>
         </div>
 
         <div className="d-flex w-50 flex-column  ms-5">
@@ -158,7 +158,7 @@ const Dashboard = () => {
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="module d-flex m-3 rounded">
+      <section className="module d-flex m-3 rounded bg-light">
         <div className="w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
@@ -178,10 +178,10 @@ const Dashboard = () => {
       </section>
 
       {/* FUN MONEY MODULE */}
-      <section className="module d-flex flex-column m-3 rounded">
+      <section className="module d-flex flex-column m-3 rounded bg-light">
         <h2>Financial Forecast</h2>
 
-        <div className="d-flex">
+        <div className="d-flex cpi-data">
           <BuyingPowerAPI />
           <CPIData />
         </div>

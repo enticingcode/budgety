@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { auth } from "./FirebaseAuth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { connectUserNameAcc } from "./FirebaseAuth";
+import { getPersonName } from "./FirebaseAuth";
+import { AuthContext } from "./auth";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const localAuth = useContext(AuthContext);
   const [credentials, setCredentials] = React.useState({
     name: "",
     email: "",
@@ -21,10 +25,20 @@ const SignUp = () => {
     )
       .then((userCredential) => {
         // Signed in
+        // get userID and also upload name to firestore
         user = userCredential.user.uid;
-        console.log(user);
         connectUserNameAcc(credentials.name, user);
-        //
+        // set active user, get name to display on dash
+
+        localAuth.setUser(user);
+        let name = getPersonName(user);
+        return name;
+      })
+      .then((name) => {
+        // then redirect to dash
+        localAuth.setPersonName(name);
+        localStorage.setItem("username", name);
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -32,7 +46,6 @@ const SignUp = () => {
         console.log(errorCode, errorMessage);
       });
   }
-  console.log(credentials);
 
   function handleChange(e) {
     let value = e.target.value;

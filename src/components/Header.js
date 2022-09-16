@@ -14,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-md">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
           <img
@@ -37,7 +37,7 @@ const Header = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarToggler">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 text-center">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 text-center align-items-center ">
             <li className="nav-item">
               <NavLink className="nav-link fs-4" to="/">
                 <span data-bs-toggle="collapse" data-bs-target="#navbarToggler">
