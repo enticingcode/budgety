@@ -59,13 +59,15 @@ const SavingsModules = (props) => {
 
   return (
     <>
-      {allocationPrompts}
       <button
         className="add-money-input btn btn-success"
         onClick={addSavingsInput}
       >
         Add Allocation
       </button>
+      <div className="d-flex flex-wrap justify-content-center align-items-end">
+        {allocationPrompts}
+      </div>
     </>
   );
 };

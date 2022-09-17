@@ -85,7 +85,7 @@ const Header = () => {
                 </li> */}
                 <li className="nav-item">
                   <button
-                    className="bg-transparent border-0  fs-4"
+                    className="nav-link bg-transparent border-0  fs-4"
                     onClick={logout}
                   >
                     <span

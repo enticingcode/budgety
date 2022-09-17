@@ -120,27 +120,25 @@ const Dashboard = () => {
           <h4>Remaining: ${remainingAfterSavings || remaining || ""}</h4>
         </div>
 
-        <div className="d-flex w-50 flex-column  ms-5">
-          <div className="my-3">
+        <div className="d-flex flex-column w-100 ms-5">
+          <div className="in-headers my-3">
             <h2>Monthly Incomes</h2>
-            <div className="d-flex flex-wrap">
+            <div className="d-flex justify-content-center flex-wrap">
               <IncomeModules
                 incomeSources={incomeSources}
                 setIncomeSources={setIncomeSources}
               />
             </div>
           </div>
-          <div className="my-3">
+          <div className="in-headers my-3">
             <h2>Monthly Expenses</h2>
-            <div className="d-flex flex-wrap align-items-end">
-              <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
-            </div>
+            <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
           </div>
         </div>
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="module d-flex m-3 rounded bg-light">
+      <section className="module d-flex m-3 text-center rounded bg-light">
         <div className="w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
@@ -148,9 +146,9 @@ const Dashboard = () => {
             chartData={totalSavings}
           />
         </div>
-        <div className="my-3 ms-5">
-          <h2>Allocations</h2>
-          <div className="d-flex flex-wrap align-items-end">
+        <div className=" w-100 ms-5">
+          <div className="in-headers">
+            <h2>Allocations</h2>
             <SavingsModules
               savingsAllocation={savingsAllocation}
               setSavingsAllocation={setSavingsAllocation}

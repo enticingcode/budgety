@@ -60,10 +60,12 @@ function ExpenseModules(props) {
 
   return (
     <>
-      {expensePrompts}
       <button className="btn btn-success" onClick={addExpense}>
         Add Expense
       </button>
+      <div className="d-flex flex-wrap scroll justify-content-center">
+        {expensePrompts}
+      </div>
     </>
   );
 }
