@@ -13,13 +13,15 @@ const LabelRename = (props) => {
   // need to change state name of expense below;
   function handleChange(e) {
     let currentLabelVal = e.target.value;
-    let nextSibling = e.target.nextSibling;
+    let targetInput = e.target.parentElement.nextSibling.id;
+
+    console.log(e.target.parentElement.nextSibling);
     // PARAMETER BASED HERE
     stateSetter((prevArray) => {
       return prevArray.map((obj) => {
         //this comparison needs a creative method of implementation.
         //using sibling element which is the input of expense number
-        if (obj.id === nextSibling.id) {
+        if (obj.id === targetInput) {
           return { ...obj, name: currentLabelVal };
         }
         return obj;
@@ -53,7 +55,7 @@ const LabelRename = (props) => {
         </>
       ) : (
         <label className="user-labels" htmlFor={props.id} onClick={changeLabel}>
-          {props.name}
+          {props.name || "Label"}
         </label>
       )}
     </>

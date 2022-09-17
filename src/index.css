@@ -90,6 +90,15 @@ hr {
 .nav-item {
   margin: 1rem 0;
 }
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
 @media only screen and (max-width: 700px) {
   .login-page {
     flex-direction: column;
