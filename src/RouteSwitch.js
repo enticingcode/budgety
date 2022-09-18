@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Header from "./components/Header";
 import About from "./components/About";
@@ -16,42 +16,40 @@ const RouteSwitch = () => {
   const localAuth = useAuth();
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <div className="app">
-          <Routes>
-            <Route
-              path="/"
-              element={localAuth.user ? <Dashboard /> : <HomePage />}
-            />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/testSession" element={<TestSession />} />
+      <Header />
+      <div className="app">
+        <Routes>
+          <Route
+            path="/"
+            element={localAuth.user ? <Dashboard /> : <HomePage />}
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/testSession" element={<TestSession />} />
 
-            {/* Auth required paths */}
-            <Route
-              path="/dashboard"
-              element={
-                <ReqAuth>
-                  <Dashboard />
-                </ReqAuth>
-              }
-            />
-            <Route
-              path="/monthly-tracker"
-              element={
-                <ReqAuth>
-                  <MonthlyTracker />
-                </ReqAuth>
-              }
-            />
+          {/* Auth required paths */}
+          <Route
+            path="/dashboard"
+            element={
+              <ReqAuth>
+                <Dashboard />
+              </ReqAuth>
+            }
+          />
+          <Route
+            path="/monthly-tracker"
+            element={
+              <ReqAuth>
+                <MonthlyTracker />
+              </ReqAuth>
+            }
+          />
 
-            {/* 404 PATH */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
+          {/* 404 PATH */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </>
   );
 };

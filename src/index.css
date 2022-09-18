@@ -4,6 +4,10 @@ body,
 .app {
   height: 100%;
 }
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 .bg-tan {
   background-color: #f1e4d1;
 }
@@ -101,6 +105,16 @@ hr {
 
 .in-headers {
   text-align: center;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
 }
 
 @media only screen and (max-width: 700px) {
