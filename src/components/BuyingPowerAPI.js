@@ -114,7 +114,7 @@ const BuyingPowerAPI = () => {
         </button>
       </div>
 
-      <div className="mx-5 text-center">
+      <div className="inflation mx-5 text-center">
         <p>Something that would have cost:</p>
         <p>
           <strong>

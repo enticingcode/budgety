@@ -24,8 +24,6 @@ const Dashboard = () => {
     { name: "Food", expense: "", id: uniqid() },
   ]);
 
-  // console.table(expenses);
-
   const [savingsAllocation, setSavingsAllocation] = React.useState([
     { name: "401k", allocation: "200", id: uniqid() },
     { name: "Roth", allocation: "", id: uniqid() },
@@ -161,7 +159,7 @@ const Dashboard = () => {
       <section className="module d-flex flex-column m-3 rounded bg-light">
         <h2>Financial Forecast</h2>
 
-        <div className="d-flex cpi-data">
+        <div className="d-flex align-items-start cpi-data">
           <BuyingPowerAPI />
           <CPIData />
         </div>

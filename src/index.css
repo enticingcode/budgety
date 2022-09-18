@@ -117,6 +117,10 @@ hr {
   transition: opacity 250ms ease-in;
 }
 
+.inflation > p {
+  font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 700px) {
   .login-page {
     flex-direction: column;
