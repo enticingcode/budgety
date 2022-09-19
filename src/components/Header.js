@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import BudgetLogo from "../assets/images/budgety.png";
 import { useAuth } from "./auth";
-import signoutSVG from "../assets/images/logout.svg";
 
 const Header = () => {
   const localAuth = useAuth();

@@ -148,7 +148,7 @@ const TestSession = () => {
           </div>
 
           {/* Expenses */}
-          <div className="input-sections d-flex flex-column">
+          <div className="input-sections d-flex flex-column mx-5">
             <h2>Expenses:</h2>
             <label htmlFor="rent-expense">Rent:</label>
             <input
@@ -177,17 +177,12 @@ const TestSession = () => {
         </section>
       </div>
 
-      <div className="full-app-link text-center mt-5 position-absolute translate-middle start-50 top-100">
+      <div className="full-app-link text-center mt-5">
         <a href="/signup">
           <h2 className="text-success text-decoration-none">
             Register for full featured application
           </h2>
         </a>
-
-        <section>
-          {/* preview video of application functionality? */}
-          <p></p>
-        </section>
       </div>
     </>
   );

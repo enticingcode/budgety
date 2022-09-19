@@ -8,12 +8,17 @@ import ChartModule from "./ChartModule";
 import CPIData from "./CPIData";
 import BuyingPowerAPI from "./BuyingPowerAPI";
 
+// saved data to localStorage for now, need implementation which isn't so taxing on re-rendering,
+// just got lazy right now
+// more worried UI/UX wise right now.
+// (which i know data being consistent accross devices is a huge UX thing but i mean presentation wise)
+
 const Dashboard = () => {
   const refAuth = useAuth();
 
   const [incomeSources, setIncomeSources] = React.useState([
     { income: "1000", id: uniqid() },
-    { income: "", id: uniqid() },
+    { income: "333", id: uniqid() },
   ]);
 
   const [expenses, setExpenses] = React.useState([
@@ -25,7 +30,7 @@ const Dashboard = () => {
   ]);
 
   const [savingsAllocation, setSavingsAllocation] = React.useState([
-    { name: "401k", allocation: "200", id: uniqid() },
+    { name: "401k", allocation: "", id: uniqid() },
     { name: "Roth", allocation: "", id: uniqid() },
     { name: "Rainy Day Fund", allocation: "", id: uniqid() },
     { name: "Future Car", allocation: "", id: uniqid() },
@@ -65,6 +70,8 @@ const Dashboard = () => {
 
   let remainingAfterSavings =
     addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
+
+  React.useEffect(() => {}, []);
 
   return (
     <div className="d-flex flex-column ">
@@ -106,16 +113,20 @@ const Dashboard = () => {
 
       {/* INCOME-EXPENSE MODULE */}
       <section className="module d-md-flex justify-content-start m-3 rounded bg-light">
-        <div className="w-25 text-center">
+        <div className="chart-box w-25 text-center">
           <h2>Expense Tracker</h2>
           <ChartModule
             type={"Pie"}
             stateNames={expenses}
             chartData={totalExpenses}
           />
-          <h4>Total Income: ${addValues(totalIncome)}</h4>
-          <h4>Total Expenses: ${addValues(totalExpenses)}</h4>
-          <h4>Remaining: ${remainingAfterSavings || remaining || ""}</h4>
+          <h4 className="">Total Income: ${addValues(totalIncome)}</h4>
+          <h4 className="text-danger">
+            Total Expenses: ${addValues(totalExpenses)}
+          </h4>
+          <h4 className="text-success">
+            Remaining: ${remainingAfterSavings || remaining || ""}
+          </h4>
         </div>
 
         <div className="d-flex flex-column w-100 ms-5">
@@ -137,7 +148,7 @@ const Dashboard = () => {
 
       {/* SAVINGS MODULE */}
       <section className="module d-flex m-3 text-center rounded bg-light">
-        <div className="w-25 text-center">
+        <div className="chart-box w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
             stateNames={savingsAllocation}

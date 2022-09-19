@@ -7,17 +7,13 @@ function ExpenseModules(props) {
 
   function addExpense(e) {
     e.preventDefault();
-
-    if (expenses.length > 30) return alert("Maximum limit reached");
-
+    if (expenses.length > 31) return alert("Maximum limit reached");
     setExpenses((prev) => {
       console.log(prev);
       return [...prev, { name: "Expense", expense: "", id: uniqid() }];
     });
   }
 
-  // this is where i have to decide if I want to label expenses by numbers or keep them empty, mabe inplement naming of input labels instead,
-  // save trouble on numbering cluster logic?
   function handleChange(e) {
     let value = e.target.value;
     let nodeTarget = e.target.id;

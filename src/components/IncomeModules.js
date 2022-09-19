@@ -1,4 +1,5 @@
 import React from "react";
+import editImg from "../assets/images/edit.svg";
 
 function IncomeModules(props) {
   const { incomeSources, setIncomeSources } = props;
@@ -23,16 +24,17 @@ function IncomeModules(props) {
 
   let incomePrompts = incomeSources.map((item) => {
     return (
-      <div className="input-item" key={item.id}>
-        {/* <LabelRename /> */}
-        <label htmlFor={item.id}>Income </label>
-        <input
-          onChange={handleChange}
-          id={item.id}
-          value={item.income}
-          name=""
-          className="money-input"
-        ></input>
+      <div
+        className="saved-input d-flex flex-column align-items-center mx-2 w-25 py-2 px-2 position-relative"
+        key={item.id}
+        id={item.id}
+      >
+        <h5 className="text-decoration-underline">Income</h5>
+
+        <span>{item.income}</span>
+        <div className="edit-png position-absolute top-0 end-0 p-1">
+          <img width="30px" alt="edit icon" src={editImg}></img>
+        </div>
       </div>
     );
   });
