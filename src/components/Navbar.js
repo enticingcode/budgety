@@ -72,16 +72,16 @@ const Header = () => {
 
             {localAuth.user && (
               <>
-                {/* <li className="nav-item">
-                  <NavLink className="nav-link fs-4" to="/monthly-tracker">
+                <li className="nav-item">
+                  <NavLink className="nav-link fs-4" to="/weekly-forecasts">
                     <span
                       data-bs-toggle="collapse"
                       data-bs-target="#navbarToggler"
                     >
-                      Tracker
+                      News
                     </span>
                   </NavLink>
-                </li> */}
+                </li>
                 <li className="nav-item">
                   <button
                     className="nav-link bg-transparent border-0  fs-4"

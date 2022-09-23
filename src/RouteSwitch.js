@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import TestSession from "./components/TestSession";
 import SignUp from "./components/SignUp";
@@ -11,12 +11,13 @@ import ReqAuth from "./components/ReqAuth";
 import { useAuth } from "./components/auth";
 import MonthlyTracker from "./components/MonthlyTracker";
 import ForgotPassword from "./components/ForgotPassword";
+import WeeklyForecasts from "./components/WeeklyForecasts";
 
 const RouteSwitch = () => {
   const localAuth = useAuth();
   return (
     <>
-      <Header />
+      <Navbar />
       <div className="app">
         <Routes>
           <Route
@@ -45,6 +46,7 @@ const RouteSwitch = () => {
               </ReqAuth>
             }
           />
+          <Route path="/weekly-forecasts" element={<WeeklyForecasts />} />
 
           {/* 404 PATH */}
           <Route path="*" element={<NotFound />} />

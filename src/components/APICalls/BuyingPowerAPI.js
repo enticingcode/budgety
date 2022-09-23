@@ -2,7 +2,6 @@ import React from "react";
 
 const BuyingPowerAPI = () => {
   //   THIS CODE GETS BUYING POWER OF USD WITH DATES
-
   const [apiData, setAPIData] = React.useState({
     cumulativeRatePercentage: "",
     dollarsAfterInflation: "",

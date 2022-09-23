@@ -11,6 +11,8 @@ const CPIData = () => {
     },
   };
 
+  console.log(options);
+
   React.useEffect(() => {
     fetch(
       "https://inflation-by-api-ninjas.p.rapidapi.com/v1/inflation",

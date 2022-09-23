@@ -5,8 +5,6 @@ import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
-import CPIData from "./CPIData";
-import BuyingPowerAPI from "./BuyingPowerAPI";
 
 // saved data to localStorage for now, need implementation which isn't so taxing on re-rendering,
 // just got lazy right now
@@ -14,7 +12,7 @@ import BuyingPowerAPI from "./BuyingPowerAPI";
 // (which i know data being consistent accross devices is a huge UX thing but i mean presentation wise)
 
 const Dashboard = () => {
-  const refAuth = useAuth();
+  const localAuth = useAuth();
 
   const [incomeSources, setIncomeSources] = React.useState([
     { income: "1000", id: uniqid() },
@@ -30,11 +28,13 @@ const Dashboard = () => {
   ]);
 
   const [savingsAllocation, setSavingsAllocation] = React.useState([
-    { name: "401k", allocation: "", id: uniqid() },
-    { name: "Roth", allocation: "", id: uniqid() },
+    { name: "401k", allocation: "100", id: uniqid() },
+    { name: "Roth", allocation: "40", id: uniqid() },
     { name: "Rainy Day Fund", allocation: "", id: uniqid() },
     { name: "Future Car", allocation: "", id: uniqid() },
   ]);
+
+  console.log(incomeSources);
 
   let totalIncome = incomeSources.map((item) => {
     return item.income;
@@ -77,7 +77,7 @@ const Dashboard = () => {
     <div className="d-flex flex-column ">
       {/* should be state considering its an api call  upon login*/}
 
-      <h1 className="ms-3 mt-5">Welcome {refAuth.personName} </h1>
+      <h1 className="ms-3 mt-5">Welcome {localAuth.personName} </h1>
 
       {/* informational modules */}
       <div className="d-md-flex">
@@ -163,16 +163,6 @@ const Dashboard = () => {
               setSavingsAllocation={setSavingsAllocation}
             />
           </div>
-        </div>
-      </section>
-
-      {/* FUN MONEY MODULE */}
-      <section className="module d-flex flex-column m-3 rounded bg-light">
-        <h2>Financial Forecast</h2>
-
-        <div className="d-flex align-items-start cpi-data">
-          <BuyingPowerAPI />
-          <CPIData />
         </div>
       </section>
     </div>

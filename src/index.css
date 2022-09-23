@@ -145,6 +145,25 @@ hr {
   transition: opacity 0.3s;
 }
 
+.news-link {
+  width: 25%;
+}
+
+.react-multiple-carousel__arrow {
+  background-color: #d4d4d4;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: 0;
+}
+.react-multiple-carousel__arrow--right {
+  right: 0;
+}
+
+.react-multi-carousel-track {
+  text-align: center;
+}
+
 @keyframes floating {
   0% {
     transform: translate(0, 0px);
@@ -158,6 +177,21 @@ hr {
 }
 
 @media only screen and (max-width: 700px) {
+  .news-Container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .news-link {
+    width: 100%;
+  }
+
+  .news-item {
+  }
+
+  .news-link img {
+    display: none;
+  }
   .chart-box {
     width: 100% !important;
   }
