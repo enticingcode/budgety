@@ -3,6 +3,8 @@ body,
 #root,
 .app {
   height: 100%;
+  background-color: #2f3d50;
+  color: white;
 }
 
 body {
@@ -51,7 +53,7 @@ hr {
 }
 
 .module {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #3b485a;
   padding: 2rem;
 }
 

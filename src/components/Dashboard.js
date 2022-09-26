@@ -83,17 +83,7 @@ const Dashboard = () => {
 
       {/* informational modules */}
       <div className="d-md-flex">
-        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded bg-light">
-          <div className="">
-            <h2 className="">Track your Income and Expenses Easily!</h2>
-            <ul className="">
-              <li>Add custom named expenses & allocations</li>
-              <li>Experience infographic chart provided by ChartJS</li>
-              <li>Get inflation information from sourced API</li>
-            </ul>
-          </div>
-        </section>
-        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded bg-light">
+        <section className="module d-flex flex-grow-1 justify-content-around m-3">
           <div className="ext-info">
             <h2 className="text-blue-500 text-2xl">Features coming soon:</h2>
             <ul className="functionality-list">
@@ -103,8 +93,7 @@ const Dashboard = () => {
               <li>iOS application</li>
             </ul>
           </div>
-        </section>
-        <section className="module d-flex flex-grow-1 justify-content-around m-3 rounded bg-light">
+
           <div className="ext-info">
             <h2 className="text-blue-500 text-2xl">Have any suggestions? </h2>
             <p>Please feel free to reach out to us</p>
@@ -114,7 +103,7 @@ const Dashboard = () => {
       </div>
 
       {/* INCOME-EXPENSE MODULE */}
-      <section className="module d-md-flex justify-content-start m-3 rounded bg-light">
+      <section className="module d-md-flex justify-content-start m-3 rounded">
         <div className="chart-box w-25 text-center">
           <h2>Expense Tracker</h2>
           <ChartModule
@@ -149,7 +138,7 @@ const Dashboard = () => {
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="module d-flex m-3 text-center rounded bg-light">
+      <section className="module d-flex m-3 text-center rounded">
         <div className="chart-box w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
