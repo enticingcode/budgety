@@ -20,6 +20,7 @@ const NewsAPI = () => {
       },
     };
 
+    console.log("render newws");
     fetch(
       "https://cnbc.p.rapidapi.com/news/v2/list-trending?tag=Articles&count=30",
       options
@@ -27,7 +28,6 @@ const NewsAPI = () => {
       .then((response) => response.json())
       .then((response) => {
         let endpoint = response.data.mostPopularEntries.assets;
-        console.log("run");
         setFinNews(
           endpoint.map((item) => {
             return (
@@ -42,7 +42,7 @@ const NewsAPI = () => {
                   className="news-item d-flex flex-column border rounded p-3"
                   id={item.id}
                 >
-                  <p className="fs-5 fst-italic fw-bold">
+                  <p className="fs-7 fst-italic fw-bold">
                     {item.shorterHeadline}
                   </p>
                   {/* <p className="fs-6">{item.relatedTagsFilteredFormatted}</p> */}

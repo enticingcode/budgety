@@ -24,6 +24,8 @@ const WeeklyForecasts = () => {
       </section>
     </div>
   );
+
+  console.log("render weekly");
 };
 
 export default WeeklyForecasts;

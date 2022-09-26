@@ -9,7 +9,6 @@ function ExpenseModules(props) {
     e.preventDefault();
     if (expenses.length > 31) return alert("Maximum limit reached");
     setExpenses((prev) => {
-      console.log(prev);
       return [...prev, { name: "Expense", expense: "", id: uniqid() }];
     });
   }

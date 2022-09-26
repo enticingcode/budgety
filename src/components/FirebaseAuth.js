@@ -29,27 +29,39 @@ export const auth = getAuth(app);
 const db = getFirestore(app);
 
 async function connectUserNameAcc(userName, userId) {
-  await setDoc(doc(db, "users", userId), {
-    name: userName,
-  }).then((err) => {
+  await setDoc(
+    doc(db, "users", userId),
+    {
+      name: userName,
+    },
+    { merge: true }
+  ).then((err) => {
     console.error("error adding document", err);
   });
 }
 
 // cannot use auth context because not inside react function.
-
 // need a way to update this somehow.
 async function getPersonName(userId) {
+  console.log("runs");
   try {
     let document = await getDoc(doc(db, "users", userId));
     let data = document.data();
-    let name = data.name;
-    return name;
+    console.log(data);
+    // return name;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function updateMoneyValues() {}
+async function updateMoneyValues(userID, state, stateName) {
+  const userRef = doc(db, "users", userID);
 
-export { connectUserNameAcc, getPersonName };
+  try {
+    await setDoc(userRef, { [stateName]: [...state] }, { merge: true });
+  } catch (err) {
+    console.error("error adding document", err);
+  }
+}
+
+export { connectUserNameAcc, getPersonName, updateMoneyValues };

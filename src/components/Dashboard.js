@@ -5,6 +5,7 @@ import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
+import { updateMoneyValues } from "./FirebaseAuth";
 
 // saved data to localStorage for now, need implementation which isn't so taxing on re-rendering,
 // just got lazy right now
@@ -33,8 +34,6 @@ const Dashboard = () => {
     { name: "Rainy Day Fund", allocation: "", id: uniqid() },
     { name: "Future Car", allocation: "", id: uniqid() },
   ]);
-
-  console.log(incomeSources);
 
   let totalIncome = incomeSources.map((item) => {
     return item.income;
@@ -71,7 +70,10 @@ const Dashboard = () => {
   let remainingAfterSavings =
     addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
 
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    updateMoneyValues(localAuth.user, incomeSources, "income");
+    // updateMoneyValues(localAuth.user, expenses, expenses)
+  }, []);
 
   return (
     <div className="d-flex flex-column ">
