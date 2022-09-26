@@ -24,17 +24,16 @@ function IncomeModules(props) {
 
   let incomePrompts = incomeSources.map((item) => {
     return (
-      <div
-        className="saved-input d-flex flex-column align-items-center mx-2 w-25 py-2 px-2 position-relative"
-        key={item.id}
-        id={item.id}
-      >
+      <div className="input-item" key={item.id} id={item.id}>
         <h5 className="text-decoration-underline">Income</h5>
 
-        <span>{item.income}</span>
-        <div className="edit-png position-absolute top-0 end-0 p-1">
-          <img width="30px" alt="edit icon" src={editImg}></img>
-        </div>
+        <input
+          onChange={handleChange}
+          id={item.id}
+          value={item.income}
+          name={item.name}
+          className="money-input"
+        ></input>
       </div>
     );
   });
@@ -43,11 +42,3 @@ function IncomeModules(props) {
 }
 
 export default IncomeModules;
-
-// function addIncomeInput(e) {
-//   e.preventDefault();
-//   setIncomeSources((prev) => {
-//     console.log(prev);
-//     return [...prev, { income: "", id: uniqid() }];
-//   });
-// }

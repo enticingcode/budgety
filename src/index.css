@@ -3,6 +3,8 @@ body,
 #root,
 .app {
   height: 100%;
+  background-color: #2f3d50;
+  color: white;
 }
 
 body {
@@ -51,7 +53,7 @@ hr {
 }
 
 .module {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #3b485a;
   padding: 2rem;
 }
 
@@ -132,17 +134,9 @@ hr {
 
 .saved-input {
 }
-.saved-input:hover {
-  border-radius: 10px;
-  background-color: rgb(235, 235, 235);
-}
+
 .edit-png {
   opacity: 0;
-}
-
-.saved-input:hover .edit-png {
-  opacity: 1 !important;
-  transition: opacity 0.3s;
 }
 
 .news-link {

@@ -8,8 +8,6 @@ let endpoint = marketObj.ITVQuoteResult.ITVQuote;
 function MarketIndices() {
   const [indices, setIndices] = React.useState();
 
-  console.log(parseInt("-2.98%"));
-
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -69,6 +67,7 @@ function MarketIndices() {
         );
       })
       .catch((err) => console.error(err));
+    console.log("render indices");
   }, []);
 
   return (
