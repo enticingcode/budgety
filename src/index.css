@@ -231,9 +231,9 @@ hr {
   flex-grow: 0;
 }
 
-@media (hover: hover) {
+/* @media (hover: hover) {
   label:hover,
   button:hover {
     border: 3px solid black;
   }
-}
+} */

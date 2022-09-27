@@ -26,7 +26,6 @@ function IncomeModules(props) {
     return (
       <div className="input-item" key={item.id} id={item.id}>
         <h5 className="text-decoration-underline">Income</h5>
-
         <input
           onChange={handleChange}
           id={item.id}
@@ -38,7 +37,17 @@ function IncomeModules(props) {
     );
   });
 
-  return <>{incomePrompts}</>;
+  return (
+    <>
+      <div className="in-headers my-3">
+        <h2>Monthly Incomes</h2>
+        <div className="d-flex justify-content-center flex-wrap">
+          <input className="input-box" placeholder="Income"></input>
+          <button className="btn btn-success">Add Income</button>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default IncomeModules;

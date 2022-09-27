@@ -15,25 +15,11 @@ import { updateMoneyValues } from "./FirebaseAuth";
 const Dashboard = () => {
   const localAuth = useAuth();
 
-  const [incomeSources, setIncomeSources] = React.useState([
-    { income: "1000", id: uniqid() },
-    { income: "333", id: uniqid() },
-  ]);
+  const [incomeSources, setIncomeSources] = React.useState([]);
 
-  const [expenses, setExpenses] = React.useState([
-    { name: "Rent", expense: "500", id: uniqid() },
-    { name: "Utilities", expense: "", id: uniqid() },
-    { name: "Phone", expense: "", id: uniqid() },
-    { name: "Gas", expense: "", id: uniqid() },
-    { name: "Food", expense: "", id: uniqid() },
-  ]);
+  const [expenses, setExpenses] = React.useState([]);
 
-  const [savingsAllocation, setSavingsAllocation] = React.useState([
-    { name: "401k", allocation: "100", id: uniqid() },
-    { name: "Roth", allocation: "40", id: uniqid() },
-    { name: "Rainy Day Fund", allocation: "", id: uniqid() },
-    { name: "Future Car", allocation: "", id: uniqid() },
-  ]);
+  const [savingsAllocation, setSavingsAllocation] = React.useState([]);
 
   let totalIncome = incomeSources.map((item) => {
     return item.income;
@@ -121,19 +107,11 @@ const Dashboard = () => {
         </div>
 
         <div className="d-flex flex-column w-100 ms-5">
-          <div className="in-headers my-3">
-            <h2>Monthly Incomes</h2>
-            <div className="d-flex justify-content-center flex-wrap">
-              <IncomeModules
-                incomeSources={incomeSources}
-                setIncomeSources={setIncomeSources}
-              />
-            </div>
-          </div>
-          <div className="in-headers my-3">
-            <h2>Monthly Expenses</h2>
-            <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
-          </div>
+          <IncomeModules
+            incomeSources={incomeSources}
+            setIncomeSources={setIncomeSources}
+          />
+          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
         </div>
       </section>
 
