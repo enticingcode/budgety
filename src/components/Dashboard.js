@@ -48,6 +48,7 @@ const Dashboard = () => {
     return final;
   }
 
+  console.log(incomeSources, expenses);
   //Dashboard is going to have many individual components to function it.
   // state of modules will most likely have to be put here.
 

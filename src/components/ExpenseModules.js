@@ -37,18 +37,10 @@ function ExpenseModules(props) {
       };
     });
   }
-  console.log(expenseInput);
-  console.log(expenses);
 
   let expenseElements = expenses.map((item) => {
     return (
       <div className="input-item" key={item.id}>
-        {/* <LabelRename
-          category={expenses}
-          stateSetter={setExpenses}
-          name={item.name}
-          htmlFor={item.id}
-        /> */}
         <div>
           <p>{item.expense}</p>
         </div>
@@ -63,6 +55,7 @@ function ExpenseModules(props) {
         <input
           onChange={handleChange}
           name="expenseName"
+          value={expenseInput.expenseName}
           className="input-box"
           placeholder="Expense name"
           required
@@ -70,6 +63,7 @@ function ExpenseModules(props) {
         <input
           onChange={handleChange}
           name="amount"
+          value={expenseInput.amount}
           className="input-box"
           placeholder="$ Amount"
           required
