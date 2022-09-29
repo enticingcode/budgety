@@ -40,8 +40,6 @@ async function connectUserNameAcc(userName, userId) {
   });
 }
 
-// cannot use auth context because not inside react function.
-// need a way to update this somehow.
 async function getPersonName(userId) {
   try {
     let docRef = doc(db, "users", userId);

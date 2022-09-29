@@ -5,7 +5,7 @@ import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
-import { getPersonName, updateMoneyValues } from "./FirebaseAuth";
+import { updateMoneyValues } from "./FirebaseAuth";
 
 // saved data to localStorage for now, need implementation which isn't so taxing on re-rendering,
 // just got lazy right now
