@@ -43,8 +43,8 @@ const Login = () => {
         return name;
       })
       .then((name) => {
-        localStorage.setItem("username", name);
         localAuth.setPersonName(name);
+        localStorage.setItem("username", name);
       })
       .catch((error) => {
         const errorCode = error.code;
