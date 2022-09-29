@@ -43,8 +43,8 @@ const Login = () => {
         return name;
       })
       .then((name) => {
-        localAuth.setPersonName(name);
         localStorage.setItem("username", name);
+        localAuth.setPersonName(name);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -57,7 +57,7 @@ const Login = () => {
   return (
     <div className="login-page h-100  d-flex">
       <section className="login-design d-flex justify-content-center align-items-center flex-column container bg-greenery">
-        <div className="my-3 text-center">
+        <div className="login-txt-div my-3 text-center">
           <h2>Welcome to Budgety</h2>
           <p>Your personal budgeting resource</p>
           <img
@@ -95,7 +95,7 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="text-center">
+        <div className="login-white text-center">
           <p className="mt-4 mb-1">
             New Here?
             <Link to="/signup"> Sign up for an account today!</Link>

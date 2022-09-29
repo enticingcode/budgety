@@ -31,8 +31,8 @@ const SignUp = () => {
         // set active user, get name to display on dash
 
         localAuth.setUser(user);
-        let name = getPersonName(user);
-        return name;
+        let userName = getPersonName(user);
+        return userName;
       })
       .then((name) => {
         // then redirect to dash
@@ -63,7 +63,7 @@ const SignUp = () => {
   return (
     <div className="login-page h-100 d-flex">
       <section className="login-design d-flex justify-content-center align-items-center flex-column container bg-greenery">
-        <div>
+        <div className="login-txt-div">
           <h2>Welcome to Budgety</h2>
           <p>Your personal budgeting resource</p>
         </div>
@@ -116,7 +116,7 @@ const SignUp = () => {
           </button>
         </form>
 
-        <div>
+        <div className="login-white">
           <p>
             Already a member?
             <Link to="/login"> Login here</Link>

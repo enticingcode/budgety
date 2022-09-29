@@ -32,7 +32,7 @@ async function connectUserNameAcc(userName, userId) {
   await setDoc(
     doc(db, "users", userId),
     {
-      name: userName,
+      userName: userName,
     },
     { merge: true }
   ).then((err) => {
@@ -43,12 +43,12 @@ async function connectUserNameAcc(userName, userId) {
 // cannot use auth context because not inside react function.
 // need a way to update this somehow.
 async function getPersonName(userId) {
-  console.log("runs");
   try {
-    let document = await getDoc(doc(db, "users", userId));
+    let docRef = doc(db, "users", userId);
+
+    let document = await getDoc(docRef);
     let data = document.data();
-    console.log(data);
-    // return name;
+    return data.name;
   } catch (err) {
     console.log(err);
   }
@@ -56,7 +56,6 @@ async function getPersonName(userId) {
 
 async function updateMoneyValues(userID, state, stateName) {
   const userRef = doc(db, "users", userID);
-
   try {
     await setDoc(userRef, { [stateName]: [...state] }, { merge: true });
   } catch (err) {

@@ -36,26 +36,30 @@ function IncomeModules(props) {
         },
       ];
     });
+    setIncomeInput({ incomeName: "", amount: "" });
   }
 
   function deleteIncome(e) {
     e.preventDefault();
     e.stopPropagation();
+    let elementID = e.currentTarget.parentElement.id;
 
-    console.log(e.target.parentElement.id);
+    setIncomeSources((prev) => {
+      return prev.filter((item) => {
+        return item.id !== elementID;
+      });
+    });
   }
 
   let incomeElements = incomeSources.map((item) => {
     return (
       <div className="input-item" key={item.id} id={item.id}>
-        <p>
-          {item.name}: {item.income}
+        <p className="money-info">
+          {item.name}: ${item.income}
         </p>
         <button onClick={deleteIncome} className="trash-ico">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
             fill="white"
             className="bi bi-trash"
             viewBox="0 0 16 16"
@@ -75,13 +79,16 @@ function IncomeModules(props) {
     <>
       <div className="in-headers my-3">
         <h2>Monthly Incomes</h2>
-        <form onSubmit={addIncome}>
+        <form
+          className="form-inp d-flex align-items-center justify-content-center"
+          onSubmit={addIncome}
+        >
           <input
             onChange={handleChange}
             name="incomeName"
             value={incomeInput.incomeName}
             className="input-box"
-            placeholder="Income"
+            placeholder="Income name"
             required
           ></input>
           <input
@@ -92,11 +99,11 @@ function IncomeModules(props) {
             placeholder="$ Amount"
             required
           ></input>
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="input-btn btn btn-success">
             Add Income
           </button>
         </form>
-        <div className="i-e-container">{incomeElements}</div>
+        <div className="fin-container">{incomeElements}</div>
       </div>
     </>
   );

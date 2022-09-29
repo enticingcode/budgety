@@ -6,8 +6,8 @@ import MarketIndices from "./APICalls/MarketIndices";
 
 const WeeklyForecasts = () => {
   return (
-    <div className="">
-      <section className="module d-flex flex-column m-3 rounded bg-light">
+    <>
+      <section className="module n-mod d-flex flex-column m-3 rounded bg-light">
         <h2>Market Indices</h2>
         <MarketIndices />
         <div className="d-flex align-items-start cpi-data">
@@ -16,13 +16,13 @@ const WeeklyForecasts = () => {
         </div>
       </section>
 
-      <section className="module d-flex flex-column m-3 rounded bg-light">
+      <section className="module n-mod d-flex flex-column m-3 rounded bg-light">
         <h2>News</h2>
         <div className="d-flex align-items-start cpi-data">
           <NewsAPI />
         </div>
       </section>
-    </div>
+    </>
   );
 
   console.log("render weekly");

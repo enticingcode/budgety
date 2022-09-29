@@ -18,11 +18,9 @@ function HomePage() {
         </span>
       </div>
 
-      <section className="d-flex py-5 text-center align-items-center container-fluid bg-white">
+      <section className="d-flex flex-column py-5 text-center align-items-center container-fluid bg-white">
         <h2>Start Budgeting today with Budgety!</h2>
-        <hr />
         <p>Your solution to every day budgeting needs!</p>
-        <hr />
         <p>
           Ditch those old pen and paper methods, or don't we also provide an PDF
           capabilities.

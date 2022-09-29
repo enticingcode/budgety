@@ -5,7 +5,7 @@ import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
-import { updateMoneyValues } from "./FirebaseAuth";
+import { getPersonName, updateMoneyValues } from "./FirebaseAuth";
 
 // saved data to localStorage for now, need implementation which isn't so taxing on re-rendering,
 // just got lazy right now
@@ -48,7 +48,6 @@ const Dashboard = () => {
     return final;
   }
 
-  console.log(incomeSources, expenses);
   //Dashboard is going to have many individual components to function it.
   // state of modules will most likely have to be put here.
 
@@ -59,14 +58,21 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     updateMoneyValues(localAuth.user, incomeSources, "income");
-    // updateMoneyValues(localAuth.user, expenses, expenses)
-  }, []);
+  }, [incomeSources]);
+
+  React.useEffect(() => {
+    updateMoneyValues(localAuth.user, expenses, "expenses");
+  }, [expenses]);
+
+  React.useEffect(() => {
+    updateMoneyValues(localAuth.user, savingsAllocation, "savings");
+  }, [savingsAllocation]);
 
   return (
-    <div className="d-flex flex-column ">
+    <>
       {/* should be state considering its an api call  upon login*/}
 
-      <h1 className="ms-3 mt-5">Welcome {localAuth.personName} </h1>
+      <h1 className="ms-3 mt-4">Welcome {localAuth.personName} </h1>
 
       {/* informational modules */}
       <div className="d-md-flex">
@@ -124,6 +130,7 @@ const Dashboard = () => {
             stateNames={savingsAllocation}
             chartData={totalSavings}
           />
+          Total Allocated: ${addValues(totalSavings)}
         </div>
         <div className=" w-100 ms-5">
           <div className="in-headers">
@@ -135,7 +142,7 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

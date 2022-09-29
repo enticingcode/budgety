@@ -45,6 +45,9 @@ const ChartModule = (props) => {
       legend: {
         display: true,
         position: "bottom",
+        labels: {
+          color: "#ffffff",
+        },
       },
     },
   };
