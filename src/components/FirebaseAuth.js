@@ -48,7 +48,9 @@ async function getPersonName(userId) {
 
     let document = await getDoc(docRef);
     let data = document.data();
-    return data.name;
+    console.log(data);
+    let name = data.name;
+    return name;
   } catch (err) {
     console.log(err);
   }
