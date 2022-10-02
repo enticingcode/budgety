@@ -1,5 +1,4 @@
 import React from "react";
-import uniqid from "uniqid";
 import { useAuth } from "./auth";
 import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
@@ -56,18 +55,19 @@ const Dashboard = () => {
   let remainingAfterSavings =
     addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
 
-  React.useEffect(() => {
-    updateMoneyValues(localAuth.user, incomeSources, "income");
-  }, [incomeSources]);
+  // React.useEffect(() => {
+  //   updateMoneyValues(localAuth.user, incomeSources, "income");
+  // }, [incomeSources]);
 
-  React.useEffect(() => {
-    updateMoneyValues(localAuth.user, expenses, "expenses");
-  }, [expenses]);
+  // React.useEffect(() => {
+  //   updateMoneyValues(localAuth.user, expenses, "expenses");
+  // }, [expenses]);
 
-  React.useEffect(() => {
-    updateMoneyValues(localAuth.user, savingsAllocation, "savings");
-  }, [savingsAllocation]);
+  // React.useEffect(() => {
+  //   updateMoneyValues(localAuth.user, savingsAllocation, "savings");
+  // }, [savingsAllocation]);
 
+  console.log("re-render");
   return (
     <>
       {/* should be state considering its an api call  upon login*/}

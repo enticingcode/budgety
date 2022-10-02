@@ -43,7 +43,6 @@ const Login = () => {
         return name;
       })
       .then((name) => {
-        localAuth.setPersonName(name);
         localStorage.setItem("username", name);
       })
       .catch((error) => {

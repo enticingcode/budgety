@@ -42,13 +42,12 @@ async function connectUserNameAcc(userName, userId) {
 
 async function getPersonName(userId) {
   try {
-    let docRef = doc(db, "users", userId);
-
-    let document = await getDoc(docRef);
+    // let docRef = doc(db, "users", userId);
+    let document = await getDoc(doc(db, "users", userId));
     let data = document.data();
     console.log(data);
-    let name = data.name;
-    return name;
+
+    // return name;
   } catch (err) {
     console.log(err);
   }
