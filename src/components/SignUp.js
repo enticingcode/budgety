@@ -75,7 +75,7 @@ const SignUp = () => {
         <form className="form-container d-flex flex-column m-1">
           <label htmlFor="name"></label>
           <input
-            className="my-2"
+            className="login-input my-2"
             placeholder="Name"
             onChange={handleChange}
             id="name"
@@ -85,7 +85,7 @@ const SignUp = () => {
 
           <label htmlFor="email"></label>
           <input
-            className="my-2"
+            className="login-input my-2"
             placeholder="Email"
             onChange={handleChange}
             id="email"
@@ -95,7 +95,7 @@ const SignUp = () => {
 
           <label htmlFor="password"></label>
           <input
-            className="my-2"
+            className="login-input my-2"
             placeholder="Password"
             onChange={handleChange}
             id="password"
@@ -104,7 +104,7 @@ const SignUp = () => {
           ></input>
           <label htmlFor="confirmPassword"></label>
           <input
-            className="my-2"
+            className="login-input my-2"
             placeholder="Confirm Password"
             onChange={handleChange}
             id="confirmPassword"

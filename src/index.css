@@ -14,10 +14,12 @@ html {
   display: flex;
   flex-direction: column;
   background-color: #334358;
+  height: 100%;
 }
 
 .login-txt-div {
   color: black;
+  text-align: center;
 }
 
 .ext-info a,
@@ -60,6 +62,15 @@ hr {
   border-radius: 5px;
   padding: 5px 7px;
   margin: 0.4rem 1rem;
+  border: solid 0.2px rgb(105, 105, 105);
+}
+
+.login-input {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 7px;
   border: solid 0.2px rgb(105, 105, 105);
 }
 
@@ -205,6 +216,14 @@ hr {
   text-align: center;
 }
 
+.form-container {
+  align-items: center;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
 @keyframes floating {
   0% {
     transform: translate(0, 0px);
@@ -223,15 +242,15 @@ hr {
     width: 100%;
   }
 
-  .form-inp {
-    flex-direction: column;
-  }
-
   .news-link {
     width: 100%;
   }
+  .app {
+    height: initial;
+  }
 
-  .news-item {
+  .form-inp {
+    flex-direction: column;
   }
 
   .news-link img {
@@ -278,14 +297,3 @@ hr {
     flex-direction: column !important;
   }
 }
-
-.navbar-collapse {
-  flex-grow: 0;
-}
-
-/* @media (hover: hover) {
-  label:hover,
-  button:hover {
-    border: 3px solid black;
-  }
-} */

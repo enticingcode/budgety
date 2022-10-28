@@ -72,7 +72,7 @@ const Login = () => {
         <form className="form-container d-flex flex-column m-1">
           <label htmlFor="email"></label>
           <input
-            className="my-2"
+            className="login-input my-2"
             placeholder="Email"
             onChange={handleChange}
             id="email"
@@ -82,7 +82,7 @@ const Login = () => {
 
           <label htmlFor="password"></label>
           <input
-            className="my-2"
+            className="login-input my-2"
             placeholder="Password"
             onChange={handleChange}
             id="password"
