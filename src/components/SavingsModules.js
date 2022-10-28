@@ -35,7 +35,6 @@ const SavingsModules = (props) => {
     let value = e.target.value;
     let name = e.target.name;
 
-    console.log(name, value);
 
     if (name === "amount" && isNaN(value)) return;
 

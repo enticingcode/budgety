@@ -15,7 +15,6 @@ const LabelRename = (props) => {
     let currentLabelVal = e.target.value;
     let targetInput = e.target.parentElement.nextSibling.id;
 
-    console.log(e.target.parentElement.nextSibling);
     // PARAMETER BASED HERE
     stateSetter((prevArray) => {
       return prevArray.map((obj) => {

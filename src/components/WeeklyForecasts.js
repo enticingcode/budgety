@@ -25,7 +25,6 @@ const WeeklyForecasts = () => {
     </>
   );
 
-  console.log("render weekly");
 };
 
 export default WeeklyForecasts;

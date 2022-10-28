@@ -67,7 +67,6 @@ function MarketIndices() {
         );
       })
       .catch((err) => console.error(err));
-    console.log("render indices");
   }, []);
 
   return (

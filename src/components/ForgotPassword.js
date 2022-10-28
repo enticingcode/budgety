@@ -22,7 +22,6 @@ const ForgotPassword = () => {
       .then(() => {
         //password email sent
         setEmailSent(true);
-        console.log("success");
       })
       .catch((error) => {
         const errorCode = error.code;

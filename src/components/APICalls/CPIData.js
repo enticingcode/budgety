@@ -11,7 +11,6 @@ const CPIData = () => {
     },
   };
 
-  console.log(options);
 
   React.useEffect(() => {
     fetch(

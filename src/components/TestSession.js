@@ -39,7 +39,6 @@ const TestSession = () => {
     return calculables;
   }
 
-  // console.log(addValues(totalIncome));
 
   function handleChange(e) {
     const name = e.target.name;
