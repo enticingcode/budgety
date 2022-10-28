@@ -1,16 +1,10 @@
 import React from "react";
-import uniqid from "uniqid";
 import { useAuth } from "./auth";
 import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
 import { updateMoneyValues } from "./FirebaseAuth";
-
-// saved data to localStorage for now, need implementation which isn't so taxing on re-rendering,
-// just got lazy right now
-// more worried UI/UX wise right now.
-// (which i know data being consistent accross devices is a huge UX thing but i mean presentation wise)
 
 const Dashboard = () => {
   const localAuth = useAuth();
@@ -48,24 +42,28 @@ const Dashboard = () => {
     return final;
   }
 
-  //Dashboard is going to have many individual components to function it.
-  // state of modules will most likely have to be put here.
+  // pull in data from firebase, all objects //
 
   let remaining = addValues(totalIncome) - addValues(totalExpenses);
 
   let remainingAfterSavings =
     addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
 
+  // upload changes to Firebase //
+
   React.useEffect(() => {
-    updateMoneyValues(localAuth.user, incomeSources, "income");
+    localStorage.setItem("incomeSources", JSON.stringify(incomeSources));
   }, [incomeSources]);
 
   React.useEffect(() => {
-    updateMoneyValues(localAuth.user, expenses, "expenses");
+    localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
 
   React.useEffect(() => {
-    updateMoneyValues(localAuth.user, savingsAllocation, "savings");
+    localStorage.setItem(
+      "savingsAllocation",
+      JSON.stringify(savingsAllocation)
+    );
   }, [savingsAllocation]);
 
   return (

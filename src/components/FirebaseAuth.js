@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
-import { setDoc, doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
+import { setDoc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,12 +20,13 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
+let localUser = localStorage.getItem("user");
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 //init firestore DB
-
 const db = getFirestore(app);
 
 async function connectUserNameAcc(userName, userId) {
@@ -43,10 +44,8 @@ async function connectUserNameAcc(userName, userId) {
 async function getPersonName(userId) {
   try {
     let docRef = doc(db, "users", userId);
-
     let document = await getDoc(docRef);
     let data = document.data();
-    console.log(data);
     let name = data.name;
     return name;
   } catch (err) {
@@ -54,7 +53,13 @@ async function getPersonName(userId) {
   }
 }
 
-async function updateMoneyValues(userID, state, stateName) {
+
+const unsub = onSnapshot(doc(db, "users", localUser), (doc) => {
+  console.log("Current data: ", doc.data());
+});
+
+
+async function updateMoneyValues(userID, stateName, state) {
   const userRef = doc(db, "users", userID);
   try {
     await setDoc(userRef, { [stateName]: [...state] }, { merge: true });

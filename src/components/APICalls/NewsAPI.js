@@ -20,7 +20,6 @@ const NewsAPI = () => {
       },
     };
 
-    console.log("render newws");
     fetch(
       "https://cnbc.p.rapidapi.com/news/v2/list-trending?tag=Articles&count=30",
       options

@@ -1,7 +1,10 @@
 import React from "react";
 import uniqid from "uniqid";
+import { updateMoneyValues } from "./FirebaseAuth";
+import { useAuth } from "./auth";
 
 function IncomeModules(props) {
+  const localAuth = useAuth();
   const { incomeSources, setIncomeSources } = props;
   const [incomeInput, setIncomeInput] = React.useState({
     incomeName: "",
