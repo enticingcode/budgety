@@ -4,11 +4,17 @@ import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
+import { db } from "./FirebaseAuth";
 import { updateMoneyValues } from "./FirebaseAuth";
+import { getDoc, doc } from "firebase/firestore";
 
 const Dashboard = () => {
   const localAuth = useAuth();
+  const userCollectionRef = doc(db, "users", localAuth.user);
 
+  //pull to ui on initial load, and save to local storage.
+
+  // when add new income add to local storage, check for local storage changes to upload.
   const [incomeSources, setIncomeSources] = React.useState([]);
 
   const [expenses, setExpenses] = React.useState([]);
@@ -18,6 +24,8 @@ const Dashboard = () => {
   let totalIncome = incomeSources.map((item) => {
     return item.income;
   });
+
+  console.log("render");
 
   let totalExpenses = expenses.map((item) => {
     return item.expense;
@@ -42,31 +50,43 @@ const Dashboard = () => {
     return final;
   }
 
-  // pull in data from firebase, all objects //
-
   let remaining = addValues(totalIncome) - addValues(totalExpenses);
 
   let remainingAfterSavings =
     addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
 
-  // upload changes to Firebase //
+  /////////////////////////////////
+  // PULL IN DATA FROM FIREBASE //
+  ///////////////////////////////
+
+  async function getData() {
+    const doc = await getDoc(userCollectionRef);
+
+    const incomesData = doc.data().incomeSources;
+    // const expensesData = doc.data().expenses;
+    // const savingsData = doc.data().savingsAllocation;
+
+    // SET STATES //
+    if (incomesData.length > 0) {
+      setIncomeSources(incomesData);
+    }
+    // if (expensesData.length > 0) {
+    //   setExpenses(expensesData);
+    // }
+    // if (savingsData.length > 0) {
+    //   setSavingsAllocation(savingsData);
+    // }
+  }
 
   React.useEffect(() => {
-    localStorage.setItem("incomeSources", JSON.stringify(incomeSources));
-  }, [incomeSources]);
+    getData();
+  }, []);
 
-  React.useEffect(() => {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-  }, [expenses]);
+  /////////////////////////////////
+  // UPLOAD CHANGES TO FIREBASE //
+  ///////////////////////////////
+  console.log(incomeSources);
 
-  React.useEffect(() => {
-    localStorage.setItem(
-      "savingsAllocation",
-      JSON.stringify(savingsAllocation)
-    );
-  }, [savingsAllocation]);
-
-  console.log("re-render");
   return (
     <>
       {/* should be state considering its an api call  upon login*/}

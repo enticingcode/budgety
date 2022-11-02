@@ -54,7 +54,7 @@ const Login = () => {
   }
 
   return (
-    <div className="login-page h-100  d-flex">
+    <div className="login-page d-flex">
       <section className="login-design d-flex justify-content-center align-items-center flex-column container bg-greenery">
         <div className="login-txt-div my-3 text-center">
           <h2>Welcome to Budgety</h2>

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { doc, onSnapshot } from "firebase/firestore";
+import { addDoc, deleteDoc, doc } from "firebase/firestore";
 import { setDoc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
@@ -27,7 +27,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 //init firestore DB
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 async function connectUserNameAcc(userName, userId) {
   await setDoc(
@@ -43,37 +43,31 @@ async function connectUserNameAcc(userName, userId) {
 
 async function getPersonName(userId) {
   try {
-<<<<<<< HEAD
-    // let docRef = doc(db, "users", userId);
-    let document = await getDoc(doc(db, "users", userId));
-    let data = document.data();
-    console.log(data);
-
-    // return name;
-=======
     let docRef = doc(db, "users", userId);
     let document = await getDoc(docRef);
     let data = document.data();
     let name = data.name;
     return name;
->>>>>>> 9761820fd15273d78de80c8e3660881df2b0c6bf
   } catch (err) {
     console.log(err);
   }
 }
 
-
-const unsub = onSnapshot(doc(db, "users", localUser), (doc) => {
-  console.log("Current data: ", doc.data());
-});
-
-
-async function updateMoneyValues(userID, stateName, state) {
+async function updateMoneyValues(userID, stateName, state, action) {
   const userRef = doc(db, "users", userID);
-  try {
-    await setDoc(userRef, { [stateName]: [...state] }, { merge: true });
-  } catch (err) {
-    console.error("error adding document", err);
+
+  if (action === "add") {
+    try {
+      await setDoc(userRef, { [stateName]: state }, { merge: true });
+    } catch (err) {
+      console.error("error adding document", err);
+    }
+    // } else if (action === "del") {
+    //   try {
+    //     await deleteDoc(userRef,);
+    //   } catch (err) {
+    //     console.error("error adding document", err);
+    //   }
   }
 }
 

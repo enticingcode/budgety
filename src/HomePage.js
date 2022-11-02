@@ -5,8 +5,8 @@ import budge1 from "./assets/images/budge1.png";
 
 function HomePage() {
   return (
-    <div className="container-fluid p-0  text-black">
-      <div className="container-fluid d-flex bg-tan p-0 m-0 align-items-center justify-content-evenly">
+    <div className=" text-black">
+      <div className=" container-fluid d-flex bg-tan m-0 p-4 align-items-center justify-content-evenly">
         <div>
           <img className="img-fluid" alt="budgeting clipart" src={budge1}></img>
         </div>
@@ -28,7 +28,7 @@ function HomePage() {
       </section>
 
       <div className="container-fluid d-flex p-5 align-items-center px3 bg-bluey justify-content-evenly">
-        <div>
+        <div className="me-1">
           <img className="img-fluid mw-25" alt="budget icon" src={icon}></img>
         </div>
         <h2>Coming soon to iOS</h2>

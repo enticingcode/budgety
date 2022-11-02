@@ -4,7 +4,6 @@ body,
   color: rgb(231, 231, 231);
 }
 #root {
-  height: 100vh;
 }
 
 html {
@@ -14,7 +13,6 @@ html {
   display: flex;
   flex-direction: column;
   background-color: #334358;
-  height: 100%;
 }
 
 .login-txt-div {
@@ -51,6 +49,10 @@ hr {
 
 .btn-green {
   background-color: #09804c;
+}
+
+.preview-block {
+  padding: 1rem;
 }
 
 .input-item {
@@ -190,6 +192,9 @@ hr {
   animation-timing-function: ease-in-out;
 }
 
+.login-page {
+  height: 100vh;
+}
 .chart-box {
   color: white;
 }
