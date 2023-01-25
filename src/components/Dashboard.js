@@ -25,8 +25,6 @@ const Dashboard = () => {
     return item.income;
   });
 
-  console.log("render");
-
   let totalExpenses = expenses.map((item) => {
     return item.expense;
   });
