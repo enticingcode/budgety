@@ -5,7 +5,6 @@ import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
 import { db } from "./FirebaseAuth";
-import { updateMoneyValues } from "./FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 
 const Dashboard = () => {
@@ -20,6 +19,8 @@ const Dashboard = () => {
   const [expenses, setExpenses] = React.useState([]);
 
   const [savingsAllocation, setSavingsAllocation] = React.useState([]);
+
+  console.log(incomeSources);
 
   let totalIncome = incomeSources.map((item) => {
     return item.income;
@@ -60,20 +61,14 @@ const Dashboard = () => {
   async function getData() {
     const doc = await getDoc(userCollectionRef);
 
-    const incomesData = doc.data().incomeSources;
-    // const expensesData = doc.data().expenses;
-    // const savingsData = doc.data().savingsAllocation;
+    if (doc.data()) {
+      const incomesData = doc.data().incomeSources;
 
-    // SET STATES //
-    if (incomesData.length > 0) {
-      setIncomeSources(incomesData);
+      // SET STATES //
+      if (incomesData.length) {
+        setIncomeSources(incomesData);
+      }
     }
-    // if (expensesData.length > 0) {
-    //   setExpenses(expensesData);
-    // }
-    // if (savingsData.length > 0) {
-    //   setSavingsAllocation(savingsData);
-    // }
   }
 
   React.useEffect(() => {
@@ -83,7 +78,17 @@ const Dashboard = () => {
   /////////////////////////////////
   // UPLOAD CHANGES TO FIREBASE //
   ///////////////////////////////
-  console.log(incomeSources);
+
+  // React.useEffect(() => {
+  //   updateMoneyValues(localAuth.user, "incomeSources", incomeSources, "add");
+  //   updateMoneyValues(localAuth.user, "expenses", expenses, "add");
+  //   updateMoneyValues(
+  //     localAuth.user,
+  //     "savingsAllocations",
+  //     savingsAllocation,
+  //     "add"
+  //   );
+  // }, [incomeSources, expenses, savingsAllocation]);
 
   return (
     <>

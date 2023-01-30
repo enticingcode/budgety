@@ -1,8 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { addDoc, deleteDoc, doc } from "firebase/firestore";
-import { setDoc, getDoc } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  getFirestore,
+  deleteDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,7 +27,7 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
-let localUser = localStorage.getItem("user");
+// let localUser = localStorage.getItem("user");
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -53,22 +60,24 @@ async function getPersonName(userId) {
   }
 }
 
-async function updateMoneyValues(userID, stateName, state, action) {
+async function updateFirebaseValues(userID, stateType, state, action) {
   const userRef = doc(db, "users", userID);
 
   if (action === "add") {
     try {
-      await setDoc(userRef, { [stateName]: state }, { merge: true });
+      await updateDoc(userRef, {
+        [stateType]: arrayUnion(state),
+      });
     } catch (err) {
       console.error("error adding document", err);
     }
-    // } else if (action === "del") {
-    //   try {
-    //     await deleteDoc(userRef,);
-    //   } catch (err) {
-    //     console.error("error adding document", err);
-    //   }
+  } else if (action === "del") {
+    try {
+      await setDoc(userRef, { [stateType]: state }, { merge: true });
+    } catch (err) {
+      console.error("error adding document", err);
+    }
   }
 }
 
-export { connectUserNameAcc, getPersonName, updateMoneyValues };
+export { connectUserNameAcc, getPersonName, updateFirebaseValues };

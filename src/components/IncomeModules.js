@@ -1,7 +1,7 @@
 import React from "react";
 import uniqid from "uniqid";
-import { updateMoneyValues } from "./FirebaseAuth";
 import { useAuth } from "./auth";
+import { updateFirebaseValues } from "./FirebaseAuth";
 
 function IncomeModules(props) {
   const localAuth = useAuth();
@@ -29,16 +29,18 @@ function IncomeModules(props) {
     e.preventDefault();
     if (!incomeInput.incomeName || !incomeInput.amount) return;
     if (incomeSources.length >= 4) return alert("Maximum limit reached");
+
+    let newIncomeObj = {
+      name: incomeInput.incomeName,
+      income: incomeInput.amount,
+      id: uniqid(),
+    };
+
     setIncomeSources((prev) => {
-      return [
-        ...prev,
-        {
-          name: incomeInput.incomeName,
-          income: incomeInput.amount,
-          id: uniqid(),
-        },
-      ];
+      return [...prev, newIncomeObj];
     });
+
+    updateFirebaseValues(localAuth.user, "incomeSources", newIncomeObj, "add");
     setIncomeInput({ incomeName: "", amount: "" });
   }
 
@@ -47,11 +49,19 @@ function IncomeModules(props) {
     e.stopPropagation();
     let elementID = e.currentTarget.parentElement.id;
 
-    setIncomeSources((prev) => {
-      return prev.filter((item) => {
-        return item.id !== elementID;
-      });
+    let newArr = incomeSources.filter((item) => {
+      return item.id !== elementID;
     });
+
+    // taken from setIncomeSources below;
+    // (prev) => {
+    //   return prev.filter((item) => {
+    //     return item.id !== elementID;
+    //   });
+    // }
+
+    setIncomeSources(newArr);
+    updateFirebaseValues(localAuth.user, "incomeSources", newArr, "del");
   }
 
   let incomeElements = incomeSources.map((item) => {
