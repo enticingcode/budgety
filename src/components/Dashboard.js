@@ -12,8 +12,6 @@ const Dashboard = () => {
   const userCollectionRef = doc(db, "users", localAuth.user);
   const [user, setUser] = React.useState();
 
-  console.log(localAuth);
-
   //pull to ui on initial load, and save to local storage.
 
   // when add new income add to local storage, check for local storage changes to upload.
@@ -88,10 +86,10 @@ const Dashboard = () => {
     <>
       {/* should be state considering its an api call  upon login*/}
 
-      <h1 className="ms-3 mt-4">Welcome {localAuth.personName} </h1>
+      <h1 className="welcomeh1">Welcome {localAuth.personName} </h1>
 
       {/* informational modules */}
-      <div className="d-md-flex">
+      {/* <div className="d-md-flex">
         <section className="module d-flex flex-grow-1 justify-content-around m-3">
           <div className="ext-info">
             <h2 className="text-blue-500 text-2xl">Features coming soon:</h2>
@@ -109,10 +107,18 @@ const Dashboard = () => {
             <a href="mialto:trujillomarvin@hotmail.com">Email</a>
           </div>
         </section>
-      </div>
+      </div> */}
 
       {/* INCOME-EXPENSE MODULE */}
       <section className="module d-md-flex justify-content-start m-3 rounded">
+        <div className="d-flex flex w-100 ">
+          <IncomeModules
+            incomeSources={incomeSources}
+            setIncomeSources={setIncomeSources}
+          />
+          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
+        </div>
+
         <div className="chart-box w-25 text-center">
           <h2>Expense Tracker</h2>
           <ChartModule
@@ -127,14 +133,6 @@ const Dashboard = () => {
           <h4 className="text-success">
             Remaining: ${remainingAfterSavings || remaining || ""}
           </h4>
-        </div>
-
-        <div className="d-flex flex-column w-100 ms-5">
-          <IncomeModules
-            incomeSources={incomeSources}
-            setIncomeSources={setIncomeSources}
-          />
-          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
         </div>
       </section>
 
