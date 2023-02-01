@@ -37,7 +37,7 @@ const SignUp = () => {
       .then((name) => {
         // then redirect to dash
         localAuth.setPersonName(name);
-        localStorage.setItem("username", name);
+        localStorage.setItem("name", name);
         navigate("/");
       })
       .catch((error) => {

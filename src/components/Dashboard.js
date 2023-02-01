@@ -10,6 +10,9 @@ import { getDoc, doc } from "firebase/firestore";
 const Dashboard = () => {
   const localAuth = useAuth();
   const userCollectionRef = doc(db, "users", localAuth.user);
+  const [user, setUser] = React.useState();
+
+  console.log(localAuth);
 
   //pull to ui on initial load, and save to local storage.
 
@@ -19,8 +22,6 @@ const Dashboard = () => {
   const [expenses, setExpenses] = React.useState([]);
 
   const [savingsAllocation, setSavingsAllocation] = React.useState([]);
-
-  console.log(incomeSources);
 
   let totalIncome = incomeSources.map((item) => {
     return item.income;
@@ -62,11 +63,19 @@ const Dashboard = () => {
     const doc = await getDoc(userCollectionRef);
 
     if (doc.data()) {
+      let name = doc.data().name;
       const incomesData = doc.data().incomeSources;
+      const expensesData = doc.data().expenses;
+      const savingsAlloData = doc.data().savingsAllocation;
+
+      setUser(name);
 
       // SET STATES //
       if (incomesData.length) {
         setIncomeSources(incomesData);
+      }
+      if (expensesData.length) {
+        setExpenses(expensesData);
       }
     }
   }
@@ -74,21 +83,6 @@ const Dashboard = () => {
   React.useEffect(() => {
     getData();
   }, []);
-
-  /////////////////////////////////
-  // UPLOAD CHANGES TO FIREBASE //
-  ///////////////////////////////
-
-  // React.useEffect(() => {
-  //   updateMoneyValues(localAuth.user, "incomeSources", incomeSources, "add");
-  //   updateMoneyValues(localAuth.user, "expenses", expenses, "add");
-  //   updateMoneyValues(
-  //     localAuth.user,
-  //     "savingsAllocations",
-  //     savingsAllocation,
-  //     "add"
-  //   );
-  // }, [incomeSources, expenses, savingsAllocation]);
 
   return (
     <>

@@ -1,39 +1,22 @@
 import React from "react";
 import uniqid from "uniqid";
-import LabelRename from "./LabelRename";
+import { updateFirebaseValues } from "./FirebaseAuth";
+import { useAuth } from "./auth";
 
 function ExpenseModules(props) {
   const { expenses, setExpenses } = props;
+  const localAuth = useAuth();
 
   const [expenseInput, setExpenseInput] = React.useState({
     expenseName: "",
     amount: "",
   });
 
-  function addExpense(e) {
-    e.preventDefault();
-    if (expenses.length > 50)
-      return alert(
-        "Maximum limit reached for safety reasons, maybe try not spending so much? :) haha"
-      );
-
-    setExpenses((prev) => {
-      return [
-        ...prev,
-        {
-          name: expenseInput.expenseName,
-          expense: expenseInput.amount,
-          id: uniqid(),
-        },
-      ];
-    });
-
-    setExpenseInput({ expenseName: "", amount: "" });
-  }
-
   function handleChange(e) {
     let value = e.target.value;
     let name = e.target.name;
+
+    if (name === "amount" && isNaN(value)) return;
 
     setExpenseInput((prev) => {
       return {
@@ -43,16 +26,37 @@ function ExpenseModules(props) {
     });
   }
 
+  function addExpense(e) {
+    e.preventDefault();
+    if (expenses.length > 50)
+      return alert(
+        "Maximum limit reached for safety reasons, maybe try not spending so much? :) haha"
+      );
+    let newExpenseObj = {
+      name: expenseInput.expenseName,
+      expense: expenseInput.amount,
+      id: uniqid(),
+    };
+
+    setExpenses((prev) => {
+      return [...prev, newExpenseObj];
+    });
+
+    updateFirebaseValues(localAuth.user, "expenses", newExpenseObj, "add");
+    setExpenseInput({ expenseName: "", amount: "" });
+  }
+
   function deleteExpense(e) {
     e.preventDefault();
     e.stopPropagation();
     let elementID = e.currentTarget.parentElement.id;
 
-    setExpenses((prev) => {
-      return prev.filter((item) => {
-        return item.id !== elementID;
-      });
+    let newArr = expenses.filter((item) => {
+      return item.id !== elementID;
     });
+
+    setExpenses(newArr);
+    updateFirebaseValues(localAuth.user, "expenses", newArr, "del");
   }
 
   let expenseElements = expenses.map((item) => {

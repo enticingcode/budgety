@@ -8,6 +8,7 @@ import MoneyWrap from "../assets/images/login.png";
 
 const Login = () => {
   const navigate = useNavigate();
+
   const [credentials, setCredentials] = React.useState({
     email: "",
     password: "",

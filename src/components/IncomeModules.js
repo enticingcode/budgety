@@ -53,15 +53,14 @@ function IncomeModules(props) {
       return item.id !== elementID;
     });
 
-    // taken from setIncomeSources below;
+    setIncomeSources(newArr);
+    updateFirebaseValues(localAuth.user, "incomeSources", newArr, "del");
+    // taken from setIncomeSources above;
     // (prev) => {
     //   return prev.filter((item) => {
     //     return item.id !== elementID;
     //   });
     // }
-
-    setIncomeSources(newArr);
-    updateFirebaseValues(localAuth.user, "incomeSources", newArr, "del");
   }
 
   let incomeElements = incomeSources.map((item) => {
