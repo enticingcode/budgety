@@ -1,5 +1,5 @@
 import React from "react";
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 const ChartModule = (props) => {
@@ -12,7 +12,7 @@ const ChartModule = (props) => {
     return item.name;
   });
 
-  // PIE CHART DATA HERE
+  // Doughnut CHART DATA HERE
   const data = {
     labels: [...dataNames],
     datasets: [
@@ -20,21 +20,16 @@ const ChartModule = (props) => {
         label: "Budget Tracker",
         data: [...chartData],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
+          "rgb(96, 150, 180)",
+          "rgb(147, 191, 207)",
+          "rgb(189, 205, 214)",
+          "rgb(238, 233, 218)",
+          "rgb(139, 126, 116)",
+          "rgb(241, 211, 179)",
+          "rgb(101, 100, 124)",
+          "rgb(199, 188, 161)",
         ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
+        borderColor: ["white"],
         borderWidth: 1,
       },
     ],
@@ -46,14 +41,14 @@ const ChartModule = (props) => {
         display: true,
         position: "bottom",
         labels: {
-          color: "#ffffff",
+          color: "black",
         },
       },
     },
   };
   return (
     <>
-      <Pie className="chart-item" data={data} options={options} />
+      <Doughnut className="chart-item" data={data} options={options} />
     </>
   );
 };

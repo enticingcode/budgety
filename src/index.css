@@ -1,10 +1,3 @@
-html,
-body,
-#root {
-}
-#root {
-}
-
 html {
   overflow: scroll;
 }
@@ -16,10 +9,6 @@ html {
 .login-txt-div {
   color: black;
   text-align: center;
-}
-
-.ext-info a,
-.login-white a {
 }
 
 body {
@@ -62,8 +51,8 @@ hr {
   align-items: center;
   text-align: center;
   justify-content: space-between;
-  /* margin-top: 0.4rem; */
   border-radius: 3px;
+  margin: 1px 0;
   padding: 0 1rem;
   border: solid 0.2px rgb(105, 105, 105);
 }
