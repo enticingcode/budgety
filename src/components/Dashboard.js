@@ -121,11 +121,9 @@ const Dashboard = () => {
 
         <div className="chart-box w-25 text-center">
           <h2>Expense Tracker</h2>
-          <ChartModule
-            type={"Pie"}
-            stateNames={expenses}
-            chartData={totalExpenses}
-          />
+          <ChartModule stateNames={expenses} chartData={totalExpenses} />
+
+          {/* CASH FLOW INFORMATION */}
           <h4 className="">Total Income: ${addValues(totalIncome)}</h4>
           <h4 className="text-danger">
             Total Expenses: ${addValues(totalExpenses)}
