@@ -53,7 +53,7 @@ hr {
   justify-content: space-between;
   border-radius: 3px;
   margin: 1px 0;
-  padding: 0 .2rem 0 1rem;
+  padding: 0 0.2rem 0 1rem;
 
   border: solid 0.2px rgb(105, 105, 105);
 }
@@ -82,6 +82,22 @@ hr {
   border: solid 0.2px rgb(105, 105, 105);
 }
 
+.form-inp {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 500px;
+  gap: 3px;
+}
+
+.input-box {
+  width: 10em;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  border: solid rgb(179, 179, 179) 1px;
+}
+
 .input-btn {
   appearance: button;
   background-color: rgb(96, 150, 180);
@@ -90,20 +106,18 @@ hr {
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
+  height: auto;
   font-family: Graphik, -apple-system, system-ui, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   line-height: 1.15;
   overflow: visible;
-  padding: 12px 16px;
+  padding: 11px 16px;
   position: relative;
   text-align: center;
   text-transform: none;
   transition: all 80ms ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
-  width: fit-content;
 }
 
 .input-btn:disabled {
@@ -138,21 +152,6 @@ hr {
 
 .input-item p {
   margin: 0;
-}
-
-.form-inp {
-  display: flex;
-  margin-bottom: 1rem;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.input-box {
-  max-width: 10rem;
-  border-radius: 5px;
-  margin-right: 0.2rem;
-  padding: 0.1em 0.4em;
-  border: solid rgb(179, 179, 179) 1px;
 }
 
 .n-mod {
@@ -214,7 +213,6 @@ hr {
 }
 
 .in-headers {
-  margin: 0 1rem;
   max-width: 500px;
 }
 
@@ -243,6 +241,9 @@ hr {
   height: 100vh;
 }
 .chart-box {
+  text-align: center;
+  width: 30%;
+  max-width: 700px;
 }
 
 .edit-png {
@@ -288,10 +289,14 @@ hr {
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1562px) {
   .news-Container {
     flex-direction: column;
     width: 100%;
+  }
+
+  .in-headers {
+    text-align: center;
   }
 
   .news-link {
@@ -303,6 +308,10 @@ hr {
 
   .form-inp {
     flex-direction: column;
+    overflow: hidden;
+  }
+
+  .input-btn {
   }
 
   .news-link img {
@@ -323,6 +332,7 @@ hr {
     text-align: center;
     margin-top: 1.5rem;
   }
+
   .login-page {
     flex-direction: column;
     height: 100vh !important;
@@ -338,11 +348,7 @@ hr {
 
   .module {
     flex-direction: column;
-  }
-
-  .ms-5 {
-    margin: 0 !important;
-    align-items: center !important;
+    align-items: center;
   }
 
   .cpi-data {

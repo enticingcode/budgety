@@ -1,17 +1,16 @@
 import React from "react";
 import { useAuth } from "./auth";
-import IncomeModules from "./IncomeModules";
-import ExpenseModules from "./ExpenseModules";
-import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
 import { db } from "./FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
+import ModuleInputs from "./ModuleInputs";
 
 const Dashboard = () => {
   const localAuth = useAuth();
   const userCollectionRef = doc(db, "users", localAuth.user);
   const [user, setUser] = React.useState();
 
+  console.log("render");
   //pull to ui on initial load, and save to local storage.
 
   // when add new income add to local storage, check for local storage changes to upload.
@@ -22,15 +21,15 @@ const Dashboard = () => {
   const [savingsAllocation, setSavingsAllocation] = React.useState([]);
 
   let totalIncome = incomeSources.map((item) => {
-    return item.income;
+    return item.amount;
   });
 
   let totalExpenses = expenses.map((item) => {
-    return item.expense;
+    return item.amount;
   });
 
   let totalSavings = savingsAllocation.map((item) => {
-    return item.allocation;
+    return item.amount;
   });
 
   // Add values of filtered array to display;
@@ -62,18 +61,23 @@ const Dashboard = () => {
 
     if (doc.data()) {
       let name = doc.data().name;
-      const incomesData = doc.data().incomeSources;
-      const expensesData = doc.data().expenses;
-      const savingsAlloData = doc.data().savingsAllocation;
+      const incomesData = doc.data().Income;
+      const expensesData = doc.data().Expenses;
+      const savingsAlloData = doc.data().Savings;
 
       setUser(name);
 
+      console.log(incomesData);
+
       // SET STATES //
-      if (incomesData.length) {
+      if (incomesData) {
         setIncomeSources(incomesData);
       }
-      if (expensesData.length) {
+      if (expensesData) {
         setExpenses(expensesData);
+      }
+      if (savingsAlloData) {
+        setSavingsAllocation(savingsAlloData);
       }
     }
   }
@@ -110,16 +114,19 @@ const Dashboard = () => {
       </div> */}
 
       {/* INCOME-EXPENSE MODULE */}
-      <section className="module d-md-flex justify-content-start m-3 rounded">
-        <div className="d-flex flex w-100 ">
-          <IncomeModules
-            incomeSources={incomeSources}
-            setIncomeSources={setIncomeSources}
-          />
-          <ExpenseModules expenses={expenses} setExpenses={setExpenses} />
-        </div>
+      <section className="module d-flex justify-content-evenly">
+        <ModuleInputs
+          cashFlow={incomeSources}
+          setCashFlow={setIncomeSources}
+          moduleName="Income"
+        />
+        <ModuleInputs
+          cashFlow={expenses}
+          setCashFlow={setExpenses}
+          moduleName="Expenses"
+        />
 
-        <div className="chart-box w-25 text-center">
+        <div className="chart-box">
           <h2>Expense Tracker</h2>
           <ChartModule stateNames={expenses} chartData={totalExpenses} />
 
@@ -135,7 +142,16 @@ const Dashboard = () => {
       </section>
 
       {/* SAVINGS MODULE */}
-      <section className="module d-flex m-3 text-center rounded">
+      <section className="module d-flex justify-content-center" >
+        <div className=" w-100 ">
+          <div className="in-headers">
+            <ModuleInputs
+              cashFlow={savingsAllocation}
+              setCashFlow={setSavingsAllocation}
+              moduleName="Savings"
+            />
+          </div>
+        </div>
         <div className="chart-box w-25 text-center">
           <h2>Savings Allocation</h2>
           <ChartModule
@@ -143,15 +159,6 @@ const Dashboard = () => {
             chartData={totalSavings}
           />
           Total Allocated: ${addValues(totalSavings)}
-        </div>
-        <div className=" w-100 ms-5">
-          <div className="in-headers">
-            <h2>Allocations</h2>
-            <SavingsModules
-              savingsAllocation={savingsAllocation}
-              setSavingsAllocation={setSavingsAllocation}
-            />
-          </div>
         </div>
       </section>
     </>
