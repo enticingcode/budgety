@@ -1,6 +1,9 @@
 html {
   overflow: scroll;
 }
+#root {
+  display: flex;
+}
 .app {
   display: flex;
   flex-direction: column;
@@ -12,7 +15,7 @@ html {
 }
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.1rem;
 }
 .bg-tan {
@@ -204,6 +207,10 @@ hr {
   margin: 1rem 0;
 }
 
+.navbar * {
+  color: rgb(160, 160, 160) !important;
+}
+
 .navbar-toggler {
   border: none !important;
 }
@@ -275,6 +282,13 @@ hr {
 
 .navbar-collapse {
   flex-grow: 0;
+}
+
+.sidebar {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  width: 300px;
 }
 
 @keyframes floating {

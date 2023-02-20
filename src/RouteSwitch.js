@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
-import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import TestSession from "./components/TestSession";
 import SignUp from "./components/SignUp";
@@ -12,13 +11,15 @@ import { useAuth } from "./components/auth";
 import MonthlyTracker from "./components/MonthlyTracker";
 import ForgotPassword from "./components/ForgotPassword";
 import WeeklyForecasts from "./components/WeeklyForecasts";
+import Sidebar from "./components/Sidebar";
 
 const RouteSwitch = () => {
   const localAuth = useAuth();
   return (
     <>
-      <Navbar />
+      <Sidebar />
       <div className="app">
+        {/* <Navbar /> */}
         <Routes>
           <Route
             path="/"
