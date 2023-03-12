@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   //   Most Nav styling done directly via bootstrap
   return (
-    <nav className="navbar navbar-expand-lg align-items-start w-25 bg-dark">
+    <nav className="sidebar navbar navbar-expand-lg align-items-start w-25 bg-dark">
       <div className="container-fluid flex-column px-4">
         <NavLink className="navbar-brand" to="/">
           <img
