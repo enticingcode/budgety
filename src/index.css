@@ -7,6 +7,8 @@ html {
 .app {
   display: flex;
   flex-direction: column;
+  width: calc(100vw - 300px);
+  max-width: 2000px;
 }
 
 .login-txt-div {
@@ -51,13 +53,10 @@ hr {
 .input-item {
   display: flex;
   font-size: 1.5rem;
-  align-items: center;
-  text-align: center;
-  width: 90%;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  width: 600px;
   justify-content: space-between;
-  border-radius: 1px;
-  border-bottom: 1px solid grey;
-  padding: .9rem .2rem;
 }
 
 .closeOut {
@@ -65,14 +64,17 @@ hr {
   visibility: hidden;
   opacity: 0;
   border-radius: 5px;
-  padding: 5px;
+}
+
+.input-item:hover {
+  background-color: rgb(243, 243, 243);
+  transition: .5s all;
 }
 
 .input-item:hover .closeOut {
   transition: 0.3s all;
   visibility: visible;
   opacity: 1;
-  background-color: rgb(250, 250, 250);
 }
 
 .login-input {
@@ -84,8 +86,36 @@ hr {
   border: solid 0.2px rgb(105, 105, 105);
 }
 
-.form-input {
+.form-container {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 2rem 2rem;
+}
+
+.input-amounts {
+
+}
+
+#category-label {
+  font-size: 2rem;
+}
+
+#category {
+  padding: .5rem 2rem;
+  border:none;
+  background-color: rgba(196, 193, 193, 0.39);
+  border-radius: 5px;
+  font-size: 1.3rem;
+  margin: 2rem;
+}
+
+#category option {
+}
+
+option:hover {
+  background-color: red;
 }
 
 .input-box {
@@ -96,7 +126,7 @@ hr {
 }
 
 .modal-screen {
-  position:absolute;
+  position:fixed;
   margin: auto;
   width: 100vw;
   height: 100vh;
@@ -105,9 +135,16 @@ hr {
 }
 
 .modal-container {
-  max-width: 600px;
-  max-height: 300px;
-  background-color: white;
+  position: fixed;
+  z-index: 101;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background-color: rgb(250, 250, 250);
 }
 
 .input-btn {
@@ -150,15 +187,7 @@ hr {
   border-color: #0039d7;
 }
 
-.fin-container {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  padding: 0 .3rem;
-  align-items:center;
-  max-height: 503px;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-}
+
 
 .input-item:last-child {
   border-bottom: none;
@@ -176,9 +205,11 @@ hr {
 .n-mod {
   color: black;
 }
+
 .module {
   display:flex;
   padding: 2rem;
+  justify-content: space-around;
 }
 
 .btn {
@@ -237,7 +268,9 @@ hr {
 }
 
 .input-containers {
-  max-width: 500px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .fade-enter {
@@ -301,12 +334,14 @@ hr {
   flex-grow: 0;
 }
 
+
+
 .sidebar {
   display: flex;
   text-align: center;
   flex-direction: column;
   height: 100vh;
-  max-width: 270px;
+  width: 300px;
 }
 
 @keyframes floating {

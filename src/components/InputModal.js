@@ -5,20 +5,21 @@ import { useAuth } from "./auth";
 
 
 
-function InputModal() {
+function InputModal(props) {
   const localAuth = useAuth();
   const { cashFlow, setCashFlow } = props;
 
     const [input, setInput] = React.useState({
-        [moduleName]: "",
+        name: "",
         amount: "",
+        category: "",
       });
-    
+
 
     function handleChange(e) {
         let value = e.target.value;
         let name = e.target.name;
-    
+        
         if (name === "amount" && isNaN(value)) return;
     
         setInput((prev) => {
@@ -29,25 +30,25 @@ function InputModal() {
         });
       }
       
-      function addItem(e) {
-        e.preventDefault();
-        if (cashFlow.length > 50)
-          return alert(
-            "Maximum limit reached for safety reasons, maybe try not spending so much? :) haha"
-          );
-        let newExpenseObj = {
-          name: input[moduleName],
-          amount: input.amount,
-          id: uniqid(),
-        };
+      // function addItem(e) {
+      //   e.preventDefault();
+      //   if (cashFlow.length > 50)
+      //     return alert(
+      //       "Maximum limit reached for safety reasons, maybe try not spending so much? :) haha"
+      //     );
+      //   let newExpenseObj = {
+      //     name: input[moduleName],
+      //     amount: input.amount,
+      //     id: uniqid(),
+      //   };
     
-        setCashFlow((prev) => {
-          return [...prev, newExpenseObj];
-        });
+      //   setCashFlow((prev) => {
+      //     return [...prev, newExpenseObj];
+      //   });
     
-        updateFirebaseValues(localAuth.user, moduleName, newExpenseObj, "add");
-        setInput({ [moduleName]: "", amount: "" });
-      }
+      //   updateFirebaseValues(localAuth.user, moduleName, newExpenseObj, "add");
+      //   setInput({ [moduleName]: "", amount: "" });
+      // }
 
 
       // Need to dispose of props that aren't needed. This modal will pretty much function independent of what was previously done.
@@ -55,30 +56,37 @@ function InputModal() {
       // except for a few exceptions. 
       // Don't need to props of incomes,expenses, etc since the modal will be the one to set this.
 
+
+      console.log(input);
+
+  
   return (
     <div className="modal-screen">
         <div className="modal-container">
-        <form className="form-input" onSubmit={addItem}>
-            <select>
-
+        <form className="form-container"  >
+          <label id="category-label" htmlFor="category">Category</label>
+            <select id="category" name="category" onChange={handleChange} >
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+              <option value="savings">Savings</option>
             </select>
+            <div className="input-amounts">
           <input
-            onChange={handleChange}
-            name={moduleName}
-            value={input[moduleName]}
             className="input-box"
             placeholder="Name"
+            onChange={handleChange}
+            name="name"
             required
           ></input>
           <input
-            onChange={handleChange}
-            name="amount"
-            value={input.amount}
             className="input-box"
             placeholder="$ Amount"
+            onChange={handleChange}
+            name="amount"
             required
           ></input>
           <button className="input-btn">Add</button>
+          </div>
         </form>
         </div>
     </div>
