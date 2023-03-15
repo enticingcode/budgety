@@ -53,7 +53,7 @@ async function getPersonName(userId) {
     let docRef = doc(db, "users", userId);
     let document = await getDoc(docRef);
     let data = document.data();
-    let name = data.name;
+    let name = data.userName;
     console.log(name);
     return name;
   } catch (err) {

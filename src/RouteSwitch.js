@@ -17,9 +17,8 @@ const RouteSwitch = () => {
   const localAuth = useAuth();
   return (
     <>
-      <Sidebar />
+       {localAuth.user && <Sidebar />}
       <div className="app">
-        {/* <Navbar /> */}
         <Routes>
           <Route
             path="/"

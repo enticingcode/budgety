@@ -4,12 +4,12 @@ export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(localStorage.getItem("user") || null);
-  const [personName, setPersonName] = useState(
+  const [userName, setUserName] = useState(
     localStorage.getItem("username") || ""
   );
 
   return (
-    <AuthContext.Provider value={{ user, setUser, personName, setPersonName }}>
+    <AuthContext.Provider value={{ user, setUser, userName, setUserName }}>
       {children}
     </AuthContext.Provider>
   );

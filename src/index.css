@@ -310,6 +310,10 @@ hr {
   }
 }
 
+.charts-container {
+  display:flex;
+}
+
 @media only screen and (max-width: 1562px) {
   .news-Container {
     flex-direction: column;

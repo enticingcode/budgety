@@ -86,33 +86,11 @@ const Dashboard = () => {
     getData();
   }, []);
 
+  console.log(localAuth);
+
   return (
     <>
-      {/* should be state considering its an api call  upon login*/}
-
-      <h1 className="welcomeh1">Welcome {localAuth.personName} </h1>
-
-      {/* informational modules */}
-      {/* <div className="d-md-flex">
-        <section className="module d-flex flex-grow-1 justify-content-around m-3">
-          <div className="ext-info">
-            <h2 className="text-blue-500 text-2xl">Features coming soon:</h2>
-            <ul className="functionality-list">
-              <li>Financial goal planning</li>
-              <li>Monthly Budget Tracking</li>
-              <li>Transactions Tracking</li>
-              <li>iOS application</li>
-            </ul>
-          </div>
-
-          <div className="ext-info">
-            <h2 className="text-blue-500 text-2xl">Have any suggestions? </h2>
-            <p>Please feel free to reach out to us</p>
-            <a href="mialto:trujillomarvin@hotmail.com">Email</a>
-          </div>
-        </section>
-      </div> */}
-
+      <h1 className="welcomeh1">Welcome {localAuth.userName} </h1>
       {/* INCOME-EXPENSE MODULE */}
       <section className="module d-flex justify-content-evenly">
         <ModuleInputs
@@ -125,23 +103,8 @@ const Dashboard = () => {
           setCashFlow={setExpenses}
           moduleName="Expenses"
         />
-
-        <div className="chart-box">
-          <h2>Expense Tracker</h2>
-          <ChartModule stateNames={expenses} chartData={totalExpenses} />
-
-          {/* CASH FLOW INFORMATION */}
-          <h4 className="">Total Income: ${addValues(totalIncome)}</h4>
-          <h4 className="text-danger">
-            Total Expenses: ${addValues(totalExpenses)}
-          </h4>
-          <h4 className="text-success">
-            Remaining: ${remainingAfterSavings || remaining || ""}
-          </h4>
-        </div>
+        
       </section>
-
-      {/* SAVINGS MODULE */}
       <section className="module d-flex justify-content-center" >
         <div className=" w-100 ">
           <div className="in-headers">
@@ -152,17 +115,35 @@ const Dashboard = () => {
             />
           </div>
         </div>
-        <div className="chart-box w-25 text-center">
-          <h2>Savings Allocation</h2>
-          <ChartModule
-            stateNames={savingsAllocation}
-            chartData={totalSavings}
-          />
-          Total Allocated: ${addValues(totalSavings)}
-        </div>
       </section>
     </>
   );
 };
 
 export default Dashboard;
+
+
+
+      // <section class="charts-container">
+      //   <div className="chart-box">
+      //     <h2>Expense Tracker</h2>
+      //     <ChartModule stateNames={expenses} chartData={totalExpenses} />
+
+      //     {/* CASH FLOW INFORMATION */}
+      //     <h4 className="">Total Income: ${addValues(totalIncome)}</h4>
+      //     <h4 className="text-danger">
+      //       Total Expenses: ${addValues(totalExpenses)}
+      //     </h4>
+      //     <h4 className="text-success">
+      //       Remaining: ${remainingAfterSavings || remaining || ""}
+      //     </h4>
+      //   </div>
+      //   <div className="chart-box w-25 text-center">
+      //     <h2>Savings Allocation</h2>
+      //     <ChartModule
+      //       stateNames={savingsAllocation}
+      //       chartData={totalSavings}
+      //     />
+      //     Total Allocated: ${addValues(totalSavings)}
+      //   </div>
+      //   </section> 
