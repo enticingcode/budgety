@@ -1,0 +1,1 @@
+Creating new entry brings up Modal where category is selected.

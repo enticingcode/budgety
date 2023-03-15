@@ -84,13 +84,8 @@ hr {
   border: solid 0.2px rgb(105, 105, 105);
 }
 
-.form-inp {
+.form-input {
   display: flex;
-  margin-bottom: 1rem;
-  align-items: center;
-  justify-content: space-evenly;
-  min-width: 500px;
-  gap: 3px;
 }
 
 .input-box {
@@ -98,6 +93,21 @@ hr {
   border-radius: 5px;
   padding: 0.1em 0.4em;
   border: solid rgb(179, 179, 179) 1px;
+}
+
+.modal-screen {
+  position:absolute;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(39, 39, 39, 0.651);
+}
+
+.modal-container {
+  max-width: 600px;
+  max-height: 300px;
+  background-color: white;
 }
 
 .input-btn {
@@ -167,6 +177,7 @@ hr {
   color: black;
 }
 .module {
+  display:flex;
   padding: 2rem;
 }
 
@@ -225,7 +236,7 @@ hr {
   box-shadow: none !important;
 }
 
-.in-headers {
+.input-containers {
   max-width: 500px;
 }
 
@@ -295,7 +306,7 @@ hr {
   text-align: center;
   flex-direction: column;
   height: 100vh;
-  max-width: 400px !important;
+  max-width: 270px;
 }
 
 @keyframes floating {
@@ -320,7 +331,7 @@ hr {
     width: 100%;
   }
 
-  .in-headers {
+  .input-containers {
     text-align: center;
   }
 
@@ -331,12 +342,9 @@ hr {
     height: initial;
   }
 
-  .form-inp {
+  .form-input {
     flex-direction: column;
     overflow: hidden;
-  }
-
-  .input-btn {
   }
 
   .news-link img {

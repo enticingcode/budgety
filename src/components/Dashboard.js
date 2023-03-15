@@ -4,16 +4,15 @@ import ChartModule from "./ChartModule";
 import { db } from "./FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 import ModuleInputs from "./ModuleInputs";
+import InputModal from "./InputModal";
 
 const Dashboard = () => {
   const localAuth = useAuth();
   const userCollectionRef = doc(db, "users", localAuth.user);
   const [user, setUser] = React.useState();
 
-  console.log("render");
-  //pull to ui on initial load, and save to local storage.
+  const [isModalActive, setIsModalActive] = React.useState(false);
 
-  // when add new income add to local storage, check for local storage changes to upload.
   const [incomeSources, setIncomeSources] = React.useState([]);
 
   const [expenses, setExpenses] = React.useState([]);
@@ -31,6 +30,12 @@ const Dashboard = () => {
   let totalSavings = savingsAllocation.map((item) => {
     return item.amount;
   });
+
+  function toggleModal(e) {
+      setIsModalActive(prev => {
+        return !prev;
+      })
+  }
 
   // Add values of filtered array to display;
   function addValues(arr) {
@@ -67,7 +72,6 @@ const Dashboard = () => {
 
       setUser(name);
 
-      console.log(incomesData);
 
       // SET STATES //
       if (incomesData) {
@@ -86,13 +90,16 @@ const Dashboard = () => {
     getData();
   }, []);
 
-  console.log(localAuth);
+  console.log(isModalActive);
+
 
   return (
     <>
       <h1 className="welcomeh1">Welcome {localAuth.userName} </h1>
       {/* INCOME-EXPENSE MODULE */}
-      <section className="module d-flex justify-content-evenly">
+      <button onClick={toggleModal}>Add Entry</button>
+      {isModalActive && <InputModal/>}
+      <section className="module">
         <ModuleInputs
           cashFlow={incomeSources}
           setCashFlow={setIncomeSources}
@@ -105,16 +112,12 @@ const Dashboard = () => {
         />
         
       </section>
-      <section className="module d-flex justify-content-center" >
-        <div className=" w-100 ">
-          <div className="in-headers">
+      <section className="module" >
             <ModuleInputs
               cashFlow={savingsAllocation}
               setCashFlow={setSavingsAllocation}
               moduleName="Savings"
             />
-          </div>
-        </div>
       </section>
     </>
   );

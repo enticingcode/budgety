@@ -6,44 +6,6 @@ import { useAuth } from "./auth";
 function ModuleInputs(props) {
   const localAuth = useAuth();
   const { cashFlow, setCashFlow, moduleName } = props;
-  const [input, setInput] = React.useState({
-    [moduleName]: "",
-    amount: "",
-  });
-
-  function handleChange(e) {
-    let value = e.target.value;
-    let name = e.target.name;
-
-    if (name === "amount" && isNaN(value)) return;
-
-    setInput((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
-  }
-
-  function addItem(e) {
-    e.preventDefault();
-    if (cashFlow.length > 50)
-      return alert(
-        "Maximum limit reached for safety reasons, maybe try not spending so much? :) haha"
-      );
-    let newExpenseObj = {
-      name: input[moduleName],
-      amount: input.amount,
-      id: uniqid(),
-    };
-
-    setCashFlow((prev) => {
-      return [...prev, newExpenseObj];
-    });
-
-    updateFirebaseValues(localAuth.user, moduleName, newExpenseObj, "add");
-    setInput({ [moduleName]: "", amount: "" });
-  }
 
   function deleteItem(e) {
     e.preventDefault();
@@ -76,9 +38,19 @@ function ModuleInputs(props) {
 
   return (
     <>
-      <div className="in-headers">
+      <div className="input-containers">
         <h2>{moduleName}</h2>
-        <form className="form-inp" onSubmit={addItem}>
+        
+        <div className="fin-container">{expenseElements}</div>
+      </div>
+    </>
+  );
+}
+
+export default ModuleInputs;
+
+
+{/* <form className="form-input" onSubmit={addItem}>
           <input
             onChange={handleChange}
             name={moduleName}
@@ -96,11 +68,4 @@ function ModuleInputs(props) {
             required
           ></input>
           <button className="input-btn">Add</button>
-        </form>
-        <div className="fin-container">{expenseElements}</div>
-      </div>
-    </>
-  );
-}
-
-export default ModuleInputs;
+        </form> */}
