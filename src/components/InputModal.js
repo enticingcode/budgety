@@ -7,13 +7,14 @@ import { useAuth } from "./auth";
 
 function InputModal(props) {
   const localAuth = useAuth();
-  const { cashFlow, setCashFlow } = props;
+  const { toggleModal, setIncomeSources, setExpenses, setSavingsAllocation } = props;
 
     const [input, setInput] = React.useState({
         name: "",
         amount: "",
-        category: "",
+        category: "Income",
       });
+
 
 
     function handleChange(e) {
@@ -30,25 +31,22 @@ function InputModal(props) {
         });
       }
       
-      // function addItem(e) {
-      //   e.preventDefault();
-      //   if (cashFlow.length > 50)
-      //     return alert(
-      //       "Maximum limit reached for safety reasons, maybe try not spending so much? :) haha"
-      //     );
-      //   let newExpenseObj = {
-      //     name: input[moduleName],
-      //     amount: input.amount,
-      //     id: uniqid(),
-      //   };
+      function addItem(e) {
+        e.preventDefault();
+        
+        let newExpenseObj = {
+          name: input.name,
+          amount: input.amount,
+          id: uniqid(),
+        };
     
-      //   setCashFlow((prev) => {
-      //     return [...prev, newExpenseObj];
-      //   });
-    
-      //   updateFirebaseValues(localAuth.user, moduleName, newExpenseObj, "add");
-      //   setInput({ [moduleName]: "", amount: "" });
-      // }
+        if(input.category === "Income") setIncomeSources(prev => [...prev, newExpenseObj]);
+        if(input.category === "Expenses") setExpenses(prev => [...prev, newExpenseObj]);
+        if(input.category === "Savings") setSavingsAllocation(prev => [...prev, newExpenseObj]);
+        
+        updateFirebaseValues(localAuth.user, input.category, newExpenseObj, "add");
+        setInput({ name: "", amount: "", category: "" });
+      }
 
 
       // Need to dispose of props that aren't needed. This modal will pretty much function independent of what was previously done.
@@ -65,10 +63,10 @@ function InputModal(props) {
         <div className="modal-container">
         <form className="form-container"  >
           <label id="category-label" htmlFor="category">Category</label>
-            <select id="category" name="category" onChange={handleChange} >
-              <option value="income">Income</option>
-              <option value="expense">Expense</option>
-              <option value="savings">Savings</option>
+            <select id="category"  name="category" onChange={handleChange} >
+              <option defaultValue value="Income">Income</option>
+              <option value="Expenses">Expense</option>
+              <option value="Savings">Savings</option>
             </select>
             <div className="input-amounts">
           <input
@@ -76,16 +74,21 @@ function InputModal(props) {
             placeholder="Name"
             onChange={handleChange}
             name="name"
+            value={input.name}
             required
           ></input>
           <input
             className="input-box"
-            placeholder="$ Amount"
+            placeholder="$"
             onChange={handleChange}
             name="amount"
+            value={input.amount}
             required
           ></input>
-          <button className="input-btn">Add</button>
+          </div>
+          <div className="input-selection">
+          <button onClick={toggleModal} className="input-btn">Cancel</button>
+          <button onClick={addItem} className="input-btn">Add</button>
           </div>
         </form>
         </div>

@@ -96,9 +96,17 @@ const Dashboard = () => {
   return (
     <>
       <h1 className="welcomeh1">Welcome {localAuth.userName} </h1>
+
       {/* INCOME-EXPENSE MODULE */}
-      <button onClick={toggleModal}>Add Entry</button>
-      {isModalActive && <InputModal/>}
+      <button className="addEntryBtn" onClick={toggleModal}>&#43;</button>
+
+      {isModalActive && 
+      <InputModal 
+      toggleModal={toggleModal} 
+      setIncomeSources={setIncomeSources} 
+      setExpenses={setExpenses} 
+      setSavingsAllocation={setSavingsAllocation}/>}
+
       <section className="module">
         <ModuleInputs
           cashFlow={incomeSources}

@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
       
-        <nav className="sidebar navbar navbar-expand-lg align-items-start bg-dark">
+        <nav className="sidebar navbar navbar-expand-lg align-items-start">
           <div className="container-fluid flex-column px-4">
             <NavLink className="navbar-brand" to="/">
               <img

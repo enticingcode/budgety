@@ -76,7 +76,7 @@ async function updateFirebaseValues(userID, stateType, state, action) {
     try {
       await setDoc(userRef, { [stateType]: state }, { merge: true });
     } catch (err) {
-      console.error("error adding document", err);
+      console.error("error deleting document", err);
     }
   }
 }

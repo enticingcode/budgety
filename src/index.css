@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1.1rem;
 }
 .bg-tan {
@@ -50,7 +50,7 @@ hr {
   background-color: rgb(245, 245, 245);
 }
 
-.input-item {
+.finance-item {
   display: flex;
   font-size: 1.5rem;
   border-radius: 5px;
@@ -66,12 +66,12 @@ hr {
   border-radius: 5px;
 }
 
-.input-item:hover {
+.finance-item:hover {
   background-color: rgb(243, 243, 243);
   transition: .5s all;
 }
 
-.input-item:hover .closeOut {
+.finance-item:hover .closeOut {
   transition: 0.3s all;
   visibility: visible;
   opacity: 1;
@@ -95,7 +95,8 @@ hr {
 }
 
 .input-amounts {
-
+  display:flex;
+  flex-direction: column;
 }
 
 #category-label {
@@ -119,10 +120,15 @@ option:hover {
 }
 
 .input-box {
-  width: 10em;
-  border-radius: 5px;
-  padding: 0.1em 0.4em;
-  border: solid rgb(179, 179, 179) 1px;
+  outline: none;
+  padding: .8rem 1rem;
+  border: solid rgb(235, 235, 235) 1px;
+  border-radius: 7px;
+}
+
+.input-selection button {
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .modal-screen {
@@ -189,7 +195,7 @@ option:hover {
 
 
 
-.input-item:last-child {
+.finance-item:last-child {
   border-bottom: none;
 }
 
@@ -198,7 +204,7 @@ option:hover {
   border: none;
 }
 
-.input-item p {
+.finance-item p {
   margin: 0;
 }
 
@@ -221,6 +227,22 @@ option:hover {
 /* .w-25 {
   width: 35% !important;
 } */
+
+
+.addEntryBtn {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  background-color: #12131c;
+  color:white;
+  font-size: 50pt;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  padding: 10px 20px;
+}
 
 .input-div {
   border: rgb(184, 184, 184) solid 1px;
@@ -256,7 +278,7 @@ option:hover {
 }
 
 .navbar * {
-  color: rgb(160, 160, 160) !important;
+  color: white !important;
 }
 
 .navbar-toggler {
@@ -342,6 +364,7 @@ option:hover {
   flex-direction: column;
   height: 100vh;
   width: 300px;
+  background-color: #12131c;
 }
 
 @keyframes floating {

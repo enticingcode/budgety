@@ -22,7 +22,7 @@ function ModuleInputs(props) {
 
   let expenseElements = cashFlow.map((item) => {
     return (
-      <div className="input-item" key={item.id} id={item.id}>
+      <div className="finance-item" key={item.id} id={item.id}>
         <p className="money-info">
           {item.name}: ${item.amount}
         </p>
@@ -50,22 +50,3 @@ function ModuleInputs(props) {
 export default ModuleInputs;
 
 
-{/* <form className="form-input" onSubmit={addItem}>
-          <input
-            onChange={handleChange}
-            name={moduleName}
-            value={input[moduleName]}
-            className="input-box"
-            placeholder="Name"
-            required
-          ></input>
-          <input
-            onChange={handleChange}
-            name="amount"
-            value={input.amount}
-            className="input-box"
-            placeholder="$ Amount"
-            required
-          ></input>
-          <button className="input-btn">Add</button>
-        </form> */}
