@@ -37,13 +37,12 @@ function ModuleInputs(props) {
   });
 
   return (
-    <div>
+    <section className="module">
       <h2>{moduleName}</h2>
-
       <div className="input-containers">
         {expenseElements}
       </div>
-    </div>
+    </section>
   );
 }
 

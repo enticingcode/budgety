@@ -32,9 +32,9 @@ const Dashboard = () => {
   });
 
   function toggleModal(e) {
-      setIsModalActive(prev => {
-        return !prev;
-      })
+    setIsModalActive(prev => {
+      return !prev;
+    })
   }
 
   // Add values of filtered array to display;
@@ -98,35 +98,32 @@ const Dashboard = () => {
       <h1 className="welcomeh1">Welcome {localAuth.userName} </h1>
 
       {/* INCOME-EXPENSE MODULE */}
-      <button className="addEntryBtn" onClick={toggleModal}>&#43;</button>
+      <button className="addEntryBtn" onClick={toggleModal}>+</button>
 
-      {isModalActive && 
-      <InputModal 
-      toggleModal={toggleModal} 
-      setIncomeSources={setIncomeSources} 
-      setExpenses={setExpenses} 
-      setSavingsAllocation={setSavingsAllocation}/>}
+      {isModalActive &&
+        <InputModal
+          toggleModal={toggleModal}
+          setIncomeSources={setIncomeSources}
+          setExpenses={setExpenses}
+          setSavingsAllocation={setSavingsAllocation} />}
 
-      <section className="module">
-        <ModuleInputs
-          cashFlow={incomeSources}
-          setCashFlow={setIncomeSources}
-          moduleName="Income"
-        />
-        <ModuleInputs
-          cashFlow={expenses}
-          setCashFlow={setExpenses}
-          moduleName="Expenses"
-        />
-        
-      </section>
-      <section className="module" >
-            <ModuleInputs
-              cashFlow={savingsAllocation}
-              setCashFlow={setSavingsAllocation}
-              moduleName="Savings"
-            />
-      </section>
+      <ModuleInputs
+        cashFlow={incomeSources}
+        setCashFlow={setIncomeSources}
+        moduleName="Income"
+      />
+
+      <ModuleInputs
+        cashFlow={expenses}
+        setCashFlow={setExpenses}
+        moduleName="Expenses"
+      />
+
+      <ModuleInputs
+        cashFlow={savingsAllocation}
+        setCashFlow={setSavingsAllocation}
+        moduleName="Savings"
+      />
     </>
   );
 };

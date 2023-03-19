@@ -33,6 +33,8 @@ function InputModal(props) {
       
       function addItem(e) {
         e.preventDefault();
+
+        console.log('form submit')
         
         let newExpenseObj = {
           name: input.name,
@@ -46,6 +48,7 @@ function InputModal(props) {
         
         updateFirebaseValues(localAuth.user, input.category, newExpenseObj, "add");
         setInput({ name: "", amount: "", category: "" });
+        toggleModal();
       }
 
 
@@ -61,7 +64,7 @@ function InputModal(props) {
   return (
     <div className="modal-screen">
         <div className="modal-container">
-        <form className="form-container"  >
+        <form className="form-container" onSubmit={addItem}>
           <label id="category-label" htmlFor="category">Category</label>
             <select id="category"  name="category" onChange={handleChange} >
               <option defaultValue value="Income">Income</option>
@@ -87,8 +90,8 @@ function InputModal(props) {
           ></input>
           </div>
           <div className="input-selection">
-          <button onClick={toggleModal} className="input-btn">Cancel</button>
-          <button onClick={addItem} className="input-btn">Add</button>
+          <button type="button" onClick={toggleModal} className="input-btn">Close</button>
+          <button type="submit" className="input-btn">Add</button>
           </div>
         </form>
         </div>
