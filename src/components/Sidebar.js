@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import BudgetLogo from "../assets/images/budgety.png";
 import { useAuth } from "./auth";
+import "../styles/sidebar.css"
+
 
 const Sidebar = () => {
   const localAuth = useAuth();
@@ -15,15 +17,14 @@ const Sidebar = () => {
   return (
       
         <nav className="sidebar navbar navbar-expand-lg align-items-start">
-          <div className="container-fluid flex-column px-4">
-            <NavLink className="navbar-brand" to="/">
+          <div className="container-fluid flex-column sidebar-nav">
+            <a className="navbar-brand" to="/">
               <img
                 alt="budgety logo"
                 width="50px"
-                className=""
                 src={BudgetLogo}
               ></img>
-            </NavLink>
+            </a>
             <button
               className="navbar-toggler"
               type="button"
@@ -37,7 +38,7 @@ const Sidebar = () => {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav flex-column">
+              <ul className="navbar-nav nav-list flex-column">
                 <li className="nav-item">
                   <NavLink className="nav-link fs-4" to="/">
                     <span data-bs-toggle="collapse" data-bs-target="#navbarToggler">
@@ -46,7 +47,14 @@ const Sidebar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link fs-4" to="/weekly-forecasts">
+                  <NavLink className="nav-link fs-4" to="/satistics">
+                    <span data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+                      Statistics
+                    </span>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link fs-4" to="/news">
                     <span
                       data-bs-toggle="collapse"
                       data-bs-target="#navbarToggler"
@@ -56,17 +64,14 @@ const Sidebar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <button
-                    className="nav-link bg-transparent border-0  fs-4"
-                    onClick={logout}
-                  >
                     <span
+                    onClick={logout}
+                    className="nav-link logout-btn"
                       data-bs-toggle="collapse"
                       data-bs-target="#navbarToggler"
                     >
                       Logout
                     </span>
-                  </button>
                 </li>
               </ul>
             </div>

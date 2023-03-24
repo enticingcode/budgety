@@ -5,6 +5,7 @@ import { db } from "./FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 import ModuleInputs from "./ModuleInputs";
 import InputModal from "./InputModal";
+import "../styles/dashboard.css"
 
 const Dashboard = () => {
   const localAuth = useAuth();
@@ -94,11 +95,9 @@ const Dashboard = () => {
 
 
   return (
-    <>
-      <h1 className="welcomeh1">Welcome {localAuth.userName} </h1>
-
+    <section className="dashboard">
       {/* INCOME-EXPENSE MODULE */}
-      <button className="addEntryBtn" onClick={toggleModal}>+</button>
+      {/* <button className="new-entry" onClick={toggleModal}>New Entry</button> */}
 
       {isModalActive &&
         <InputModal
@@ -106,6 +105,8 @@ const Dashboard = () => {
           setIncomeSources={setIncomeSources}
           setExpenses={setExpenses}
           setSavingsAllocation={setSavingsAllocation} />}
+
+      <div className="current-bal">Current Balance</div>
 
       <ModuleInputs
         cashFlow={incomeSources}
@@ -124,7 +125,7 @@ const Dashboard = () => {
         setCashFlow={setSavingsAllocation}
         moduleName="Savings"
       />
-    </>
+    </section>
   );
 };
 

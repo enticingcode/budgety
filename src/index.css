@@ -12,6 +12,7 @@ html {
 }
 
 .login-txt-div {
+
   color: black;
   text-align: center;
 }
@@ -229,22 +230,19 @@ option:hover {
 } */
 
 
-.addEntryBtn {
-  display:flex;
+.new-entry {
   align-items: center;
   justify-content: center;
   outline: none;
   border: none;
   background-color: #12131c;
   color:white;
-  font-size: 50pt;
-  width:65px;
-  height: 65px;
-  border-radius: 50%;
-  padding: 10px 20px;
-  position:relative;
-  left: 90%;
-  top: 25px;
+  border-radius: 5px;
+  width: 100px;
+  height: 70px;
+  position:fixed;
+  right: 0;
+
 }
 
 .input-div {
@@ -276,27 +274,13 @@ option:hover {
   background-color: rgb(241, 241, 241);
 }
 
-.nav-item {
-  margin: 1rem 0;
+
+.logout-btn:hover {
+  cursor: pointer;
 }
 
-.navbar * {
-  color: white !important;
-}
 
-.navbar-toggler {
-  border: none !important;
-}
 
-.navbar-toggler:focus {
-  box-shadow: none !important;
-}
-
-.input-containers {
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-}
 
 .fade-enter {
   opacity: 0;
@@ -322,12 +306,19 @@ option:hover {
 .login-page {
   height: 100vh;
 }
+
+
+
 .chart-box {
   text-align: center;
   width: 30%;
   max-width: 700px;
 }
 
+.active {
+  padding: .8rem 0;
+  background-color: #292a38;
+}
 .edit-png {
   opacity: 0;
 }
@@ -355,20 +346,8 @@ option:hover {
   align-items: center;
 }
 
-.navbar-collapse {
-  flex-grow: 0;
-}
 
 
-
-.sidebar {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  height: 100vh;
-  width: 300px;
-  background-color: #12131c;
-}
 
 @keyframes floating {
   0% {
