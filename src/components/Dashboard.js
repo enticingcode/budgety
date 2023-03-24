@@ -96,6 +96,7 @@ const Dashboard = () => {
 
   return (
     <section className="dashboard">
+      
       {/* INCOME-EXPENSE MODULE */}
       {/* <button className="new-entry" onClick={toggleModal}>New Entry</button> */}
 
@@ -106,7 +107,10 @@ const Dashboard = () => {
           setExpenses={setExpenses}
           setSavingsAllocation={setSavingsAllocation} />}
 
-      <div className="current-bal">Current Balance</div>
+      <div className="current-bal">
+        <p>Current Balance</p>
+        <p>$7,305</p>
+      </div>
 
       <ModuleInputs
         cashFlow={incomeSources}

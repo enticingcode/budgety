@@ -365,6 +365,11 @@ option:hover {
   display:flex;
 }
 
+.input-containers {
+  /* Used to hide corners of inputs */
+  overflow:hidden;
+}
+
 @media only screen and (max-width: 1562px) {
   .news-Container {
     flex-direction: column;

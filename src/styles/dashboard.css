@@ -2,7 +2,6 @@
     display: grid;
     width: 100%;
     height: 100%;
-    grid-template: 1fr 1fr 1fr 1fr / 900px 1fr;
 }
 
 .input-containers {
@@ -12,9 +11,19 @@
   
 
   .current-bal {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     justify-self: center;
     align-self: center;
+    border-radius: 10px;
     background-color:  #12131c;
+    color:white;
     width: 760px;
     height: 195px;
+  }
+
+  .current-bal :nth-child(2) {
+    font-size: 2rem;
   }
