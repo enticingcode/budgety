@@ -4,6 +4,11 @@ html {
 #root {
   display: flex;
 }
+
+body {
+  /* font-size: 1.2vw !important; */
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -51,32 +56,7 @@ hr {
   background-color: rgb(245, 245, 245);
 }
 
-.finance-item {
-  display: flex;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  padding: 1rem 1rem;
-  width: 500px;
-  justify-content: space-between;
-}
 
-.closeOut {
-  width: 30px;
-  visibility: hidden;
-  opacity: 0;
-  border-radius: 5px;
-}
-
-.finance-item:hover {
-  background-color: rgb(243, 243, 243);
-  transition: .5s all;
-}
-
-.finance-item:hover .closeOut {
-  transition: 0.3s all;
-  visibility: visible;
-  opacity: 1;
-}
 
 .login-input {
   display: flex;
@@ -93,6 +73,14 @@ hr {
   height: 100%;
   width: 100%;
   padding: 2rem 2rem;
+}
+
+
+.closeOut {
+  width: 30px;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 5px;
 }
 
 .input-amounts {
@@ -211,12 +199,6 @@ option:hover {
 
 .n-mod {
   color: black;
-}
-
-.module {
-  display:flex;
-  padding: 2rem;
-  justify-content: space-around;
 }
 
 .btn {
@@ -365,10 +347,7 @@ option:hover {
   display:flex;
 }
 
-.input-containers {
-  /* Used to hide corners of inputs */
-  overflow:hidden;
-}
+
 
 @media only screen and (max-width: 1562px) {
   .news-Container {

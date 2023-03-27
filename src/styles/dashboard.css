@@ -1,5 +1,6 @@
 .dashboard {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
 }
@@ -26,4 +27,34 @@
 
   .current-bal :nth-child(2) {
     font-size: 2rem;
+  }
+
+  .financials-section {
+    display:flex;
+  }
+
+  .module {
+    display:flex;
+    justify-content: space-around;
+  }
+
+  .input-containers {
+    /* Used to hide corners of inputs */
+    overflow:hidden;
+  }
+
+  .finance-item {
+    border-radius: 5px;
+  }
+  
+
+  .finance-item:hover {
+    background-color: rgb(243, 243, 243);
+    transition: .5s all;
+  }
+  
+  .finance-item:hover .closeOut {
+    transition: 0.3s all;
+    visibility: visible;
+    opacity: 1;
   }

@@ -5,7 +5,7 @@ import { db } from "./FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 import ModuleInputs from "./ModuleInputs";
 import InputModal from "./InputModal";
-import "../styles/dashboard.css"
+import "../styles/dashboard.css";
 
 const Dashboard = () => {
   const localAuth = useAuth();
@@ -33,9 +33,9 @@ const Dashboard = () => {
   });
 
   function toggleModal(e) {
-    setIsModalActive(prev => {
+    setIsModalActive((prev) => {
       return !prev;
-    })
+    });
   }
 
   // Add values of filtered array to display;
@@ -73,7 +73,6 @@ const Dashboard = () => {
 
       setUser(name);
 
-
       // SET STATES //
       if (incomesData) {
         setIncomeSources(incomesData);
@@ -93,70 +92,72 @@ const Dashboard = () => {
 
   console.log(isModalActive);
 
-
   return (
-    <section className="dashboard">
-      
+    <main className="dashboard">
       {/* INCOME-EXPENSE MODULE */}
       {/* <button className="new-entry" onClick={toggleModal}>New Entry</button> */}
 
-      {isModalActive &&
+      {isModalActive && (
         <InputModal
           toggleModal={toggleModal}
           setIncomeSources={setIncomeSources}
           setExpenses={setExpenses}
-          setSavingsAllocation={setSavingsAllocation} />}
+          setSavingsAllocation={setSavingsAllocation}
+        />
+      )}
 
-      <div className="current-bal">
-        <p>Current Balance</p>
-        <p>$7,305</p>
-      </div>
+      <section className="top-section">
+        <div className="current-bal">
+          <p>Current Balance</p>
+          <p>$7,305</p>
+        </div>
+      </section>
 
-      <ModuleInputs
-        cashFlow={incomeSources}
-        setCashFlow={setIncomeSources}
-        moduleName="Income"
-      />
+      <section className="financials-section">
+        <ModuleInputs
+          cashFlow={incomeSources}
+          setCashFlow={setIncomeSources}
+          moduleName="Income"
+        />
 
-      <ModuleInputs
-        cashFlow={expenses}
-        setCashFlow={setExpenses}
-        moduleName="Expenses"
-      />
+        <ModuleInputs
+          cashFlow={expenses}
+          setCashFlow={setExpenses}
+          moduleName="Expenses"
+        />
 
-      <ModuleInputs
-        cashFlow={savingsAllocation}
-        setCashFlow={setSavingsAllocation}
-        moduleName="Savings"
-      />
-    </section>
+        <ModuleInputs
+          cashFlow={savingsAllocation}
+          setCashFlow={setSavingsAllocation}
+          moduleName="Savings"
+        />
+      </section>
+    </main>
   );
 };
 
 export default Dashboard;
 
+// <section class="charts-container">
+//   <div className="chart-box">
+//     <h2>Expense Tracker</h2>
+//     <ChartModule stateNames={expenses} chartData={totalExpenses} />
 
-
-      // <section class="charts-container">
-      //   <div className="chart-box">
-      //     <h2>Expense Tracker</h2>
-      //     <ChartModule stateNames={expenses} chartData={totalExpenses} />
-
-      //     {/* CASH FLOW INFORMATION */}
-      //     <h4 className="">Total Income: ${addValues(totalIncome)}</h4>
-      //     <h4 className="text-danger">
-      //       Total Expenses: ${addValues(totalExpenses)}
-      //     </h4>
-      //     <h4 className="text-success">
-      //       Remaining: ${remainingAfterSavings || remaining || ""}
-      //     </h4>
-      //   </div>
-      //   <div className="chart-box w-25 text-center">
-      //     <h2>Savings Allocation</h2>
-      //     <ChartModule
-      //       stateNames={savingsAllocation}
-      //       chartData={totalSavings}
-      //     />
-      //     Total Allocated: ${addValues(totalSavings)}
-      //   </div>
-      //   </section> 
+//     {/* CASH FLOW INFORMATION */}
+//     <h4 className="">Total Income: ${addValues(totalIncome)}</h4>
+//     <h4 className="text-danger">
+//       Total Expenses: ${addValues(totalExpenses)}
+//     </h4>
+//     <h4 className="text-success">
+//       Remaining: ${remainingAfterSavings || remaining || ""}
+//     </h4>
+//   </div>
+//   <div className="chart-box w-25 text-center">
+//     <h2>Savings Allocation</h2>
+//     <ChartModule
+//       stateNames={savingsAllocation}
+//       chartData={totalSavings}
+//     />
+//     Total Allocated: ${addValues(totalSavings)}
+//   </div>
+//   </section>
