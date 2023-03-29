@@ -1,6 +1,10 @@
-html {
-  overflow: scroll;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+
+html, body, #root {
+  height: 100%;
 }
+
 #root {
   display: flex;
 }
@@ -9,12 +13,12 @@ body {
   /* font-size: 1.2vw !important; */
 }
 
-.app {
+/* .app {
   display: flex;
   flex-direction: column;
   width: calc(100vw - 300px);
   max-width: 2000px;
-}
+} */
 
 .login-txt-div {
 
@@ -23,7 +27,7 @@ body {
 }
 
 body {
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.1rem;
 }
 .bg-tan {
@@ -32,11 +36,6 @@ body {
 
 .bg-bluey {
   background-color: #bfdbdc;
-}
-
-hr {
-  width: 7rem;
-  transform: rotate(90deg);
 }
 
 .bg-greenery {
@@ -55,8 +54,6 @@ hr {
   padding: 1rem;
   background-color: rgb(245, 245, 245);
 }
-
-
 
 .login-input {
   display: flex;
@@ -182,20 +179,11 @@ option:hover {
   border-color: #0039d7;
 }
 
-
-
-.finance-item:last-child {
-  border-bottom: none;
-}
-
 .trash-ico {
   background-color: transparent;
   border: none;
 }
 
-.finance-item p {
-  margin: 0;
-}
 
 .n-mod {
   color: black;
@@ -403,12 +391,7 @@ option:hover {
     margin-top: 1.5rem;
   }
 
-  .module {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cpi-data {
+    .cpi-data {
     flex-direction: column !important;
   }
 }

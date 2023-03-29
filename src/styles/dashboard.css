@@ -1,4 +1,6 @@
-.dashboard {
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+  .dashboard {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -10,6 +12,13 @@
     border: solid black 1px;
   }
   
+.top-section {
+  padding: 40px 40px;
+}
+
+.middle-section {
+  height: 300px;
+}
 
   .current-bal {
     display:flex;
@@ -18,11 +27,16 @@
     align-items: center;
     justify-self: center;
     align-self: center;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color:  #12131c;
     color:white;
-    width: 760px;
-    height: 195px;
+    max-width: 500px;
+    max-height: 195px;
+    padding: 15px 0;
+  }
+
+  .current-bal p:last-child {
+    margin-bottom: 0;
   }
 
   .current-bal :nth-child(2) {
@@ -31,23 +45,43 @@
 
   .financials-section {
     display:flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
   }
 
   .module {
+    font-family: 'Quicksand', sans-serif;
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 10px;
+  }
+
+  .financeItem-containers {
+    width: 100%;
+    /* Used to hide corners of inputs */
+    text-align: center;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 5px;
+    height: 200px;
+  }
+
+  .finance-legend {
     display:flex;
     justify-content: space-around;
   }
 
-  .input-containers {
-    /* Used to hide corners of inputs */
-    overflow:hidden;
-  }
-
   .finance-item {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
     border-radius: 5px;
+    padding: 15px 15px;
+    border-radius: 5px;
+    /* border: 1px solid black; */
   }
   
-
   .finance-item:hover {
     background-color: rgb(243, 243, 243);
     transition: .5s all;
@@ -58,3 +92,13 @@
     visibility: visible;
     opacity: 1;
   }
+
+  .finance-item:last-child {
+    /* border-bottom: none; */
+  }
+
+  
+.finance-item p {
+  margin: 0;
+  font-size: 1rem;
+}

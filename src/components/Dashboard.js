@@ -93,9 +93,9 @@ const Dashboard = () => {
   console.log(isModalActive);
 
   return (
-    <main className="dashboard">
+    <>
       {/* INCOME-EXPENSE MODULE */}
-      {/* <button className="new-entry" onClick={toggleModal}>New Entry</button> */}
+      <button className="new-entry" onClick={toggleModal}>New Entry</button>
 
       {isModalActive && (
         <InputModal
@@ -111,6 +111,9 @@ const Dashboard = () => {
           <p>Current Balance</p>
           <p>$7,305</p>
         </div>
+      </section>
+
+      <section className="middle-section top-offenders">
       </section>
 
       <section className="financials-section">
@@ -132,7 +135,7 @@ const Dashboard = () => {
           moduleName="Savings"
         />
       </section>
-    </main>
+    </>
   );
 };
 

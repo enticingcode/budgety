@@ -18,7 +18,7 @@ const RouteSwitch = () => {
   return (
     <>
        {localAuth.user && <Sidebar />}
-      <div className="app">
+      <main className="dashboard">
         <Routes>
           <Route
             path="/"
@@ -51,7 +51,7 @@ const RouteSwitch = () => {
           {/* 404 PATH */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
+      </main>
     </>
   );
 };

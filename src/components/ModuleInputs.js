@@ -37,12 +37,19 @@ function ModuleInputs(props) {
   });
 
   return (
-    <section className="module">
+    <div className="module">
       <h2>{moduleName}</h2>
-      <div className="input-containers">
+      <div className="financeItem-containers">
+        <div className="finance-legend">
+          <p>Name</p>
+          <p>Type</p>
+          <p>Date</p>
+          <p>Amount</p>
+        </div>
+        {cashFlow.length < 1 && <div><p>No Items Yet</p></div>}
         {expenseElements}
       </div>
-    </section>
+    </div>
   );
 }
 
