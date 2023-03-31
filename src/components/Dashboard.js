@@ -6,6 +6,7 @@ import { getDoc, doc } from "firebase/firestore";
 import ModuleInputs from "./ModuleInputs";
 import InputModal from "./InputModal";
 import "../styles/dashboard.css";
+import TopOffenders from "./TopOffenders";
 
 const Dashboard = () => {
   const localAuth = useAuth();
@@ -95,8 +96,6 @@ const Dashboard = () => {
   return (
     <>
       {/* INCOME-EXPENSE MODULE */}
-      <button className="new-entry" onClick={toggleModal}>New Entry</button>
-
       {isModalActive && (
         <InputModal
           toggleModal={toggleModal}
@@ -111,9 +110,15 @@ const Dashboard = () => {
           <p>Current Balance</p>
           <p>$7,305</p>
         </div>
+
+        <div className="goals-container">
+        </div>
+
+        {/* <button className="new-entry" onClick={toggleModal}>Manage</button> */}
       </section>
 
       <section className="middle-section top-offenders">
+      <TopOffenders/>
       </section>
 
       <section className="financials-section">
