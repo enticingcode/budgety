@@ -2,9 +2,11 @@
 
   .dashboard {
     display: flex;
+    overflow:scroll;
     flex-direction: column;
     width: 100%;
     height: 100%;
+    padding: 40px;
 }
 
 .input-containers {
@@ -12,9 +14,6 @@
     border: solid black 1px;
   }
   
-.top-section {
-  padding: 40px 40px;
-}
 
 .middle-section {
   height: 300px;
@@ -43,6 +42,23 @@
     font-size: 2rem;
   }
 
+
+  .new-entry {
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    background-color: #12131c;
+    color:white;
+    border-radius: 5px;
+    width: 100px;
+    height: 70px;
+    /* position:fixed; */
+    right: 0;
+  
+  }
+
+
   .financials-section {
     display:flex;
     flex-direction: column;
@@ -54,24 +70,38 @@
     display:flex;
     flex-direction: column;
     flex-grow: 1;
+    padding: 15px 0;
     margin: 0 10px;
   }
 
   .financeItem-containers {
     width: 100%;
-    /* Used to hide corners of inputs */
     text-align: center;
-    overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 5px;
-    height: 200px;
+    max-height: 200px;
+    /* Used to hide corners of inputs */
+    overflow: hidden;
+    /* ============================== */
+
   }
 
   .finance-legend {
     display:flex;
     justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   }
 
+  .finance-legend>p {
+    margin:0;
+    padding: 10px 0;
+  }
+
+  .emptyMsg>p {
+    margin: 0;
+    padding: 10px 0;
+    /* height: 200px; */
+  }
   .finance-item {
     display:flex;
     justify-content: space-between;

@@ -1,5 +1,4 @@
 import React from "react";
-import uniqid from "uniqid";
 import { updateFirebaseValues } from "./FirebaseAuth";
 import { useAuth } from "./auth";
 
@@ -46,7 +45,7 @@ function ModuleInputs(props) {
           <p>Date</p>
           <p>Amount</p>
         </div>
-        {cashFlow.length < 1 && <div><p>No Items Yet</p></div>}
+        {cashFlow.length < 1 && <div className="emptyMsg"><p>No Items Yet</p></div>}
         {expenseElements}
       </div>
     </div>
