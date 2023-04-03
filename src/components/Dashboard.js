@@ -7,11 +7,15 @@ import ModuleInputs from "./ModuleInputs";
 import InputModal from "./InputModal";
 import "../styles/dashboard.css";
 import TopOffenders from "./TopOffenders";
+import { useSelector, useDispatch } from "react-redux";
 
 const Dashboard = () => {
   const localAuth = useAuth();
   const userCollectionRef = doc(db, "users", localAuth.user);
   const [user, setUser] = React.useState();
+
+  const testFunc = useSelector((state) => state.financials.value);
+
 
   const [isModalActive, setIsModalActive] = React.useState(false);
 

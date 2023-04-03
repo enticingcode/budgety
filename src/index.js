@@ -13,10 +13,10 @@ import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider>
-    <BrowserRouter>
-      <Provider>
+    <Provider store={store}>
+      <BrowserRouter>
         <RouteSwitch />
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </AuthProvider>
 );
