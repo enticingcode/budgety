@@ -118,7 +118,7 @@ const Dashboard = () => {
       </section>
 
       <section className="middle-section top-offenders">
-      <TopOffenders/>
+      <TopOffenders expenses={expenses} />
       </section>
 
       <section className="financials-section">
