@@ -2,6 +2,7 @@ import React from "react";
 import { updateFirebaseValues } from "./FirebaseAuth";
 import { useAuth } from "./auth";
 
+
 function ModuleInputs(props) {
   const localAuth = useAuth();
   const { cashFlow, setCashFlow, moduleName } = props;

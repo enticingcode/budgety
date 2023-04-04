@@ -7,12 +7,20 @@ export const incomeSlice = createSlice({
     },
     reducers: {
         addItem(state) {
-            console.log('hi');
+            
+        },
+
+        // this works.
+        incomeTest(state) {
+            state.value.push('hi')
         },
 
     }
 });
 
-export const { addItem } = incomeSlice.actions
+
+
+export const { addItem, incomeTest } = incomeSlice.actions;
+
 
 export default incomeSlice.reducer;
