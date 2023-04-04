@@ -2,7 +2,8 @@ import React from 'react'
 import { updateFirebaseValues } from "./FirebaseAuth";
 import uniqid from "uniqid";
 import { useAuth } from "./auth";
-
+import { useSelector,useDispatch } from "react-redux";
+import { addItem } from "../features/financials/incomeSlice";
 
 
 function InputModal(props) {
@@ -14,8 +15,6 @@ function InputModal(props) {
         amount: "",
         category: "Income",
       });
-
-
 
     function handleChange(e) {
         let value = e.target.value;

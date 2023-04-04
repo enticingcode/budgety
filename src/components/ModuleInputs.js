@@ -14,12 +14,11 @@ function ModuleInputs(props) {
     let newArr = cashFlow.filter((item) => {
       return item.id !== elementID;
     });
-
     setCashFlow(newArr);
     updateFirebaseValues(localAuth.user, moduleName, newArr, "del");
-  }
+  };
 
-  let expenseElements = cashFlow.map((item) => {
+  let moneyElements = cashFlow.map((item) => {
     return (
       <div className="finance-item" key={item.id} id={item.id}>
         <p className="money-info">
@@ -46,11 +45,11 @@ function ModuleInputs(props) {
           <p>Amount</p>
         </div>
         {cashFlow.length < 1 && <div className="emptyMsg"><p>No Items Yet</p></div>}
-        {expenseElements}
+        {moneyElements}
       </div>
     </div>
   );
-}
+};
 
 export default ModuleInputs;
 

@@ -14,7 +14,8 @@ const Dashboard = () => {
   const userCollectionRef = doc(db, "users", localAuth.user);
   const [user, setUser] = React.useState();
 
-  const testFunc = useSelector((state) => state.financials.value);
+  const incomeArr = useSelector((state) => state.income.value);
+
 
 
   const [isModalActive, setIsModalActive] = React.useState(false);

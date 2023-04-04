@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import financialsReducer from "../features/financials/financialsSlice"
+import incomeReducer from "../features/financials/incomeSlice"
 
 export default configureStore({
     reducer: {
-        financials: financialsReducer
+        income: incomeReducer
     },
 });
