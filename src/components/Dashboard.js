@@ -8,51 +8,37 @@ import InputModal from "./InputModal";
 import "../styles/dashboard.css";
 import TopOffenders from "./TopOffenders";
 import { useSelector, useDispatch } from "react-redux";
-import { incomeTest } from "../features/financials/incomeSlice"
-import { expenseTest } from "../features/financials/expenseSlice"
 
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const localAuth = useAuth();
   const userCollectionRef = doc(db, "users", localAuth.user);
   const [user, setUser] = React.useState();
 
-  const dispatch = useDispatch();
+  const incomeArr = useSelector((state) => state.finance.incomeArr);
+  const expenseArr = useSelector((state) => state.finance.expenseArr);
 
-  const incomeArr = useSelector((state) => state.income.value);
-  const expense = useSelector((state) => state.expense.value);
-
-  console.log(incomeArr);
-  console.log(expense);
-
-  // console.log('render')
-
-  function handleClick() {
-    // dispatch(incomeTest())
-    dispatch(expenseTest())
-  }
-
+  console.log(expenseArr);
 
   const [isModalActive, setIsModalActive] = React.useState(false);
 
-  // const [incomeSources, setIncomeSources] = React.useState([]);
 
-  const [expenses, setExpenses] = React.useState([]);
-
-  const [savingsAllocation, setSavingsAllocation] = React.useState([]);
-
+  // Sum of total finances //
   let totalIncome = incomeArr.map((item) => {
     return item.amount;
   });
 
-  let totalExpenses = expenses.map((item) => {
+  let totalExpenses = expenseArr.map((item) => {
     return item.amount;
   });
 
-  let totalSavings = savingsAllocation.map((item) => {
-    return item.amount;
-  });
+  // let totalSavings = savingsAllocation.map((item) => {
+  //   return item.amount;
+  // });
 
+
+// Toggling of modal to input new entries
   function toggleModal(e) {
     setIsModalActive((prev) => {
       return !prev;
@@ -76,8 +62,8 @@ const Dashboard = () => {
 
   let remaining = addValues(totalIncome) - addValues(totalExpenses);
 
-  let remainingAfterSavings =
-    addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
+  // let remainingAfterSavings =
+  //   addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
 
   /////////////////////////////////
   // PULL IN DATA FROM FIREBASE //
@@ -121,8 +107,8 @@ const Dashboard = () => {
         <InputModal
           toggleModal={toggleModal}
           // setIncomeSources={setIncomeSources}
-          setExpenses={setExpenses}
-          setSavingsAllocation={setSavingsAllocation}
+          // setExpenses={setExpenses}
+          // setSavingsAllocation={setSavingsAllocation}
         />
       )}
 
@@ -135,12 +121,12 @@ const Dashboard = () => {
         <div className="goals-container">
         </div>
 
-        {/* <button className="new-entry" onClick={toggleModal}>Manage</button> */}
-        <button className="new-entry" onClick={handleClick}>Manage</button>
+        <button className="new-entry" onClick={toggleModal}>Manage</button>
+        {/* <button className="new-entry" onClick={handleClick}>Manage</button> */}
       </section>
 
       <section className="middle-section top-offenders">
-      <TopOffenders expenses={expenses} />
+      <TopOffenders />
       </section>
 
       <section className="financials-section">
@@ -152,14 +138,14 @@ const Dashboard = () => {
         />
 
         <ModuleInputs
-          cashFlow={expenses}
-          setCashFlow={setExpenses}
+          cashFlow={expenseArr}
+          // setCashFlow={setExpenses}
           moduleName="Expenses"
         />
 
         <ModuleInputs
-          cashFlow={savingsAllocation}
-          setCashFlow={setSavingsAllocation}
+          // cashFlow={savingsAllocation}
+          // setCashFlow={setSavingsAllocation}
           moduleName="Savings"
         />
       </section>

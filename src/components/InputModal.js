@@ -2,13 +2,13 @@ import React from 'react'
 import { updateFirebaseValues } from "./FirebaseAuth";
 import uniqid from "uniqid";
 import { useAuth } from "./auth";
-import { useSelector,useDispatch } from "react-redux";
-import { addItem } from "../features/financials/incomeSlice";
-
+import { useDispatch } from "react-redux";
+import { addIncome, addExpense } from '../features/financials/financeSlice';
 
 function InputModal(props) {
   const localAuth = useAuth();
-  const { toggleModal, setIncomeSources, setExpenses, setSavingsAllocation } = props;
+  const dispatch = useDispatch();
+  const { toggleModal } = props;
 
     const [input, setInput] = React.useState({
         name: "",
@@ -41,24 +41,19 @@ function InputModal(props) {
           id: uniqid(),
         };
     
-        if(input.category === "Income") setIncomeSources(prev => [...prev, newExpenseObj]);
-        if(input.category === "Expenses") setExpenses(prev => [...prev, newExpenseObj]);
-        if(input.category === "Savings") setSavingsAllocation(prev => [...prev, newExpenseObj]);
+        if(input.category === "Income") dispatch(addIncome(newExpenseObj));
+
+        if(input.category === "Expense") dispatch(addExpense(newExpenseObj));
+
+        // if(input.category === "Savings") dispatch(addIncome(newExpenseObj));
         
         updateFirebaseValues(localAuth.user, input.category, newExpenseObj, "add");
         setInput({ name: "", amount: "", category: "" });
         toggleModal();
       }
 
-
-      // Need to dispose of props that aren't needed. This modal will pretty much function independent of what was previously done.
-
       // except for a few exceptions. 
       // Don't need to props of incomes,expenses, etc since the modal will be the one to set this.
-
-
-      console.log(input);
-
   
   return (
     <div className="modal-screen">

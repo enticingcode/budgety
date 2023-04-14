@@ -1,21 +1,27 @@
 import React from "react";
 import { updateFirebaseValues } from "./FirebaseAuth";
 import { useAuth } from "./auth";
-
+import { useDispatch } from "react-redux";
+import { deleteIncome } from "../features/financials/financeSlice";
 
 function ModuleInputs(props) {
+  const dispatch = useDispatch();
   const localAuth = useAuth();
-  const { cashFlow, setCashFlow, moduleName } = props;
+  const { cashFlow, moduleName } = props;
 
   function deleteItem(e) {
     e.preventDefault();
     e.stopPropagation();
     let elementID = e.currentTarget.parentElement.id;
 
+    console.log(elementID);
+
     let newArr = cashFlow.filter((item) => {
       return item.id !== elementID;
     });
-    setCashFlow(newArr);
+    
+    console.log(newArr);
+    dispatch(deleteIncome(newArr))
     updateFirebaseValues(localAuth.user, moduleName, newArr, "del");
   };
 
