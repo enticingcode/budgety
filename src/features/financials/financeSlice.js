@@ -9,6 +9,11 @@ export const financeSlice = createSlice({
     },
     reducers: {
         // this works.
+
+        pullIncomeState(state, action) {
+            state.incomeArr = action.payload;
+        },
+
         addIncome(state, action) {
             state.incomeArr.push(action.payload);
         },
@@ -25,12 +30,21 @@ export const financeSlice = createSlice({
             state.expenseArr = action.payload;
         },
 
+        addSavings(state, action) {
+            state.savingsArr.push(action.payload);
+        },
+
+        deleteSavings(state, action) {
+            state.savingsArr = action.payload;
+        },
+
+
     }
 });
 
 
 
-export const { addIncome, deleteIncome, addExpense } = financeSlice.actions;
+export const { pullIncomeState, addIncome, deleteIncome, addExpense, deleteExpense, addSavings, deleteSavings } = financeSlice.actions;
 
 
 export default financeSlice.reducer;

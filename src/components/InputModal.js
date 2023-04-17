@@ -3,7 +3,7 @@ import { updateFirebaseValues } from "./FirebaseAuth";
 import uniqid from "uniqid";
 import { useAuth } from "./auth";
 import { useDispatch } from "react-redux";
-import { addIncome, addExpense } from '../features/financials/financeSlice';
+import { addIncome, addExpense, addSavings } from '../features/financials/financeSlice';
 
 function InputModal(props) {
   const localAuth = useAuth();
@@ -21,7 +21,7 @@ function InputModal(props) {
         let name = e.target.name;
         
         if (name === "amount" && isNaN(value)) return;
-    
+
         setInput((prev) => {
           return {
             ...prev,
@@ -42,10 +42,9 @@ function InputModal(props) {
         };
     
         if(input.category === "Income") dispatch(addIncome(newExpenseObj));
-
         if(input.category === "Expense") dispatch(addExpense(newExpenseObj));
+        if(input.category === "Savings") dispatch(addSavings(newExpenseObj));
 
-        // if(input.category === "Savings") dispatch(addIncome(newExpenseObj));
         
         updateFirebaseValues(localAuth.user, input.category, newExpenseObj, "add");
         setInput({ name: "", amount: "", category: "" });
@@ -62,7 +61,7 @@ function InputModal(props) {
           <label id="category-label" htmlFor="category">Category</label>
             <select id="category"  name="category" onChange={handleChange} >
               <option defaultValue value="Income">Income</option>
-              <option value="Expenses">Expense</option>
+              <option value="Expense">Expense</option>
               <option value="Savings">Savings</option>
             </select>
             <div className="input-amounts">

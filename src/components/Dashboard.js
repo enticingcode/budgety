@@ -8,6 +8,7 @@ import InputModal from "./InputModal";
 import "../styles/dashboard.css";
 import TopOffenders from "./TopOffenders";
 import { useSelector, useDispatch } from "react-redux";
+import { pullIncomeState } from "../features/financials/financeSlice";
 
 
 const Dashboard = () => {
@@ -18,10 +19,13 @@ const Dashboard = () => {
 
   const incomeArr = useSelector((state) => state.finance.incomeArr);
   const expenseArr = useSelector((state) => state.finance.expenseArr);
+  const savingsArr = useSelector((state) => state.finance.savingsArr);
 
-  console.log(expenseArr);
+
+  console.log("income: ", incomeArr, "\n", "expense: ", expenseArr, "\n", "savings: ", savingsArr);
 
   const [isModalActive, setIsModalActive] = React.useState(false);
+
 
 
   // Sum of total finances //
@@ -69,33 +73,33 @@ const Dashboard = () => {
   // PULL IN DATA FROM FIREBASE //
   ///////////////////////////////
 
-  // async function getData() {
-  //   const doc = await getDoc(userCollectionRef);
+  async function getData() {
+    const doc = await getDoc(userCollectionRef);
 
-  //   if (doc.data()) {
-  //     let name = doc.data().name;
-  //     const incomesData = doc.data().Income;
-  //     const expensesData = doc.data().Expenses;
-  //     const savingsAlloData = doc.data().Savings;
+    if (doc.data()) {
+      let name = doc.data().name;
+      const incomesData = doc.data().Income;
+      const expensesData = doc.data().Expenses;
+      const savingsAlloData = doc.data().Savings;
 
-  //     setUser(name);
+      setUser(name);
 
-  //     // SET STATES //
-  //     if (incomesData) {
-  //       setIncomeSources(incomesData);
-  //     }
-  //     if (expensesData) {
-  //       setExpenses(expensesData);
-  //     }
-  //     if (savingsAlloData) {
-  //       setSavingsAllocation(savingsAlloData);
-  //     }
-  //   }
-  // }
+      // SET STATES //
+      if (incomesData) {
+        dispatch(pullIncomeState(incomesData));
+      }
+      // if (expensesData) {
+      //   setExpenses(expensesData);
+      // }
+      // if (savingsAlloData) {
+      //   setSavingsAllocation(savingsAlloData);
+      // }
+    }
+  }
 
-  // React.useEffect(() => {
-  //   // getData();
-  // }, []);
+  React.useEffect(() => {
+    getData();
+  }, []);
 
   // console.log(isModalActive);
 
@@ -132,20 +136,16 @@ const Dashboard = () => {
       <section className="financials-section">
         <ModuleInputs
           cashFlow={incomeArr}
-          // cashFlow={incomeSources}
-          // setCashFlow={setIncomeSources}
           moduleName="Income"
         />
 
         <ModuleInputs
           cashFlow={expenseArr}
-          // setCashFlow={setExpenses}
           moduleName="Expenses"
         />
 
         <ModuleInputs
-          // cashFlow={savingsAllocation}
-          // setCashFlow={setSavingsAllocation}
+          cashFlow={savingsArr}
           moduleName="Savings"
         />
       </section>

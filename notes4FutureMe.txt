@@ -1,0 +1,7 @@
+4/13/23 
+
+Last I was working on state for the financials array, kept getting cashFlow error from ModuleInputs file.
+
+This was due to savings allocation component being loaded with no actual array being passed.
+// commented out savings component but should work once I implement the useSelector hook on 
+that module.

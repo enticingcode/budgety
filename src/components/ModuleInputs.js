@@ -14,8 +14,6 @@ function ModuleInputs(props) {
     e.stopPropagation();
     let elementID = e.currentTarget.parentElement.id;
 
-    console.log(elementID);
-
     let newArr = cashFlow.filter((item) => {
       return item.id !== elementID;
     });
@@ -25,22 +23,7 @@ function ModuleInputs(props) {
     updateFirebaseValues(localAuth.user, moduleName, newArr, "del");
   };
 
-  let moneyElements = cashFlow.map((item) => {
-    return (
-      <div className="finance-item" key={item.id} id={item.id}>
-        <p className="money-info">
-          {item.name}: ${item.amount}
-        </p>
-        <img
-          onClick={deleteItem}
-          className="closeOut"
-          src="/xout.png"
-          alt="Delete"
-        />
-      </div>
-    );
-  });
-
+  
   return (
     <div className="module">
       <h2>{moduleName}</h2>
@@ -51,8 +34,24 @@ function ModuleInputs(props) {
           <p>Date</p>
           <p>Amount</p>
         </div>
-        {cashFlow.length < 1 && <div className="emptyMsg"><p>No Items Yet</p></div>}
-        {moneyElements}
+
+        {cashFlow.length > 0 ? 
+        cashFlow.map((item) => {
+      return (
+      <div className="finance-item" key={item.id} id={item.id}>
+        <p className="money-info">
+          {item.name}: ${item.amount}
+        </p>
+        <img
+          onClick={deleteItem}
+          className="closeOut"
+          src="/xout.png"
+          alt="Delete"
+        />
+      </div>)}) 
+      : 
+      <div className="emptyMsg"><p>No Items Yet</p></div> }
+        
       </div>
     </div>
   );
