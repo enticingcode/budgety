@@ -34,7 +34,7 @@ function ModuleInputs(props) {
           <p>Date</p>
           <p>Amount</p>
         </div>
-
+      <div className="items-container">
         {cashFlow.length > 0 ? 
         cashFlow.map((item) => {
       return (
@@ -51,7 +51,7 @@ function ModuleInputs(props) {
       </div>)}) 
       : 
       <div className="emptyMsg"><p>No Items Yet</p></div> }
-        
+        </div>
       </div>
     </div>
   );

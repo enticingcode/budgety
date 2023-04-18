@@ -79,9 +79,13 @@
     border-radius: 5px;
     max-height: 200px;
     /* Used to hide corners of inputs */
-    overflow: hidden;
+    overflow:hidden;
     /* ============================== */
+  }
 
+  .items-container {
+    max-height: 140px;
+    overflow: auto;
   }
 
   .finance-legend {
