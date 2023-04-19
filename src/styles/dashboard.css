@@ -77,15 +77,13 @@
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 5px;
-    max-height: 200px;
+    max-height:max-content;
     /* Used to hide corners of inputs */
     overflow:hidden;
     /* ============================== */
   }
 
   .items-container {
-    max-height: 140px;
-    overflow: auto;
   }
 
   .finance-legend {
@@ -115,6 +113,13 @@
     /* border: 1px solid black; */
   }
 
+  .view-allBtn {
+    align-items: center;
+    justify-content: center;
+  }
+  .view-allBtn:hover {
+    cursor: pointer;
+  }
   .finance-item:hover {
     background-color: rgb(243, 243, 243);
     transition: .5s all;
