@@ -13,3 +13,10 @@ that module.
 
 Working on finance items only showing 7 first then view all button will bring up the rest of them.
 upon bringing up the rest. react route should be used to display page.
+
+4/20/23
+
+Routing for Each individual type of cashflow(income, expense, etc). 
+
+When clicking view all it should show all of the entries corresponding to what was clicked. right now I'm going to use the <Link state="type"> 
+attribute to pass in what type it should be, and based on that prop/state with useLocation() it will show all the entries when querying redux state.

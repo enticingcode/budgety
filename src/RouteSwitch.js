@@ -12,6 +12,7 @@ import MonthlyTracker from "./components/MonthlyTracker";
 import ForgotPassword from "./components/ForgotPassword";
 import WeeklyForecasts from "./components/WeeklyForecasts";
 import Sidebar from "./components/Sidebar";
+import ViewAll from "./ViewAll";
 
 const RouteSwitch = () => {
   const localAuth = useAuth();
@@ -46,6 +47,7 @@ const RouteSwitch = () => {
               </ReqAuth>
             }
           />
+          <Route path="/viewall/:type" element={<ViewAll />}/>
           <Route path="/weekly-forecasts" element={<WeeklyForecasts />} />
 
           {/* 404 PATH */}

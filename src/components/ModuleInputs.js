@@ -4,6 +4,7 @@ import { useAuth } from "./auth";
 import { useDispatch } from "react-redux";
 import { deleteIncome } from "../features/financials/financeSlice";
 import { Link } from "react-router-dom";
+import ViewAll from "../ViewAll";
 
 function ModuleInputs(props) {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ function ModuleInputs(props) {
               <p>No Items Yet</p>
             </div>
           )}
-          {cashFlow.length > 7 && <Link to="/viewall" className="finance-item view-allBtn">View All</Link>}
+          {cashFlow.length > 7 && <Link to={`/viewall/${moduleName.toLowerCase()}`} state={{type: moduleName}}className="finance-item view-allBtn">View All</Link>}
         </div>
       </div>
     </div>
