@@ -2,7 +2,7 @@ import React from "react";
 import { updateFirebaseValues } from "./FirebaseAuth";
 import { useAuth } from "./auth";
 import { useDispatch } from "react-redux";
-import { deleteIncome } from "../features/financials/financeSlice";
+import { deleteExpense, deleteIncome } from "../features/financials/financeSlice";
 import { Link } from "react-router-dom";
 import ViewAll from "../ViewAll";
 
@@ -15,18 +15,21 @@ function ModuleInputs(props) {
     e.preventDefault();
     e.stopPropagation();
     let elementID = e.currentTarget.parentElement.id;
+    let elementCategory = e.currentTarget.parentElement.dataset.category;
+
+    console.log(elementCategory);
 
     let newArr = cashFlow.filter((item) => {
       return item.id !== elementID;
     });
 
-    console.log(newArr);
-    dispatch(deleteIncome(newArr));
+    if(elementCategory == "Income")dispatch(deleteIncome(newArr));
+    if(elementCategory == "Expenses")dispatch(deleteExpense(newArr));
+    // if(elementCategory == "Savings")dispatch(deleteSavings(newArr));
     updateFirebaseValues(localAuth.user, moduleName, newArr, "del");
   }
 
   let firstSevenItems = cashFlow.slice(0, 7);
-  console.log(firstSevenItems);
 
   return (
     <div className="module">
@@ -42,7 +45,7 @@ function ModuleInputs(props) {
           {cashFlow.length > 0 ? (
             firstSevenItems.map((item) => {
               return (
-                <div className="finance-item" key={item.id} id={item.id}>
+                <div className="finance-item" data-category={item.category} key={item.id} id={item.id}>
                   <p className="money-info">
                     {item.name}: ${item.amount}
                   </p>

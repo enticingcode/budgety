@@ -36,13 +36,14 @@ function InputModal(props) {
         console.log('form submit')
         
         let newExpenseObj = {
+          category: input.category,
           name: input.name,
           amount: input.amount,
           id: uniqid(),
         };
     
         if(input.category === "Income") dispatch(addIncome(newExpenseObj));
-        if(input.category === "Expense") dispatch(addExpense(newExpenseObj));
+        if(input.category === "Expenses") dispatch(addExpense(newExpenseObj));
         if(input.category === "Savings") dispatch(addSavings(newExpenseObj));
 
         
@@ -61,7 +62,7 @@ function InputModal(props) {
           <label id="category-label" htmlFor="category">Category</label>
             <select id="category"  name="category" onChange={handleChange} >
               <option defaultValue value="Income">Income</option>
-              <option value="Expense">Expense</option>
+              <option value="Expenses">Expense</option>
               <option value="Savings">Savings</option>
             </select>
             <div className="input-amounts">

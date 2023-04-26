@@ -8,7 +8,7 @@ import InputModal from "./InputModal";
 import "../styles/dashboard.css";
 import TopOffenders from "./TopOffenders";
 import { useSelector, useDispatch } from "react-redux";
-import { pullIncomeState } from "../features/financials/financeSlice";
+import { saveIncomeData, saveExpenseData } from "../features/financials/financeSlice";
 
 
 const Dashboard = () => {
@@ -20,7 +20,6 @@ const Dashboard = () => {
   const incomeArr = useSelector((state) => state.finance.incomeArr);
   const expenseArr = useSelector((state) => state.finance.expenseArr);
   const savingsArr = useSelector((state) => state.finance.savingsArr);
-
 
   console.log("income: ", incomeArr, "\n", "expense: ", expenseArr, "\n", "savings: ", savingsArr);
 
@@ -81,16 +80,17 @@ const Dashboard = () => {
       const incomesData = doc.data().Income;
       const expensesData = doc.data().Expenses;
       const savingsAlloData = doc.data().Savings;
+      
 
       setUser(name);
 
       // SET STATES //
       if (incomesData) {
-        dispatch(pullIncomeState(incomesData));
+        dispatch(saveIncomeData(incomesData));
       }
-      // if (expensesData) {
-      //   setExpenses(expensesData);
-      // }
+      if (expensesData) {
+        dispatch(saveExpenseData(expensesData));
+      }
       // if (savingsAlloData) {
       //   setSavingsAllocation(savingsAlloData);
       // }
