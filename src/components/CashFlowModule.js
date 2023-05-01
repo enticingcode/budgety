@@ -6,7 +6,7 @@ import { deleteExpense, deleteIncome } from "../features/financials/financeSlice
 import { Link } from "react-router-dom";
 import ViewAll from "../ViewAll";
 
-function ModuleInputs(props) {
+function CashFlowModule(props) {
   const dispatch = useDispatch();
   const localAuth = useAuth();
   const { cashFlow, moduleName } = props;
@@ -70,4 +70,4 @@ function ModuleInputs(props) {
   );
 }
 
-export default ModuleInputs;
+export default CashFlowModule;

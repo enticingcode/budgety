@@ -3,7 +3,7 @@ import { useAuth } from "./auth";
 import ChartModule from "./ChartModule";
 import { db } from "./FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
-import ModuleInputs from "./ModuleInputs";
+import CashFlowModule from "./CashFlowModule";
 import InputModal from "./InputModal";
 import "../styles/dashboard.css";
 import TopOffenders from "./TopOffenders";
@@ -134,17 +134,17 @@ const Dashboard = () => {
       </section>
 
       <section className="financials-section">
-        <ModuleInputs
+        <CashFlowModule
           cashFlow={incomeArr}
           moduleName="Income"
         />
 
-        <ModuleInputs
+        <CashFlowModule
           cashFlow={expenseArr}
           moduleName="Expenses"
         />
 
-        <ModuleInputs
+        <CashFlowModule
           cashFlow={savingsArr}
           moduleName="Savings"
         />
