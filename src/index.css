@@ -112,6 +112,11 @@ option:hover {
   border-radius: 7px;
 }
 
+.cashFlow-choices {
+  display:flex;
+  gap:1rem;
+}
+
 .input-selection button {
   margin-top: 20px;
   margin-right: 20px;

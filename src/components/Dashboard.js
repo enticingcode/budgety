@@ -21,7 +21,7 @@ const Dashboard = () => {
   const expenseArr = useSelector((state) => state.finance.expenseArr);
   const savingsArr = useSelector((state) => state.finance.savingsArr);
 
-  console.log("income: ", incomeArr, "\n", "expense: ", expenseArr, "\n", "savings: ", savingsArr);
+  // console.log("income: ", incomeArr, "\n", "expense: ", expenseArr, "\n", "savings: ", savingsArr);
 
   const [isModalActive, setIsModalActive] = React.useState(false);
 

@@ -20,6 +20,7 @@ function InputModal(props) {
         let value = e.target.value;
         let name = e.target.name;
         
+        console.log(value);
         if (name === "amount" && isNaN(value)) return;
 
         setInput((prev) => {
@@ -59,12 +60,17 @@ function InputModal(props) {
     <div className="modal-screen">
         <div className="modal-container">
         <form className="form-container" onSubmit={addItem}>
-          <label id="category-label" htmlFor="category">Category</label>
-            <select id="category"  name="category" onChange={handleChange} >
-              <option defaultValue value="Income">Income</option>
-              <option value="Expenses">Expense</option>
-              <option value="Savings">Savings</option>
-            </select>
+          {/* <label id="category-label" htmlFor="category">Category</label> */}
+            {/* <select id="category"  name="category" onChange={handleChange} > */}
+              {/* <option defaultValue value="Income">Income</option> */}
+              {/* <option value="Expenses">Expense</option> */}
+              {/* <option value="Savings">Savings</option> */}
+            {/* </select> */}
+            <div class="cashFlow-choices">
+            <input type="button" value="Income" onClick={handleChange}/>
+            <input type="button" value="Expenses" onClick={handleChange}/>
+            <input type="button" value="Savings" onClick={handleChange}/>
+            </div>
             <div className="input-amounts">
           <input
             className="input-box"
