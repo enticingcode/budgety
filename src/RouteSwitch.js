@@ -13,12 +13,20 @@ import ForgotPassword from "./components/ForgotPassword";
 import WeeklyForecasts from "./components/WeeklyForecasts";
 import Sidebar from "./components/Sidebar";
 import ViewAll from "./ViewAll";
+import { useSelector } from "react-redux";
+import InputModal from "./components/InputModal";
+
 
 const RouteSwitch = () => {
   const localAuth = useAuth();
+  const isModalActive = useSelector((state) => state.modal.isActive);
+  // const isModalActive = false;
+
   return (
     <>
        {localAuth.user && <Sidebar />}
+       {/* INCOME-EXPENSE MODULE */}
+      {isModalActive && (<InputModal />)}
       <main className="dashboard">
         <Routes>
           <Route

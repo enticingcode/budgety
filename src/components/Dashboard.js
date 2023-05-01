@@ -4,10 +4,10 @@ import ChartModule from "./ChartModule";
 import { db } from "./FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 import CashFlowModule from "./CashFlowModule";
-import InputModal from "./InputModal";
 import "../styles/dashboard.css";
 import TopOffenders from "./TopOffenders";
 import { useSelector, useDispatch } from "react-redux";
+import { changeActiveStatus } from "../features/utilities/modalSlice";
 import { saveIncomeData, saveExpenseData } from "../features/financials/financeSlice";
 
 
@@ -22,9 +22,6 @@ const Dashboard = () => {
   const savingsArr = useSelector((state) => state.finance.savingsArr);
 
   // console.log("income: ", incomeArr, "\n", "expense: ", expenseArr, "\n", "savings: ", savingsArr);
-
-  const [isModalActive, setIsModalActive] = React.useState(false);
-
 
 
   // Sum of total finances //
@@ -41,12 +38,7 @@ const Dashboard = () => {
   // });
 
 
-// Toggling of modal to input new entries
-  function toggleModal(e) {
-    setIsModalActive((prev) => {
-      return !prev;
-    });
-  }
+
 
   // Add values of filtered array to display;
   function addValues(arr) {
@@ -106,15 +98,7 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* INCOME-EXPENSE MODULE */}
-      {isModalActive && (
-        <InputModal
-          toggleModal={toggleModal}
-          // setIncomeSources={setIncomeSources}
-          // setExpenses={setExpenses}
-          // setSavingsAllocation={setSavingsAllocation}
-        />
-      )}
+      
 
       <section className="top-section">
         <div className="current-bal">
@@ -125,7 +109,7 @@ const Dashboard = () => {
         <div className="goals-container">
         </div>
 
-        <button className="new-entry" onClick={toggleModal}>Manage</button>
+        <button className="new-entry" onClick={() => dispatch(changeActiveStatus(true))}>Manage</button>
         {/* <button className="new-entry" onClick={handleClick}>Manage</button> */}
       </section>
 

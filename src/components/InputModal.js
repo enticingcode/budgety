@@ -4,11 +4,11 @@ import uniqid from "uniqid";
 import { useAuth } from "./auth";
 import { useDispatch } from "react-redux";
 import { addIncome, addExpense, addSavings } from '../features/financials/financeSlice';
+import { changeActiveStatus } from '../features/utilities/modalSlice';
 
 function InputModal(props) {
   const localAuth = useAuth();
   const dispatch = useDispatch();
-  const { toggleModal } = props;
 
     const [input, setInput] = React.useState({
         name: "",
@@ -50,7 +50,7 @@ function InputModal(props) {
         
         updateFirebaseValues(localAuth.user, input.category, newExpenseObj, "add");
         setInput({ name: "", amount: "", category: "" });
-        toggleModal();
+        dispatch(changeActiveStatus(false));
       }
 
       // except for a few exceptions. 
@@ -66,7 +66,7 @@ function InputModal(props) {
               {/* <option value="Expenses">Expense</option> */}
               {/* <option value="Savings">Savings</option> */}
             {/* </select> */}
-            <div class="cashFlow-choices">
+            <div className="cashFlow-choices">
             <input type="button" value="Income" onClick={handleChange}/>
             <input type="button" value="Expenses" onClick={handleChange}/>
             <input type="button" value="Savings" onClick={handleChange}/>
@@ -90,7 +90,7 @@ function InputModal(props) {
           ></input>
           </div>
           <div className="input-selection">
-          <button type="button" onClick={toggleModal} className="input-btn">Close</button>
+          <button type="button" onClick={(e) => dispatch(changeActiveStatus(false))} className="input-btn">Close</button>
           <button type="submit" className="input-btn">Add</button>
           </div>
         </form>
