@@ -1,8 +1,28 @@
 # Budgety
 
-This application is a one stop source for your budgeting needs
+## Overview
 
-## Budgeting Application Features
+A budgeting web application built for fun and out of necessity.
 
--Cash flow(income & expenditures tracking)
--Savings allocations
+### Features
+
+- Income, Expenses, Savings Tracking
+- Module based view of cashflows
+- Statistical views for each tracking element
+- Financial News Segments
+- Market Index Tickers
+
+### Upcoming Features
+
+- Coming Soon
+
+## Installation
+
+1. Clone Repository and navigate to it.
+1. Run `npm install`
+1. Run `npm start`
+
+## Resources
+
+- https://react.dev/
+- https://redux.js.org/
