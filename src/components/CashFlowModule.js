@@ -2,9 +2,13 @@ import React from "react";
 import { updateFirebaseValues } from "./FirebaseAuth";
 import { useAuth } from "./auth";
 import { useDispatch } from "react-redux";
-import { deleteExpense, deleteIncome } from "../features/financials/financeSlice";
+import {
+  deleteExpense,
+  deleteIncome,
+} from "../features/financials/financeSlice";
 import { Link } from "react-router-dom";
 import ViewAll from "../ViewAll";
+import MoreOptions from "./MoreOptions";
 
 function CashFlowModule(props) {
   const dispatch = useDispatch();
@@ -23,8 +27,8 @@ function CashFlowModule(props) {
       return item.id !== elementID;
     });
 
-    if(elementCategory == "Income")dispatch(deleteIncome(newArr));
-    if(elementCategory == "Expenses")dispatch(deleteExpense(newArr));
+    if (elementCategory == "Income") dispatch(deleteIncome(newArr));
+    if (elementCategory == "Expenses") dispatch(deleteExpense(newArr));
     // if(elementCategory == "Savings")dispatch(deleteSavings(newArr));
     updateFirebaseValues(localAuth.user, moduleName, newArr, "del");
   }
@@ -40,12 +44,18 @@ function CashFlowModule(props) {
           <p>Type</p>
           <p>Date</p>
           <p>Amount</p>
+          <MoreOptions />
         </div>
         <div className="items-container">
           {cashFlow.length > 0 ? (
             firstSevenItems.map((item) => {
               return (
-                <div className="finance-item" data-category={item.category} key={item.id} id={item.id}>
+                <div
+                  className="finance-item"
+                  data-category={item.category}
+                  key={item.id}
+                  id={item.id}
+                >
                   <p className="money-info">
                     {item.name}: ${item.amount}
                   </p>
@@ -63,7 +73,15 @@ function CashFlowModule(props) {
               <p>No Items Yet</p>
             </div>
           )}
-          {cashFlow.length > 7 && <Link to={`/viewall/${moduleName.toLowerCase()}`} state={{type: moduleName}}className="finance-item view-allBtn">View All</Link>}
+          {cashFlow.length > 7 && (
+            <Link
+              to={`/viewall/${moduleName.toLowerCase()}`}
+              state={{ type: moduleName }}
+              className="finance-item view-allBtn"
+            >
+              View All
+            </Link>
+          )}
         </div>
       </div>
     </div>
