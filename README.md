@@ -12,6 +12,10 @@ A budgeting web application built for fun and out of necessity.
 - Financial News Segments
 - Market Index Tickers
 
+### To-Do
+* Change Cashflow Modal options to track state instead of CSS Focus. (Income, Expense, Savings)
+* Implement three-dot menus for selection and deletion of items within each module.
+
 ### Upcoming Features
 
 - Coming Soon

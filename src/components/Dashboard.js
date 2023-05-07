@@ -98,8 +98,6 @@ const Dashboard = () => {
 
   return (
     <>
-      
-
       <section className="top-section">
         <div className="current-bal">
           <p>Current Balance</p>

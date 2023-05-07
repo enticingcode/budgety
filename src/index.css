@@ -230,9 +230,21 @@ option:hover {
 
 .bullet-options {
   position: absolute;
-  top: 30px;
+  top: 40px;
+  display:flex;
+  flex-direction: column;
+  z-index: 4;
+  right: -10px;
   list-style-type: none;
   visibility:hidden;
+  width: max-content;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+}
+
+.bullet-options > li {
+  padding: 5px 0;
 }
 
 .bullet-active {
