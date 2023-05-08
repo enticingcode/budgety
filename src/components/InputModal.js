@@ -19,6 +19,7 @@ function InputModal(props) {
     name: "",
     amount: "",
     category: "Income",
+    type: "",
   });
 
   function handleChange(e) {
@@ -46,7 +47,9 @@ function InputModal(props) {
       category: input.category,
       name: input.name,
       amount: input.amount,
+      type: input.type,
       id: uniqid(),
+      date: new Date().toLocaleDateString(),
     };
 
     if (input.category === "Income") dispatch(addIncome(newExpenseObj));
@@ -92,6 +95,13 @@ function InputModal(props) {
             />
           </div>
           <div className="input-amounts">
+            <select className="" name="Type" placeholder="Type">
+              <option value="Debt">Debt</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Food">Food</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Utilities">Utilities</option>
+            </select>
             <input
               className="input-box"
               placeholder="Name"

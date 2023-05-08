@@ -13,7 +13,7 @@ function MoreOptions() {
   };
 
   function selectItems() {
-
+    
   };
 
   // When I click select on the three dot menu, popup w/ options appears.

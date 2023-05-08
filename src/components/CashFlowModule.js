@@ -44,6 +44,7 @@ function CashFlowModule(props) {
           <p>Type</p>
           <p>Date</p>
           <p>Amount</p>
+          {/* More Options to be rolled out later */}
           <MoreOptions />
         </div>
         <div className="items-container">
@@ -56,9 +57,10 @@ function CashFlowModule(props) {
                   key={item.id}
                   id={item.id}
                 >
-                  <p className="money-info">
-                    {item.name}: ${item.amount}
-                  </p>
+                  <p>{item.name}</p>
+                  <p>{item.category}</p>
+                  <p>{item.date}</p>
+                  <p>${item.amount}</p>
                   <img
                     onClick={deleteItem}
                     className="closeOut"
