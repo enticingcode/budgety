@@ -12,14 +12,24 @@ import { saveIncomeData, saveExpenseData } from "../features/financials/financeS
 
 
 const Dashboard = () => {
+  console.log('Dashboard Render');
   const dispatch = useDispatch();
   const localAuth = useAuth();
   const userCollectionRef = doc(db, "users", localAuth.user);
   const [user, setUser] = React.useState();
+  
+  // =========================================== //
 
-  const incomeArr = useSelector((state) => state.finance.incomeArr);
-  const expenseArr = useSelector((state) => state.finance.expenseArr);
-  const savingsArr = useSelector((state) => state.finance.savingsArr);
+  // USE SELECTOR CAUSES 3 RE-RENDERS WITH USEREACT, NEED TO FIGURE OUT A WAY OUT OF THIS.
+
+ const cashFlowStates = useSelector((state) => state.finance);
+
+//  console.log(cashFlowStates);
+
+
+  let incomeArr = cashFlowStates.incomeArr;
+  let expenseArr = cashFlowStates.expenseArr;
+  let savingsArr = cashFlowStates.savingsArr;
 
   // console.log("income: ", incomeArr, "\n", "expense: ", expenseArr, "\n", "savings: ", savingsArr);
 
@@ -55,7 +65,7 @@ const Dashboard = () => {
     return final;
   }
 
-  let remaining = addValues(totalIncome) - addValues(totalExpenses);
+  // let remaining = addValues(totalIncome) - addValues(totalExpenses);
 
   // let remainingAfterSavings =
   //   addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
@@ -64,6 +74,7 @@ const Dashboard = () => {
   // PULL IN DATA FROM FIREBASE //
   ///////////////////////////////
 
+ 
   async function getData() {
     const doc = await getDoc(userCollectionRef);
 
@@ -72,8 +83,7 @@ const Dashboard = () => {
       const incomesData = doc.data().Income;
       const expensesData = doc.data().Expenses;
       const savingsAlloData = doc.data().Savings;
-      
-
+    
       setUser(name);
 
       // SET STATES //
@@ -93,7 +103,6 @@ const Dashboard = () => {
     getData();
   }, []);
 
-  // console.log(isModalActive);
 
 
   return (
@@ -112,7 +121,7 @@ const Dashboard = () => {
       </section>
 
       <section className="middle-section top-offenders">
-      <TopOffenders />
+      {/* <TopOffenders /> */}
       </section>
 
       <section className="financials-section">
@@ -121,7 +130,7 @@ const Dashboard = () => {
           moduleName="Income"
         />
 
-        <CashFlowModule
+        {/* <CashFlowModule
           cashFlow={expenseArr}
           moduleName="Expenses"
         />
@@ -129,7 +138,7 @@ const Dashboard = () => {
         <CashFlowModule
           cashFlow={savingsArr}
           moduleName="Savings"
-        />
+        /> */}
       </section>
     </>
   );

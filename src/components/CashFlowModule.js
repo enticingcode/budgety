@@ -1,7 +1,7 @@
 import React from "react";
 import { updateFirebaseValues } from "./FirebaseAuth";
 import { useAuth } from "./auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   deleteExpense,
   deleteIncome,
@@ -14,6 +14,9 @@ function CashFlowModule(props) {
   const dispatch = useDispatch();
   const localAuth = useAuth();
   const { cashFlow, moduleName } = props;
+  // const isSelectActive = useSelector(state => state.selectItems.isSelectActive);
+  // console.log(isSelectActive);
+
 
   function deleteItem(e) {
     e.preventDefault();
@@ -41,11 +44,10 @@ function CashFlowModule(props) {
       <div className="financeItem-containers">
         <div className="finance-legend">
           <p>Name</p>
-          <p>Type</p>
           <p>Date</p>
           <p>Amount</p>
           {/* More Options to be rolled out later */}
-          <MoreOptions />
+          {/* <MoreOptions /> */}
         </div>
         <div className="items-container">
           {cashFlow.length > 0 ? (
@@ -58,9 +60,9 @@ function CashFlowModule(props) {
                   id={item.id}
                 >
                   <p>{item.name}</p>
-                  <p>{item.category}</p>
                   <p>{item.date}</p>
                   <p>${item.amount}</p>
+                  <span></span>
                   <img
                     onClick={deleteItem}
                     className="closeOut"

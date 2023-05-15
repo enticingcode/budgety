@@ -8,6 +8,8 @@ export const selectItems = createSlice({
     },
     reducers: {
         select(state, action) {
+           state.isSelectActive = !state.isSelectActive;
+
         }
     }
 });
@@ -16,3 +18,14 @@ export const selectItems = createSlice({
 export const { select } = selectItems.actions;
 
 export default selectItems.reducer;
+
+
+// Based on state of isSelectActive, 
+
+// - True would cause div elements to become targetable by clicks/touch.
+//  (this can be acheived by changing them to select elements or just making a list array of selected divs)
+// 	second option is probably better considering styling preferences.
+
+// - going with the second option.
+
+// when isSelect is Active, elements will translate to the right and a circle styled will appear when element is clicked on/

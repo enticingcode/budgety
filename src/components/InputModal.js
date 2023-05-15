@@ -13,20 +13,27 @@ import { changeActiveStatus } from "../features/utilities/modalSlice";
 function InputModal(props) {
   const localAuth = useAuth();
   const dispatch = useDispatch();
-  // const [category, setCategory] = React.useState(null);
+  const [category, setCategory] = React.useState(null);
 
   const [input, setInput] = React.useState({
     name: "",
     amount: "",
-    category: "Income",
-    type: "",
+    category: category,
   });
+
+  function handleCategory(e) {
+    e.preventDefault();
+    let name = e.target.name;
+
+    setCategory(name);
+  }
+
+  console.log('render', "\n");
 
   function handleChange(e) {
     let value = e.target.value;
     let name = e.target.name;
 
-    console.log(value);
     if (name === "amount" && isNaN(value)) return;
     // if (value === "Income") setCategory("Income");
 
@@ -41,22 +48,21 @@ function InputModal(props) {
   function addItem(e) {
     e.preventDefault();
 
-    console.log("form submit");
-
     let newExpenseObj = {
-      category: input.category,
+      category: category,
       name: input.name,
       amount: input.amount,
-      type: input.type,
       id: uniqid(),
       date: new Date().toLocaleDateString(),
     };
 
-    if (input.category === "Income") dispatch(addIncome(newExpenseObj));
-    if (input.category === "Expenses") dispatch(addExpense(newExpenseObj));
-    if (input.category === "Savings") dispatch(addSavings(newExpenseObj));
+    console.log(input.category);
 
-    updateFirebaseValues(localAuth.user, input.category, newExpenseObj, "add");
+    if (category === "Income") dispatch(addIncome(newExpenseObj));
+    if (category === "Expenses") dispatch(addExpense(newExpenseObj));
+    if (category === "Savings") dispatch(addSavings(newExpenseObj));
+
+    updateFirebaseValues(localAuth.user, category, newExpenseObj, "add");
     setInput({ name: "", amount: "", category: "" });
     dispatch(changeActiveStatus(false));
   }
@@ -79,29 +85,32 @@ function InputModal(props) {
               className="button input-category"
               type="button"
               value="Income"
-              onClick={handleChange}
+              name="Income"
+              onClick={handleCategory}
             />
             <input
               className="button input-category"
               type="button"
               value="Expenses"
-              onClick={handleChange}
+              name="Expenses"
+              onClick={handleCategory}
             />
             <input
               className="button input-category"
               type="button"
               value="Savings"
-              onClick={handleChange}
+              name="Savings"
+              onClick={handleCategory}
             />
           </div>
           <div className="input-amounts">
-            <select className="" name="Type" placeholder="Type">
+            {/* <select className="" name="Type" placeholder="Type">
               <option value="Debt">Debt</option>
               <option value="Entertainment">Entertainment</option>
               <option value="Food">Food</option>
               <option value="Shopping">Shopping</option>
               <option value="Utilities">Utilities</option>
-            </select>
+            </select> */}
             <input
               className="input-box"
               placeholder="Name"

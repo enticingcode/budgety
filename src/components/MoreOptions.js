@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { select } from "../features/utilities/selectItems";
 
 function MoreOptions() {
   const dispatch = useDispatch();
@@ -8,12 +9,13 @@ function MoreOptions() {
   const [isSelectActive, setIsSelectActive] = React.useState(false);
 
   let toggleMenu = () => {
-    console.log(isMenuActive);
+    // console.log(isMenuActive);
     setIsMenuActive((prev) => !prev);
   };
 
+
   function selectItems() {
-    
+    dispatch(select());
   };
 
   // When I click select on the three dot menu, popup w/ options appears.

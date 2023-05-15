@@ -7,7 +7,7 @@ export const modalSlice = createSlice({
     },
     reducers: {
         changeActiveStatus(state, action) {
-            console.log(action.payload)
+            // console.log(action.payload)
             state.isActive = action.payload;
         }
     }
