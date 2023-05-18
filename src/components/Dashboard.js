@@ -130,7 +130,7 @@ const Dashboard = () => {
           moduleName="Income"
         />
 
-        {/* <CashFlowModule
+        <CashFlowModule
           cashFlow={expenseArr}
           moduleName="Expenses"
         />
@@ -138,7 +138,7 @@ const Dashboard = () => {
         <CashFlowModule
           cashFlow={savingsArr}
           moduleName="Savings"
-        /> */}
+        />
       </section>
     </>
   );

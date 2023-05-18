@@ -80,6 +80,7 @@
   }
 
   .items-container {
+    overflow:hidden;
   }
 
   .finance-legend {
@@ -102,15 +103,6 @@
     /* height: 200px; */
   }
 
-  .finance-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-    padding: 15px 15px;
-    border-radius: 5px;
-    /* border: 1px solid black; */
-  }
 
   .view-allBtn {
     align-items: center;
@@ -124,11 +116,7 @@
     transition: .5s all;
   }
 
-  .finance-item:hover .closeOut {
-    transition: 0.3s all;
-    visibility: visible;
-    opacity: 1;
-  }
+ 
 
   .finance-item:last-child {
     /* border-bottom: none; */

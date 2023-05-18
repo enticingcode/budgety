@@ -110,13 +110,6 @@ body {
 }
 
 
-.closeOut {
-  width: 30px;
-  visibility: hidden;
-  opacity: 0;
-  border-radius: 5px;
-}
-
 .input-amounts {
   display:flex;
   flex-direction: column;

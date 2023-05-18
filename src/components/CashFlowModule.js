@@ -9,14 +9,15 @@ import {
 import { Link } from "react-router-dom";
 import ViewAll from "../ViewAll";
 import MoreOptions from "./MoreOptions";
+import "../styles/cashFlowModule.css"
 
 function CashFlowModule(props) {
   const dispatch = useDispatch();
   const localAuth = useAuth();
   const { cashFlow, moduleName } = props;
-  // const isSelectActive = useSelector(state => state.selectItems.isSelectActive);
-  // console.log(isSelectActive);
 
+  const isSelectionActive = useSelector(state => state.selectItems.isSelectActive);
+  console.log(isSelectionActive);
 
   function deleteItem(e) {
     e.preventDefault();
@@ -43,32 +44,37 @@ function CashFlowModule(props) {
       <h2>{moduleName}</h2>
       <div className="financeItem-containers">
         <div className="finance-legend">
+        {/* <button className="deleteItem">Delete</button> */}
           <p>Name</p>
           <p>Date</p>
           <p>Amount</p>
           {/* More Options to be rolled out later */}
-          {/* <MoreOptions /> */}
+          <MoreOptions />
         </div>
         <div className="items-container">
           {cashFlow.length > 0 ? (
             firstSevenItems.map((item) => {
               return (
                 <div
-                  className="finance-item"
+                // If isSelectionActive, animation to select items will appear on left side;
+                  className={`finance-item ${isSelectionActive ? "select-items": ""}`}
                   data-category={item.category}
                   key={item.id}
                   id={item.id}
                 >
+                  <div className={`closeOut ${isSelectionActive ? "selectWidth": ""}`}>
+                  <img
+                    src="/xout.png"
+                    alt="Delete"
+                  />
+                  </div>
+                  <div>
                   <p>{item.name}</p>
                   <p>{item.date}</p>
                   <p>${item.amount}</p>
                   <span></span>
-                  <img
-                    onClick={deleteItem}
-                    className="closeOut"
-                    src="/xout.png"
-                    alt="Delete"
-                  />
+                  </div>
+                  
                 </div>
               );
             })

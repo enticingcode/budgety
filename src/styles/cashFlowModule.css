@@ -1,0 +1,54 @@
+.closeOut {
+    display:flex;
+    width: 0px;
+    border-radius: 5px;
+    align-items: center;
+    transition: all .4s;
+}
+
+.clsoeOut:hover {
+    background-color: rgb(208, 62, 62);
+}
+
+.closeOut img {
+    width: 100%;
+}
+
+.select-items {
+    transition: all .4s;
+}
+
+.selectWidth {
+    width: 30px;
+    transition: all .4s;
+    padding-right: 10px;
+
+}
+
+
+.finance-item {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 15px 15px;
+    border-radius: 5px;
+  }
+ 
+  .finance-item > :nth-child(2) {
+    display:flex;
+    align-items: center;
+  }
+  
+  p {
+    vertical-align: middle;
+  }
+
+  .deleteItem {
+    font-size: 1rem;
+    background-color: rgb(241, 241, 241);
+    border-radius: 5px;
+
+    border:none;
+    outline:none;
+    color:red;
+  }

@@ -9,7 +9,7 @@ export const selectItems = createSlice({
     reducers: {
         select(state, action) {
            state.isSelectActive = !state.isSelectActive;
-
+           console.log(state.isSelectActive);
         }
     }
 });

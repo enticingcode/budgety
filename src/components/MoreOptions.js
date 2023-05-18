@@ -5,8 +5,8 @@ import { select } from "../features/utilities/selectItems";
 function MoreOptions() {
   const dispatch = useDispatch();
 
+
   const [isMenuActive, setIsMenuActive] = React.useState(false);
-  const [isSelectActive, setIsSelectActive] = React.useState(false);
 
   let toggleMenu = () => {
     // console.log(isMenuActive);
