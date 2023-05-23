@@ -24,17 +24,17 @@ function MoreOptions() {
   // When I click select, it should also pop up two new options within the legend navigation(edit, delete);
 
   return (
-    <div className="bullet-menu" onClick={toggleMenu}>
+    <div className="bullet-menu" onClick={selectItems}>
       <div>
         <span>&#x2022;</span>
         <span>&#x2022;</span>
         <span>&#x2022;</span>
       </div>
-      <div className={`${isMenuActive ? "bullet-active" : ""} bullet-options`}>
-        <li onClick={selectItems}>Select</li>
-        <li>Select All</li>
-        <li>Deselect All</li>
-      </div>
+      {/* <div className={`${isMenuActive ? "bullet-active" : ""} bullet-options`}>
+        <li onClick={selectItems}>Edit</li> 
+         <li>Select All</li>
+        <li>Deselect All</li> 
+      </div> */}
     </div>
   );
 }

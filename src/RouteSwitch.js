@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Login from "./components/Login";
-import TestSession from "./components/TestSession";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
@@ -27,15 +26,14 @@ const RouteSwitch = () => {
        {localAuth.user && <Sidebar />}
        {/* INCOME-EXPENSE MODULE */}
       {isModalActive && (<InputModal />)}
-      <main className="dashboard">
         <Routes>
           <Route
             path="/"
             element={localAuth.user ? <Dashboard /> : <HomePage />}
           />
+
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/testSession" element={<TestSession />} />
           <Route path="/password-reset" element={<ForgotPassword />} />
 
           {/* Auth required paths */}
@@ -61,7 +59,6 @@ const RouteSwitch = () => {
           {/* 404 PATH */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </main>
     </>
   );
 };

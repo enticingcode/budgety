@@ -62,7 +62,7 @@ function CashFlowModule(props) {
                   key={item.id}
                   id={item.id}
                 >
-                  <div className={`closeOut ${isSelectionActive ? "selectWidth": ""}`}>
+                  <div onClick={deleteItem} className={`closeOut ${isSelectionActive ? "selectWidth": ""}`}>
                   <img
                     src="/xout.png"
                     alt="Delete"

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+@font-face {
+    font-family: Cinzel-Black;
+    src: url(../assets/fonts/Cinzel-Bold.ttf);
+}
+
+.landing-pg {
+    /* background-color: rgb(27, 27, 27); */
+    display:flex;
+    width: 100%;
+    color:white;
+    height: 100%;
+    font-family: Cinzel-Black, Quicksand, Geneva, Tahoma, sans-serif;
+}
+
+#navbarNav {
+    justify-content: end;
+}
+
+.landing-nav-item {
+    padding: 1rem;
+}
+
+.main-pg {
+    width: 100%;
+    background-color: black;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bw-split {
+    position: absolute;
+    margin: 0 auto;
+    display:block;
+    height: 100%;
+}
+
+.arrow-trigger {
+    width: 50px;
+    height: 30px;
+}
+
+.landingLinks > a {
+    padding: 0 1rem;
+    color:white;
+    text-decoration: none;
+}
+
+
+.chevyIco:hover {
+    cursor: pointer;
+    box-shadow: rgba(191, 191, 191, 0.219) 0px 2px 8px 0px;
+}
+
+  
+  @keyframes MoveUpDown {
+    0%, 100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 5px;
+    }
+  }
+/* Working out the login page portion of trying to get an image in black and white sides */

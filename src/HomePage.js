@@ -1,40 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import icon from "./assets/images/budgeticon.png";
-import budge1 from "./assets/images/budge1.png";
+import "./styles/landingPage.css"
 
-function HomePage() {
+function LandingPage() {
   return (
-    <div className=" text-black">
-      <div className=" container-fluid d-flex bg-tan m-0 p-4 align-items-center justify-content-evenly">
-        <div>
-          <img className="img-fluid" alt="budgeting clipart" src={budge1}></img>
+    <div className="landing-pg">
+      {/* Main Page */}
+      <div className="main-pg">
+        <h1 className="heading">Budgety</h1>
+        <div className="landingLinks">
+          <Link to="/login">Login</Link>
+          <Link to="signup">Signup</Link>
         </div>
-        <span className="text-center">
-          <h1 className="">Feeling Budgety?</h1>
-          <Link className="" to="/testSession">
-            Try a Preview!
-          </Link>
-        </span>
-      </div>
-
-      <section className="d-flex flex-column py-5 text-center align-items-center container-fluid bg-white">
-        <h2>Start Budgeting today with Budgety!</h2>
-        <p>Your solution to every day budgeting needs!</p>
-        <p>
-          Ditch those old pen and paper methods, or don't we also provide an PDF
-          capabilities.
-        </p>
-      </section>
-
-      <div className="container-fluid d-flex p-5 align-items-center px3 bg-bluey justify-content-evenly">
-        <div className="me-1">
-          <img className="img-fluid mw-25" alt="budget icon" src={icon}></img>
-        </div>
-        <h2>Coming soon to iOS</h2>
       </div>
     </div>
   );
 }
 
-export default HomePage;
+export default LandingPage;

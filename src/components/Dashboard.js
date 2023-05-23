@@ -106,7 +106,7 @@ const Dashboard = () => {
 
 
   return (
-    <>
+    <main className="dashboard">
       <section className="top-section">
         <div className="current-bal">
           <p>Current Balance</p>
@@ -140,7 +140,7 @@ const Dashboard = () => {
           moduleName="Savings"
         />
       </section>
-    </>
+    </main>
   );
 };
 
