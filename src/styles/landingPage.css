@@ -5,14 +5,13 @@
     src: url(../assets/fonts/Cinzel-Bold.ttf);
 }
 
-.landing-pg {
-    /* background-color: rgb(27, 27, 27); */
+ /* .landing-pg {
+    background-color: rgb(27, 27, 27); 
     display:flex;
     width: 100%;
     color:white;
     height: 100%;
-    font-family: Cinzel-Black, Quicksand, Geneva, Tahoma, sans-serif;
-}
+} */
 
 #navbarNav {
     justify-content: end;
@@ -20,16 +19,16 @@
 
 .landing-nav-item {
     padding: 1rem;
-}
+} */
 
-.main-pg {
+/* .main-pg {
     width: 100%;
     background-color: black;
     display:flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .bw-split {
     position: absolute;
@@ -54,6 +53,32 @@
     cursor: pointer;
     box-shadow: rgba(191, 191, 191, 0.219) 0px 2px 8px 0px;
 }
+
+
+/* Login & Signup Page Styles */
+.login-page {
+    display: flex;
+    font-family: Cinzel-Black, Quicksand, Geneva, Tahoma, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    color:white;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 2rem 2rem;
+  }
+  
+  
+  .home-links:hover {
+    color:rgb(108, 108, 124);
+    box-shadow: rgba(216, 216, 216, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
 
   
   @keyframes MoveUpDown {

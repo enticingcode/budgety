@@ -99,17 +99,6 @@ body {
   /* opacity: .75; */
 }
 
-
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding: 2rem 2rem;
-}
-
-
 .input-amounts {
   display:flex;
   flex-direction: column;
@@ -298,13 +287,9 @@ option:hover {
   background-color: rgb(241, 241, 241);
 }
 
-
 .logout-btn:hover {
   cursor: pointer;
 }
-
-
-
 
 .fade-enter {
   opacity: 0;
@@ -326,12 +311,6 @@ option:hover {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
-
-.login-page {
-  height: 100vh;
-}
-
-
 
 .chart-box {
   text-align: center;
@@ -364,10 +343,6 @@ option:hover {
 
 .react-multi-carousel-track {
   text-align: center;
-}
-
-.form-container {
-  align-items: center;
 }
 
 

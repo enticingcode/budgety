@@ -29,10 +29,10 @@ const RouteSwitch = () => {
         <Routes>
           <Route
             path="/"
-            element={localAuth.user ? <Dashboard /> : <HomePage />}
+            element={localAuth.user ? <Dashboard /> : <Login />}
           />
 
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/password-reset" element={<ForgotPassword />} />
 

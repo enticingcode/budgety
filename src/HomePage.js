@@ -8,9 +8,12 @@ function LandingPage() {
       {/* Main Page */}
       <div className="main-pg">
         <h1 className="heading">Budgety</h1>
+        <div className="login-txt-div text-white">
+          <p>Your personal budgeting resource</p>
+        </div>
         <div className="landingLinks">
-          <Link to="/login">Login</Link>
-          <Link to="signup">Signup</Link>
+          <Link className="home-links" to="/login">Login</Link>
+          <Link className="home-links" to="signup">Signup</Link>
         </div>
       </div>
     </div>

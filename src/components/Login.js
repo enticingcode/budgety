@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./FirebaseAuth";
 import { getPersonName } from "./FirebaseAuth";
 import { AuthContext } from "./auth";
-import MoneyWrap from "../assets/images/login.png";
+import "../styles/landingPage.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -55,22 +55,10 @@ const Login = () => {
   }
 
   return (
-    <div className="login-page d-flex">
-      <section className="login-design d-flex justify-content-center align-items-center flex-column container bg-greenery">
-        <div className="login-txt-div my-3 text-center">
-          <h2>Welcome to Budgety</h2>
-          <p>Your personal budgeting resource</p>
-          <img
-            alt="budget clipart"
-            className="login-decor w-50 my-3"
-            src={MoneyWrap}
-          />
-        </div>
-      </section>
-
-      <section className="credentials-wrapper d-flex flex-column justify-content-center align-items-center container">
+    <div className="login-page">
+        
         <h3>Login to Budgety</h3>
-        <form className="form-container d-flex flex-column m-1">
+        <form className="form-container">
           <label htmlFor="email"></label>
           <input
             className="login-input my-2"
@@ -102,7 +90,6 @@ const Login = () => {
           </p>
           <Link to="/password-reset">Forgot your password?</Link>
         </div>
-      </section>
     </div>
   );
 };
