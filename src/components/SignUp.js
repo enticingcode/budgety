@@ -61,18 +61,12 @@ const SignUp = () => {
   }
 
   return (
-    <div className="login-page d-flex">
-      <section className="login-design d-flex justify-content-center align-items-center flex-column container bg-greenery">
-        <div className="login-txt-div">
-          <h2>Welcome to Budgety</h2>
-          <p>Your personal budgeting resource</p>
-        </div>
-      </section>
+    <div className="login-page">
+      <div className="login-bg-blur"></div>
+      <div className="form-container">
+      <h3>Sign up for Budgety</h3>
 
-      <section className="credentials-wrapper d-flex flex-column justify-content-center align-items-center container">
-        <h3>Sign up for Budgety</h3>
-
-        <form className="form-container d-flex flex-column m-1">
+        <form>
           <label htmlFor="name"></label>
           <input
             className="login-input my-2"
@@ -115,14 +109,11 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
-
-        <div className="login-white">
-          <p>
-            Already a member?
-            <Link to="/login"> Login here</Link>
+        <div className="text-center mt-3">
+          <p>Already a member? <br/><Link to="/">Login here</Link>
           </p>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

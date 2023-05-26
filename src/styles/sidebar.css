@@ -3,7 +3,7 @@
     flex-direction: column;
     width: 300px;
     min-width: 300px;
-    background-color: #12131c;
+    background-color: var(--primary-color)
 }
 
 .navbar * {

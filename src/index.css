@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
 
+:root {
+  --primary-color: #0d1b2a;
+  --secondary-color: #1b263b;
+  --tertiary-color: #415a77;
+  --btn-color: #778da9;
+  --text-color: #e0e1dd;
+}
+
 html, body, #root {
   height: 100%;
 }
@@ -53,15 +61,6 @@ body {
 .welcomeh1 {
   padding: 1rem;
   background-color: rgb(245, 245, 245);
-}
-
-.login-input {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  border-radius: 5px;
-  padding: 5px 7px;
-  border: solid 0.2px rgb(105, 105, 105);
 }
 
 .add-btn {
@@ -407,11 +406,7 @@ option:hover {
     margin-top: 1.5rem;
   }
 
-  .login-page {
-    flex-direction: column;
-    height: 100vh !important;
-  }
-
+  
   .login-design {
     height: 34vh;
   }

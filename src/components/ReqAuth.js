@@ -6,7 +6,7 @@ const ReqAuth = ({ children }) => {
   const auth = useAuth();
 
   if (!auth.user) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return children;

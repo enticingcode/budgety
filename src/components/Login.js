@@ -56,9 +56,10 @@ const Login = () => {
 
   return (
     <div className="login-page">
-        
+      <div className="login-bg-blur"></div>
+      <div className="form-container">
         <h3>Login to Budgety</h3>
-        <form className="form-container">
+        <form>
           <label htmlFor="email"></label>
           <input
             className="login-input my-2"
@@ -68,7 +69,6 @@ const Login = () => {
             name="email"
             type="email"
           ></input>
-
           <label htmlFor="password"></label>
           <input
             className="login-input my-2"
@@ -78,18 +78,18 @@ const Login = () => {
             name="password"
             type="password"
           ></input>
-          <button className="btn btn-success" onClick={handleLogin}>
+          <Link to="/password-reset">Forgot your password?</Link>
+
+          <button className="btn" onClick={handleLogin}>
             Login
           </button>
         </form>
-
-        <div className="login-white text-center">
-          <p className="mt-4 mb-1">
-            New Here?
-            <Link to="/signup"> Sign up for an account today!</Link>
-          </p>
-          <Link to="/password-reset">Forgot your password?</Link>
+        <div className="text-center">
+          <p className="mt-4 mb-1">New Here?<br /><Link to="/signup">Sign up for an account today!</Link></p>
         </div>
+      </div>
+
+
     </div>
   );
 };

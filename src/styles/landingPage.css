@@ -5,13 +5,6 @@
     src: url(../assets/fonts/Cinzel-Bold.ttf);
 }
 
- /* .landing-pg {
-    background-color: rgb(27, 27, 27); 
-    display:flex;
-    width: 100%;
-    color:white;
-    height: 100%;
-} */
 
 #navbarNav {
     justify-content: end;
@@ -19,15 +12,6 @@
 
 .landing-nav-item {
     padding: 1rem;
-} */
-
-/* .main-pg {
-    width: 100%;
-    background-color: black;
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
 } */
 
 .bw-split {
@@ -48,24 +32,68 @@
     text-decoration: none;
 }
 
-
-.chevyIco:hover {
-    cursor: pointer;
-    box-shadow: rgba(191, 191, 191, 0.219) 0px 2px 8px 0px;
-}
-
-
 /* Login & Signup Page Styles */
 .login-page {
     display: flex;
+    flex-direction: column;
     font-family: Cinzel-Black, Quicksand, Geneva, Tahoma, sans-serif;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     width: 100%;
-    background-color: black;
-    color:white;
+    color: var(--text-color);
+    background: url('../assets/images/login-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
   
+  .login-bg-blur {
+    position:fixed;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.976), transparent), 
+    linear-gradient(to top, rgb(0, 0, 0), transparent);
+  }
+
+  .form-container {
+    display: flex;
+    align-items: center;
+    padding: 2rem 2rem;
+    z-index: 5;
+  }
+
+  .form-container form {
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .login-input {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 7px;
+    border: solid 0.2px rgba(105, 105, 105, 0.407);
+    background-color: #1f1f1f96 !important;
+    color: #fdfdfd !important;
+    font-family: serif;
+    width: 400px;
+  }
+
+  .btn {
+    background-color: var(--text-color) !important;
+  }
+
+  /* .home-links:hover {
+    color:rgb(108, 108, 124);
+    box-shadow: rgba(216, 216, 216, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  } */
+
+ 
   .form-container {
     display: flex;
     flex-direction: column;
@@ -75,18 +103,16 @@
   }
   
   
-  .home-links:hover {
-    color:rgb(108, 108, 124);
-    box-shadow: rgba(216, 216, 216, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  .home-links {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+
+  a {
+    color: rgba(253, 253, 253, 0.701) !important;
+  }
+
+  a:hover {
+    color: rgb(116, 120, 116) !important;
   }
 
   
-  @keyframes MoveUpDown {
-    0%, 100% {
-      bottom: 0;
-    }
-    50% {
-      bottom: 5px;
-    }
-  }
-/* Working out the login page portion of trying to get an image in black and white sides */

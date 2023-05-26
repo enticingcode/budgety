@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./HomePage";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
@@ -32,7 +31,6 @@ const RouteSwitch = () => {
             element={localAuth.user ? <Dashboard /> : <Login />}
           />
 
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/password-reset" element={<ForgotPassword />} />
 
