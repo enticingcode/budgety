@@ -1,6 +1,6 @@
 import React from "react";
-import { updateFirebaseValues } from "./FirebaseAuth";
-import { useAuth } from "./auth";
+import { updateFirebaseValues } from "../auth/FirebaseAuth";
+import { auth } from "../auth/FirebaseAuth";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteExpense,
@@ -13,11 +13,9 @@ import "../styles/cashFlowModule.css"
 
 function CashFlowModule(props) {
   const dispatch = useDispatch();
-  const localAuth = useAuth();
   const { cashFlow, moduleName } = props;
 
   const isSelectionActive = useSelector(state => state.selectItems.isSelectActive);
-  console.log(isSelectionActive);
 
   function deleteItem(e) {
     e.preventDefault();
@@ -34,7 +32,7 @@ function CashFlowModule(props) {
     if (elementCategory == "Income") dispatch(deleteIncome(newArr));
     if (elementCategory == "Expenses") dispatch(deleteExpense(newArr));
     // if(elementCategory == "Savings")dispatch(deleteSavings(newArr));
-    updateFirebaseValues(localAuth.user, moduleName, newArr, "del");
+    updateFirebaseValues(auth.currentUser, moduleName, newArr, "del");
   }
 
   let firstSevenItems = cashFlow.slice(0, 7);

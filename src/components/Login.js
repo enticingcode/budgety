@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./FirebaseAuth";
-import { getPersonName } from "./FirebaseAuth";
-import { AuthContext } from "./auth";
+import { signInWithEmailAndPassword, browserLocalPersistence, setPersistence } from "firebase/auth";
+import { auth } from "../auth/FirebaseAuth";
+import { getPersonName } from "../auth/FirebaseAuth";
+import { AuthContext } from "../auth/auth";
 import "../styles/landingPage.css";
 
 const Login = () => {
@@ -14,7 +14,6 @@ const Login = () => {
     password: "",
   });
 
-  const localAuth = useContext(AuthContext);
 
   function handleChange(e) {
     let value = e.target.value;
@@ -30,28 +29,46 @@ const Login = () => {
 
   function handleLogin(e) {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, credentials.email, credentials.password)
-      .then((userCredential) => {
-        const user = userCredential.user.uid;
-        localAuth.setUser(user);
-        navigate("/dashboard");
-        return user;
-        // Signed in
-      })
-      .then((user) => {
-        JSON.stringify(localStorage.setItem("user", user));
-        let name = getPersonName(user);
-        return name;
-      })
-      .then((name) => {
-        localStorage.setItem("username", name);
-      })
+    setPersistence(auth, browserLocalPersistence).then(() => {
+      // Existing and future Auth states are now persisted in the current
+      // session only. Closing the window would clear any existing state even
+      // if a user forgets to sign out.
+      // ...
+      // New sign-in will be persisted with session persistence.
+      return signInWithEmailAndPassword(auth, credentials.email, credentials.password);
+    }).then(() => {
+      navigate("/dashboard");
+      console.log('why')
+    })
       .catch((error) => {
+        // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode, errorMessage);
-        console.log(errorCode, errorMessage);
       });
+
+    // signInWithEmailAndPassword(auth, credentials.email, credentials.password)
+    //   .then((userCredential) => {
+    //     const user = userCredential.user.uid;
+    //     // auth.setUser(user);
+    //     navigate("/dashboard");
+    //     return user;
+    //     // Signed in
+    //   })
+    //   .then((user) => {
+    //     let name = getPersonName(user);
+    //     return name;
+    //   })
+    //   .then((name) => {
+    //     localStorage.setItem("username", name);
+    //     console.log(auth.currentUser);
+
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     alert(errorCode, errorMessage);
+    //     console.log(errorCode, errorMessage);
+    //   });
   }
 
   return (

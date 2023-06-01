@@ -1,7 +1,7 @@
 import React from "react";
-import { updateFirebaseValues } from "./FirebaseAuth";
+import { updateFirebaseValues } from "../auth/FirebaseAuth";
 import uniqid from "uniqid";
-import { useAuth } from "./auth";
+import { auth } from "../auth/FirebaseAuth";
 import { useDispatch } from "react-redux";
 import {
   addIncome,
@@ -11,7 +11,6 @@ import {
 import { changeActiveStatus } from "../features/utilities/modalSlice";
 
 function InputModal(props) {
-  const localAuth = useAuth();
   const dispatch = useDispatch();
   const [category, setCategory] = React.useState(null);
 
@@ -62,7 +61,7 @@ function InputModal(props) {
     if (category === "Expenses") dispatch(addExpense(newExpenseObj));
     if (category === "Savings") dispatch(addSavings(newExpenseObj));
 
-    updateFirebaseValues(localAuth.user, category, newExpenseObj, "add");
+    updateFirebaseValues(auth.currentUser, category, newExpenseObj, "add");
     setInput({ name: "", amount: "", category: "" });
     dispatch(changeActiveStatus(false));
   }

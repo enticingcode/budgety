@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
-import { auth } from "./FirebaseAuth";
+import { auth } from "../auth/FirebaseAuth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { connectUserNameAcc } from "./FirebaseAuth";
-import { getPersonName } from "./FirebaseAuth";
-import { AuthContext } from "./auth";
+import { connectUserNameAcc } from "../auth/FirebaseAuth";
+import { getPersonName } from "../auth/FirebaseAuth";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const localAuth = useContext(AuthContext);
   const [credentials, setCredentials] = React.useState({
     name: "",
     email: "",
     password: "",
   });
+
 
   function submitSignup(e) {
     e.preventDefault();
@@ -30,20 +29,17 @@ const SignUp = () => {
         connectUserNameAcc(credentials.name, user);
         // set active user, get name to display on dash
 
-        localAuth.setUser(user);
         let userName = getPersonName(user);
         return userName;
       })
       .then((name) => {
         // then redirect to dash
-        localAuth.setPersonName(name);
         localStorage.setItem("name", name);
         navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode, errorMessage);
         console.log(errorCode, errorMessage);
       });
   }
@@ -105,7 +101,7 @@ const SignUp = () => {
             name="confirmPassword"
             type="password"
           ></input>
-          <button className="btn btn-success" onClick={submitSignup}>
+          <button className="btn" onClick={submitSignup}>
             Sign Up
           </button>
         </form>

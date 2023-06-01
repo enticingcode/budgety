@@ -1,7 +1,6 @@
 import React from "react";
-import { useAuth } from "./auth";
 import ChartModule from "./ChartModule";
-import { db } from "./FirebaseAuth";
+import { auth, db } from "../auth/FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 import CashFlowModule from "./CashFlowModule";
 import "../styles/dashboard.css";
@@ -14,8 +13,7 @@ import { saveIncomeData, saveExpenseData } from "../features/financials/financeS
 const Dashboard = () => {
   console.log('Dashboard Render');
   const dispatch = useDispatch();
-  const localAuth = useAuth();
-  const userCollectionRef = doc(db, "users", localAuth.user);
+  const userCollectionRef = doc(db, "users", auth.currentUser.uid)
   const [user, setUser] = React.useState();
   
   // =========================================== //
@@ -80,6 +78,7 @@ const Dashboard = () => {
 
     if (doc.data()) {
       let name = doc.data().name;
+      console.log(name);
       const incomesData = doc.data().Income;
       const expensesData = doc.data().Expenses;
       const savingsAlloData = doc.data().Savings;
@@ -110,7 +109,7 @@ const Dashboard = () => {
       <section className="top-section">
         <div className="current-bal">
           <p>Current Balance</p>
-          <p>$7,305</p>
+          <p>$102,305</p>
         </div>
 
         <div className="goals-container">

@@ -4,8 +4,8 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
-import ReqAuth from "./components/ReqAuth";
-import { useAuth } from "./components/auth";
+import ReqAuth from "./auth/ReqAuth";
+import { auth } from "./auth/FirebaseAuth";
 import MonthlyTracker from "./components/MonthlyTracker";
 import ForgotPassword from "./components/ForgotPassword";
 import WeeklyForecasts from "./components/WeeklyForecasts";
@@ -16,19 +16,19 @@ import InputModal from "./components/InputModal";
 
 
 const RouteSwitch = () => {
-  const localAuth = useAuth();
+  
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;
 
   return (
     <>
-       {localAuth.user && <Sidebar />}
+       {auth.currentUser && <Sidebar />}
        {/* INCOME-EXPENSE MODULE */}
       {isModalActive && (<InputModal />)}
         <Routes>
           <Route
             path="/"
-            element={localAuth.user ? <Dashboard /> : <Login />}
+            element={auth.currentUser ? <Dashboard /> : <Login />}
           />
 
           <Route path="/signup" element={<SignUp />} />

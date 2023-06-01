@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "./auth";
+import { auth } from "../src/auth/FirebaseAuth";
 import IncomeModules from "./IncomeModules";
 import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
@@ -8,8 +8,6 @@ import { updateMoneyValues } from "./FirebaseAuth";
 // import { updateMoneyValues } from "./FirebaseAuth";
 
 const Dashboard = () => {
-  const localAuth = useAuth();
-
   const [incomeSources, setIncomeSources] = React.useState(
     JSON.parse(localStorage.getItem("incomeSources")) || []
   );
@@ -56,12 +54,12 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     localStorage.setItem("incomeSources", JSON.stringify(incomeSources));
-    updateMoneyValues(localAuth.user, "incomeSources", incomeSources);
+    updateMoneyValues(auth.currentUser, "incomeSources", incomeSources);
   }, [incomeSources]);
 
   React.useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
-    updateMoneyValues(localAuth.user, "expenses", expenses);
+    updateMoneyValues(auth.currentUser, "expenses", expenses);
   }, [expenses]);
 
   React.useEffect(() => {
@@ -69,14 +67,14 @@ const Dashboard = () => {
       "savingsAllocation",
       JSON.stringify(savingsAllocation)
     );
-    updateMoneyValues(localAuth.user, "savingsAllocations", savingsAllocation);
+    updateMoneyValues(auth.currentUser, "savingsAllocations", savingsAllocation);
   }, [savingsAllocation]);
 
   return (
     <>
       {/* should be state considering its an api call  upon login*/}
 
-      <h1 className="ms-3 mt-4">Welcome {localAuth.personName} </h1>
+      <h1 className="ms-3 mt-4">Welcome {'person name here'} </h1>
 
       {/* informational modules */}
       <div className="d-md-flex">

@@ -1,18 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import BudgetLogo from "../assets/images/budgety.png";
-import { useAuth } from "./auth";
 import "../styles/sidebar.css"
+import { signOut } from "firebase/auth";
 
 
 const Sidebar = () => {
-  const localAuth = useAuth();
 
   function logout(e) {
     e.preventDefault();
-    localStorage.removeItem("user");
-    localAuth.setUser(null);
-  }
+    // localStorage.removeItem("user");
+    // localAuth.setUser(null);
+
+    signOut(auth).then(() => {
+      //sign-out
+      console.log('signout successful');
+    }).catch((error) => {
+      // error
+      console.log(error);
+    })
+  };
 
   return (
       

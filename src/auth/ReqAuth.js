@@ -1,11 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "./auth";
+import { auth } from "../auth/FirebaseAuth"
 
 const ReqAuth = ({ children }) => {
-  const auth = useAuth();
 
-  if (!auth.user) {
+  if (!auth.currentUser) {
     return <Navigate to="/" />;
   }
 
