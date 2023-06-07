@@ -17,7 +17,7 @@ import { useAuth } from "./authFiles/auth";
 
 const RouteSwitch = () => {
   const user = useAuth().user;
-  console.log(user);
+  // console.log(user);
   
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;

@@ -5,7 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 import CashFlowModule from "./CashFlowModule";
 import "../styles/dashboard.css";
 // import TopOffenders from "./TopOffenders";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, batch } from "react-redux";
 import { changeActiveStatus } from "../features/utilities/modalSlice";
 import { saveIncomeData, saveExpenseData } from "../features/financials/financeSlice";
 
@@ -65,28 +65,21 @@ const Dashboard = () => {
   // PULL IN DATA FROM FIREBASE //
   ///////////////////////////////
   async function getData() {
-    const userCollectionRef = doc(db, "users", auth.currentUser?.uid);
+    const userCollectionRef = doc(db, "users", auth.currentUser.uid);
     const document = await getDoc(userCollectionRef);
 
     if (document.data()) {
-      let name = document.data().name;
-      console.log(name);
       const incomesData = document.data().Income;
       const expensesData = document.data().Expenses;
-      const savingsAlloData = document.data().Savings;
+      // const savingsAlloData = document.data().Savings;
     
-      setUser(name);
-
       // SET STATES //
-      if (incomesData) {
-        dispatch(saveIncomeData(incomesData));
-      }
-      if (expensesData) {
-        dispatch(saveExpenseData(expensesData));
-      }
-      // if (savingsAlloData) {
-      //   setSavingsAllocation(savingsAlloData);
-      // }
+
+      batch(() => {
+        if (incomesData) dispatch(saveIncomeData(incomesData));
+        if (expensesData) dispatch(saveExpenseData(expensesData));
+      })
+
     }
   }
 
