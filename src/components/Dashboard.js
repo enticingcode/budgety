@@ -1,6 +1,6 @@
 import React from "react";
 import ChartModule from "./ChartModule";
-import { auth, db } from "../authFiles/FirebaseAuth";
+import { db } from "../authFiles/FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 import CashFlowModule from "./CashFlowModule";
 import "../styles/dashboard.css";
@@ -10,11 +10,14 @@ import { changeActiveStatus } from "../features/utilities/modalSlice";
 import { saveIncomeData, saveExpenseData } from "../features/financials/financeSlice";
 
 
-const Dashboard = () => {
-  console.log('Dashboard Render');
+const Dashboard = (props) => {
+  // console.log('Dashboard Render');
   const dispatch = useDispatch();
   const [user, setUser] = React.useState();
+
+  const auth = props.auth.uid;
   
+  console.log(auth);
   // =========================================== //
 
   // USE SELECTOR CAUSES 3 RE-RENDERS WITH USEREACT, NEED TO FIGURE OUT A WAY OUT OF THIS.
@@ -65,7 +68,7 @@ const Dashboard = () => {
   // PULL IN DATA FROM FIREBASE //
   ///////////////////////////////
   async function getData() {
-    const userCollectionRef = doc(db, "users", auth.currentUser.uid);
+    const userCollectionRef = doc(db, "users", auth);
     const document = await getDoc(userCollectionRef);
 
     if (document.data()) {

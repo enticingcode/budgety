@@ -16,12 +16,19 @@ import { useAuth } from "./authFiles/auth";
 
 
 const RouteSwitch = () => {
+
+  // Auth appears null, then renders dashboard, then fills in user and re-renders dashboard.
+  // Auth.user not being taken in as props on dashboard for some reason.
+  
   const user = useAuth().user;
   // console.log(user);
   
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;
 
+  // Since I have two instances of dashboard route, it causes a bug where I'm,
+  // rendering one or the other, need to delete one/consolidate
+  
   return (
     <>
        {user && <Sidebar />}
@@ -30,7 +37,7 @@ const RouteSwitch = () => {
         <Routes>
           <Route
             path="/"
-            element={user ? <Dashboard /> : <Login />}
+            element={user ? <Dashboard auth={user}/> : <Login />}
           />
 
           <Route path="/signup" element={<SignUp />} />
@@ -41,7 +48,7 @@ const RouteSwitch = () => {
             path="/dashboard"
             element={
               <ReqAuth>
-                <Dashboard />
+                <Dashboard auth={user} />
               </ReqAuth>
             }
           />

@@ -23,9 +23,3 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
-
-
-
-// this Context provider probably isn't even necessary anymore. this was for
-// local usage, that I don't think is needed anymore.
-// possibly needed for reqpaths
