@@ -1,20 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import BudgetLogo from "../assets/images/budgety.png";
 import "../styles/sidebar.css"
 import { signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 
 const Sidebar = () => {
+  const auth = getAuth();
+  const navigate = useNavigate();
 
   function logout(e) {
     e.preventDefault();
-    // localStorage.removeItem("user");
-    // localAuth.setUser(null);
-
     signOut(auth).then(() => {
       //sign-out
       console.log('signout successful');
+      navigate("/");
     }).catch((error) => {
       // error
       console.log(error);

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { AuthProvider } from "./auth/auth";
+import { AuthProvider } from "./authFiles/auth";
 import RouteSwitch from "./RouteSwitch";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";

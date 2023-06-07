@@ -5,9 +5,11 @@ import ExpenseModules from "./ExpenseModules";
 import SavingsModules from "./SavingsModules";
 import ChartModule from "./ChartModule";
 import { updateMoneyValues } from "./FirebaseAuth";
+import { useAuth } from "../src/authFiles/auth";
 // import { updateMoneyValues } from "./FirebaseAuth";
 
 const Dashboard = () => {
+  const user = useAuth();
   const [incomeSources, setIncomeSources] = React.useState(
     JSON.parse(localStorage.getItem("incomeSources")) || []
   );
@@ -54,12 +56,12 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     localStorage.setItem("incomeSources", JSON.stringify(incomeSources));
-    updateMoneyValues(auth.currentUser, "incomeSources", incomeSources);
+    updateMoneyValues(user, "incomeSources", incomeSources);
   }, [incomeSources]);
 
   React.useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
-    updateMoneyValues(auth.currentUser, "expenses", expenses);
+    updateMoneyValues(user, "expenses", expenses);
   }, [expenses]);
 
   React.useEffect(() => {
@@ -67,7 +69,7 @@ const Dashboard = () => {
       "savingsAllocation",
       JSON.stringify(savingsAllocation)
     );
-    updateMoneyValues(auth.currentUser, "savingsAllocations", savingsAllocation);
+    updateMoneyValues(user, "savingsAllocations", savingsAllocation);
   }, [savingsAllocation]);
 
   return (

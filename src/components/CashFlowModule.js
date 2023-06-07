@@ -1,6 +1,5 @@
 import React from "react";
-import { updateFirebaseValues } from "../auth/FirebaseAuth";
-import { auth } from "../auth/FirebaseAuth";
+import { updateFirebaseValues } from "../authFiles/FirebaseAuth";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteExpense,
@@ -10,8 +9,10 @@ import { Link } from "react-router-dom";
 import ViewAll from "../ViewAll";
 import MoreOptions from "./MoreOptions";
 import "../styles/cashFlowModule.css"
+import { useAuth } from "../authFiles/auth";
 
 function CashFlowModule(props) {
+  const user = useAuth();
   const dispatch = useDispatch();
   const { cashFlow, moduleName } = props;
 
@@ -32,7 +33,7 @@ function CashFlowModule(props) {
     if (elementCategory == "Income") dispatch(deleteIncome(newArr));
     if (elementCategory == "Expenses") dispatch(deleteExpense(newArr));
     // if(elementCategory == "Savings")dispatch(deleteSavings(newArr));
-    updateFirebaseValues(auth.currentUser, moduleName, newArr, "del");
+    updateFirebaseValues(user, moduleName, newArr, "del");
   }
 
   let firstSevenItems = cashFlow.slice(0, 7);

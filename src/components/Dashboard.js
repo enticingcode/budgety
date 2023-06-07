@@ -1,10 +1,10 @@
 import React from "react";
 import ChartModule from "./ChartModule";
-import { auth, db } from "../auth/FirebaseAuth";
+import { auth, db } from "../authFiles/FirebaseAuth";
 import { getDoc, doc } from "firebase/firestore";
 import CashFlowModule from "./CashFlowModule";
 import "../styles/dashboard.css";
-import TopOffenders from "./TopOffenders";
+// import TopOffenders from "./TopOffenders";
 import { useSelector, useDispatch } from "react-redux";
 import { changeActiveStatus } from "../features/utilities/modalSlice";
 import { saveIncomeData, saveExpenseData } from "../features/financials/financeSlice";
@@ -13,7 +13,6 @@ import { saveIncomeData, saveExpenseData } from "../features/financials/financeS
 const Dashboard = () => {
   console.log('Dashboard Render');
   const dispatch = useDispatch();
-  const userCollectionRef = doc(db, "users", auth.currentUser.uid)
   const [user, setUser] = React.useState();
   
   // =========================================== //
@@ -24,13 +23,9 @@ const Dashboard = () => {
 
 //  console.log(cashFlowStates);
 
-
   let incomeArr = cashFlowStates.incomeArr;
   let expenseArr = cashFlowStates.expenseArr;
   let savingsArr = cashFlowStates.savingsArr;
-
-  // console.log("income: ", incomeArr, "\n", "expense: ", expenseArr, "\n", "savings: ", savingsArr);
-
 
   // Sum of total finances //
   let totalIncome = incomeArr.map((item) => {
@@ -44,8 +39,6 @@ const Dashboard = () => {
   // let totalSavings = savingsAllocation.map((item) => {
   //   return item.amount;
   // });
-
-
 
 
   // Add values of filtered array to display;
@@ -71,17 +64,16 @@ const Dashboard = () => {
   /////////////////////////////////
   // PULL IN DATA FROM FIREBASE //
   ///////////////////////////////
-
- 
   async function getData() {
-    const doc = await getDoc(userCollectionRef);
+    const userCollectionRef = doc(db, "users", auth.currentUser?.uid);
+    const document = await getDoc(userCollectionRef);
 
-    if (doc.data()) {
-      let name = doc.data().name;
+    if (document.data()) {
+      let name = document.data().name;
       console.log(name);
-      const incomesData = doc.data().Income;
-      const expensesData = doc.data().Expenses;
-      const savingsAlloData = doc.data().Savings;
+      const incomesData = document.data().Income;
+      const expensesData = document.data().Expenses;
+      const savingsAlloData = document.data().Savings;
     
       setUser(name);
 

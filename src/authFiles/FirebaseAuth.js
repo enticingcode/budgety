@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   doc,
   setDoc,
@@ -35,7 +35,6 @@ export const auth = getAuth(app);
 
 //init firestore DB
 export const db = getFirestore(app);
-
 
 
 async function connectUserNameAcc(userName, userId) {

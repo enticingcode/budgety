@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, browserLocalPersistence, setPersistence } from "firebase/auth";
-import { auth } from "../auth/FirebaseAuth";
-import { getPersonName } from "../auth/FirebaseAuth";
-import { AuthContext } from "../auth/auth";
+import { auth } from "../authFiles/FirebaseAuth";
 import "../styles/landingPage.css";
 
 const Login = () => {
@@ -38,7 +36,6 @@ const Login = () => {
       return signInWithEmailAndPassword(auth, credentials.email, credentials.password);
     }).then(() => {
       navigate("/dashboard");
-      console.log('why')
     })
       .catch((error) => {
         // Handle Errors here.

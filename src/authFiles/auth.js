@@ -1,16 +1,17 @@
 import { useState, createContext, useContext } from "react";
-import {auth} from "../auth/FirebaseAuth";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const AuthContext = createContext(null);
-console.log("first auth check ", auth);
 
 export const AuthProvider = ({ children }) => {
-  const user = auth.currentUser.uid;
-  // const [user, setUser] = useState(localStorage.getItem("user") || null);
-  // const [userName, setUserName] = useState(
-  //   localStorage.getItem("username") || ""
-  // );
+  const [user, setUser] = useState(null);
+
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    setUser(user);
+  });
+
+  // console.log(user);
 
   return (
     <AuthContext.Provider value={{ user }}>
@@ -22,6 +23,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
+
 
 
 // this Context provider probably isn't even necessary anymore. this was for

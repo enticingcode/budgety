@@ -1,5 +1,5 @@
 import React from "react";
-import { auth } from "../auth/FirebaseAuth";
+import { auth } from "../authFiles/FirebaseAuth";
 import { sendPasswordResetEmail } from "firebase/auth";
 
 const ForgotPassword = () => {

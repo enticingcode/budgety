@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { auth } from "../auth/FirebaseAuth";
+import { auth } from "../authFiles/FirebaseAuth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { connectUserNameAcc } from "../auth/FirebaseAuth";
-import { getPersonName } from "../auth/FirebaseAuth";
+import { connectUserNameAcc } from "../authFiles/FirebaseAuth";
+import { getPersonName } from "../authFiles/FirebaseAuth";
 
 const SignUp = () => {
   const navigate = useNavigate();

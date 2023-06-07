@@ -4,8 +4,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
-import ReqAuth from "./auth/ReqAuth";
-import { auth } from "./auth/FirebaseAuth";
+import ReqAuth from "./authFiles/ReqAuth";
 import MonthlyTracker from "./components/MonthlyTracker";
 import ForgotPassword from "./components/ForgotPassword";
 import WeeklyForecasts from "./components/WeeklyForecasts";
@@ -13,22 +12,25 @@ import Sidebar from "./components/Sidebar";
 import ViewAll from "./ViewAll";
 import { useSelector } from "react-redux";
 import InputModal from "./components/InputModal";
+import { useAuth } from "./authFiles/auth";
 
 
 const RouteSwitch = () => {
+  const user = useAuth().user;
+  console.log(user);
   
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;
 
   return (
     <>
-       {auth.currentUser && <Sidebar />}
+       {user && <Sidebar />}
        {/* INCOME-EXPENSE MODULE */}
       {isModalActive && (<InputModal />)}
         <Routes>
           <Route
             path="/"
-            element={auth.currentUser ? <Dashboard /> : <Login />}
+            element={user ? <Dashboard /> : <Login />}
           />
 
           <Route path="/signup" element={<SignUp />} />
