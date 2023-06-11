@@ -13,52 +13,48 @@ import ViewAll from "./ViewAll";
 import { useSelector } from "react-redux";
 import InputModal from "./components/InputModal";
 import { useAuth } from "./authFiles/auth";
-
+import LoadingState from "./components/LoadingState";
 
 const RouteSwitch = () => {
   const user = useAuth().user;
-  // console.log(user);
-  
+
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;
 
   return (
     <>
-       {user && <Sidebar />}
-       {/* INCOME-EXPENSE MODULE */}
-      {isModalActive && (<InputModal />)}
-        <Routes>
-          <Route
-            path="/"
-            element={user ? <Dashboard /> : <Login />}
-          />
+      {user && <Sidebar />}
+      {/* INCOME-EXPENSE MODULE */}
+      {isModalActive && <InputModal />}
+      <Routes>
+        <Route path="/" element={user ? <Dashboard /> : <Login />} />
 
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/password-reset" element={<ForgotPassword />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/password-reset" element={<ForgotPassword />} />
 
-          {/* Auth required paths */}
-          <Route
-            path="/dashboard"
-            element={
-              <ReqAuth>
-                <Dashboard />
-              </ReqAuth>
-            }
-          />
-          <Route
-            path="/monthly-tracker"
-            element={
-              <ReqAuth>
-                <MonthlyTracker />
-              </ReqAuth>
-            }
-          />
-          <Route path="/viewall/:type" element={<ViewAll />}/>
-          <Route path="/weekly-forecasts" element={<WeeklyForecasts />} />
+        {/* Auth required paths */}
+        <Route
+          path="/dashboard"
+          element={
+            <ReqAuth>
+              <Dashboard />
+            </ReqAuth>
+          }
+        />
+        <Route
+          path="/monthly-tracker"
+          element={
+            <ReqAuth>
+              <MonthlyTracker />
+            </ReqAuth>
+          }
+        />
+        <Route path="/viewall/:type" element={<ViewAll />} />
+        <Route path="/weekly-forecasts" element={<WeeklyForecasts />} />
 
-          {/* 404 PATH */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        {/* 404 PATH */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 };

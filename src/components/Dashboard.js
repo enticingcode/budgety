@@ -7,21 +7,23 @@ import "../styles/dashboard.css";
 // import TopOffenders from "./TopOffenders";
 import { useSelector, useDispatch, batch } from "react-redux";
 import { changeActiveStatus } from "../features/utilities/modalSlice";
-import { saveIncomeData, saveExpenseData } from "../features/financials/financeSlice";
-
+import {
+  saveIncomeData,
+  saveExpenseData,
+} from "../features/financials/financeSlice";
 
 const Dashboard = () => {
-  console.log('Dashboard Render');
+  console.log("Dashboard Render");
   const dispatch = useDispatch();
   const [user, setUser] = React.useState();
-  
+
   // =========================================== //
 
   // USE SELECTOR CAUSES 3 RE-RENDERS WITH USEREACT, NEED TO FIGURE OUT A WAY OUT OF THIS.
 
- const cashFlowStates = useSelector((state) => state.finance);
+  const cashFlowStates = useSelector((state) => state.finance);
 
-//  console.log(cashFlowStates);
+  //  console.log(cashFlowStates);
 
   let incomeArr = cashFlowStates.incomeArr;
   let expenseArr = cashFlowStates.expenseArr;
@@ -39,7 +41,6 @@ const Dashboard = () => {
   // let totalSavings = savingsAllocation.map((item) => {
   //   return item.amount;
   // });
-
 
   // Add values of filtered array to display;
   function addValues(arr) {
@@ -72,22 +73,19 @@ const Dashboard = () => {
       const incomesData = document.data().Income;
       const expensesData = document.data().Expenses;
       // const savingsAlloData = document.data().Savings;
-    
+
       // SET STATES //
 
       batch(() => {
         if (incomesData) dispatch(saveIncomeData(incomesData));
         if (expensesData) dispatch(saveExpenseData(expensesData));
-      })
-
+      });
     }
   }
 
   React.useEffect(() => {
-    getData();
+    // getData();
   }, []);
-
-
 
   return (
     <main className="dashboard">
@@ -97,32 +95,27 @@ const Dashboard = () => {
           <p>$102,305</p>
         </div>
 
-        <div className="goals-container">
-        </div>
+        <div className="goals-container"></div>
 
-        <button className="new-entry" onClick={() => dispatch(changeActiveStatus(true))}>Manage</button>
+        <button
+          className="new-entry"
+          onClick={() => dispatch(changeActiveStatus(true))}
+        >
+          Manage
+        </button>
         {/* <button className="new-entry" onClick={handleClick}>Manage</button> */}
       </section>
 
       <section className="middle-section top-offenders">
-      {/* <TopOffenders /> */}
+        {/* <TopOffenders /> */}
       </section>
 
       <section className="financials-section">
-        <CashFlowModule
-          cashFlow={incomeArr}
-          moduleName="Income"
-        />
+        <CashFlowModule cashFlow={incomeArr} moduleName="Income" />
 
-        <CashFlowModule
-          cashFlow={expenseArr}
-          moduleName="Expenses"
-        />
+        <CashFlowModule cashFlow={expenseArr} moduleName="Expenses" />
 
-        <CashFlowModule
-          cashFlow={savingsArr}
-          moduleName="Savings"
-        />
+        <CashFlowModule cashFlow={savingsArr} moduleName="Savings" />
       </section>
     </main>
   );
