@@ -365,7 +365,21 @@ option:hover {
 
 
 
-@media only screen and (max-width: 1562px) {
+@media only screen and (max-width: 992px) {
+
+
+  #root {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebar-nav {
+    flex-direction: row !important;
+  }
+
   .news-Container {
     flex-direction: column;
     width: 100%;

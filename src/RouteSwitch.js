@@ -13,7 +13,7 @@ import ViewAll from "./ViewAll";
 import { useSelector } from "react-redux";
 import InputModal from "./components/InputModal";
 import { useAuth } from "./authFiles/auth";
-
+import LoadingState from "./components/LoadingState";
 
 const RouteSwitch = () => {
 
@@ -21,8 +21,7 @@ const RouteSwitch = () => {
   // Auth.user not being taken in as props on dashboard for some reason.
   
   const user = useAuth().user;
-  // console.log(user);
-  
+
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;
 
@@ -40,8 +39,8 @@ const RouteSwitch = () => {
             element={user ? <Dashboard auth={user}/> : <Login />}
           />
 
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/password-reset" element={<ForgotPassword />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/password-reset" element={<ForgotPassword />} />
 
           {/* Auth required paths */}
           <Route
@@ -63,9 +62,9 @@ const RouteSwitch = () => {
           <Route path="/viewall/:type" element={<ViewAll />}/>
           <Route path="/weekly-forecasts" element={<WeeklyForecasts />} />
 
-          {/* 404 PATH */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        {/* 404 PATH */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 };
