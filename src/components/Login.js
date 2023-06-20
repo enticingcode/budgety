@@ -35,7 +35,7 @@ const Login = () => {
       // New sign-in will be persisted with session persistence.
       return signInWithEmailAndPassword(auth, credentials.email, credentials.password);
     }).then(() => {
-      navigate("/dashboard");
+      navigate("/");
     })
       .catch((error) => {
         // Handle Errors here.

@@ -21,6 +21,7 @@ const RouteSwitch = () => {
   // Auth.user not being taken in as props on dashboard for some reason.
   
   const user = useAuth().user;
+  console.log(user);
 
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;
@@ -43,14 +44,14 @@ const RouteSwitch = () => {
         <Route path="/password-reset" element={<ForgotPassword />} />
 
           {/* Auth required paths */}
-          <Route
+          {/* <Route
             path="/dashboard"
             element={
               <ReqAuth>
                 <Dashboard auth={user} />
               </ReqAuth>
             }
-          />
+          /> */}
           <Route
             path="/monthly-tracker"
             element={

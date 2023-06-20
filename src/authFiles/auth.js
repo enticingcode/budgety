@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const auth = getAuth();
-  console.log(auth);
+  // console.log(auth);
 
   // auth.operations.state cannot be targeted because of <state> key
   // find alternate method for loading

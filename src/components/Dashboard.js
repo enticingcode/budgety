@@ -19,7 +19,7 @@ const Dashboard = (props) => {
 
   const auth = props.auth.uid;
   
-  console.log(auth);
+  console.log("Dashboard auth: ", auth);
   // =========================================== //
 
   // USE SELECTOR CAUSES 3 RE-RENDERS WITH USEREACT, NEED TO FIGURE OUT A WAY OUT OF THIS.
@@ -87,7 +87,7 @@ const Dashboard = (props) => {
   }
 
   React.useEffect(() => {
-    // getData();
+    getData();
   }, []);
 
   return (
