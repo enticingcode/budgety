@@ -5,9 +5,6 @@
 - [X] Separate database documents for each user.
 - [X] Fix Refresh resetting authentication of firebase currentUser
 - [ ] Fix Deletion item selection on all modules
-- [ ] 
-- [ ] 
 
 
 
-# Notes

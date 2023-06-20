@@ -13,7 +13,6 @@ import ViewAll from "./ViewAll";
 import { useSelector } from "react-redux";
 import InputModal from "./components/InputModal";
 import { useAuth } from "./authFiles/auth";
-import LoadingState from "./components/LoadingState";
 
 const RouteSwitch = () => {
 
@@ -21,7 +20,6 @@ const RouteSwitch = () => {
   // Auth.user not being taken in as props on dashboard for some reason.
   
   const user = useAuth().user;
-  console.log(user);
 
   const isModalActive = useSelector((state) => state.modal.isActive);
   // const isModalActive = false;

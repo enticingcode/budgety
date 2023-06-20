@@ -344,7 +344,9 @@ option:hover {
   text-align: center;
 }
 
-
+.selected {
+  background-color: var(--tertiary-color);
+}
 
 
 @keyframes floating {

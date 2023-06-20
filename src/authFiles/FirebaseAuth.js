@@ -61,20 +61,28 @@ async function getPersonName(userId) {
   }
 }
 
-async function updateFirebaseValues(userID, stateType, state, action) {
+
+/**
+ * 
+ * @param {String} userID - User String Identifier for Firebase Collection Ref
+ * @param {String} category - Category of cashFlow
+ * @param {Object} object - name, amount, id, date
+ * @param {String} action - "add" or "del" firebase document
+ */
+async function updateFirebaseValues(userID, category, object, action) {
   const userRef = doc(db, "users", userID);
 
   if (action === "add") {
     try {
       await updateDoc(userRef, {
-        [stateType]: arrayUnion(state),
+        [category]: arrayUnion(object),
       });
     } catch (err) {
       console.error("error adding document", err);
     }
   } else if (action === "del") {
     try {
-      await setDoc(userRef, { [stateType]: state }, { merge: true });
+      await setDoc(userRef, { [category]: object }, { merge: true });
     } catch (err) {
       console.error("error deleting document", err);
     }

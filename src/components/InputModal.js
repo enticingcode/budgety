@@ -59,8 +59,6 @@ function InputModal(props) {
     if (category === "Income") dispatch(addIncome(newExpenseObj));
     if (category === "Expenses") dispatch(addExpense(newExpenseObj));
     if (category === "Savings") dispatch(addSavings(newExpenseObj));
-
-
     
     updateFirebaseValues(user, category, newExpenseObj, "add");
     setInput({ name: "", amount: "", category: "" });

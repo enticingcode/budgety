@@ -7,7 +7,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const auth = getAuth();
-  // console.log(auth);
 
   // auth.operations.state cannot be targeted because of <state> key
   // find alternate method for loading
@@ -22,6 +21,10 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
+/**
+ * 
+ * @returns - User unique identifier (uid);
+ */
 export const useAuth = () => {
   return useContext(AuthContext);
 };

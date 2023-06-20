@@ -12,11 +12,12 @@ import "../styles/cashFlowModule.css"
 import { useAuth } from "../authFiles/auth";
 
 function CashFlowModule(props) {
-  const user = useAuth();
+  const user = useAuth().user.uid;
   const dispatch = useDispatch();
   const { cashFlow, moduleName } = props;
+  const [isSelectActive, setIsSelectActive] = React.useState(false);
 
-  const isSelectionActive = useSelector(state => state.selectItems.isSelectActive);
+  // const isSelectionActive = useSelector(state => state.selectItems.isSelectActive);
 
   function deleteItem(e) {
     e.preventDefault();
@@ -43,25 +44,25 @@ function CashFlowModule(props) {
       <h2>{moduleName}</h2>
       <div className="financeItem-containers">
         <div className="finance-legend">
-        {/* <button className="deleteItem">Delete</button> */}
+        {/* <button className="deleteItem">Done</button> */}
           <p>Name</p>
           <p>Date</p>
           <p>Amount</p>
           {/* More Options to be rolled out later */}
-          <MoreOptions />
+          <MoreOptions setIsSelectActive={setIsSelectActive} />
         </div>
         <div className="items-container">
           {cashFlow.length > 0 ? (
             firstSevenItems.map((item) => {
               return (
                 <div
-                // If isSelectionActive, animation to select items will appear on left side;
-                  className={`finance-item ${isSelectionActive ? "select-items": ""}`}
+                // If isSelectActive, animation to select items will appear on left side;
+                  className={`finance-item ${isSelectActive ? "select-items": ""}`}
                   data-category={item.category}
                   key={item.id}
                   id={item.id}
                 >
-                  <div onClick={deleteItem} className={`closeOut ${isSelectionActive ? "selectWidth": ""}`}>
+                  <div onClick={deleteItem} className={`closeOut ${isSelectActive ? "selectWidth": ""}`}>
                   <img
                     src="/xout.png"
                     alt="Delete"
