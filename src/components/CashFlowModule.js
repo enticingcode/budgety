@@ -17,8 +17,6 @@ function CashFlowModule(props) {
   const { cashFlow, moduleName } = props;
   const [isSelectActive, setIsSelectActive] = React.useState(false);
 
-  // const isSelectionActive = useSelector(state => state.selectItems.isSelectActive);
-
   function deleteItem(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -33,8 +31,11 @@ function CashFlowModule(props) {
 
     if (elementCategory == "Income") dispatch(deleteIncome(newArr));
     if (elementCategory == "Expenses") dispatch(deleteExpense(newArr));
-    // if(elementCategory == "Savings")dispatch(deleteSavings(newArr));
+    if(elementCategory == "Savings")dispatch(deleteSavings(newArr));
     updateFirebaseValues(user, moduleName, newArr, "del");
+
+    // Once 1 item is left, we setIsSelectActive to false
+    if (cashFlow.length == 1) setIsSelectActive(false);
   }
 
   let firstSevenItems = cashFlow.slice(0, 7);
