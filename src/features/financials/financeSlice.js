@@ -18,6 +18,10 @@ export const financeSlice = createSlice({
             state.expenseArr = action.payload;
         },
 
+        saveSavingsData(state, action) {
+            state.savingsArr = action.payload;
+        },
+
         addIncome(state, action) {
             state.incomeArr.push(action.payload);
         },
@@ -48,7 +52,7 @@ export const financeSlice = createSlice({
 
 
 
-export const { saveIncomeData, saveExpenseData, addIncome, deleteIncome, addExpense, deleteExpense, addSavings, deleteSavings } = financeSlice.actions;
+export const { saveIncomeData, saveExpenseData, saveSavingsData, addIncome, deleteIncome, addExpense, deleteExpense, addSavings, deleteSavings } = financeSlice.actions;
 
 
 export default financeSlice.reducer;

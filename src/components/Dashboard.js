@@ -10,10 +10,12 @@ import { changeActiveStatus } from "../features/utilities/modalSlice";
 import {
   saveIncomeData,
   saveExpenseData,
+  saveSavingsData,
 } from "../features/financials/financeSlice";
+import TopOffenders from "./TopOffenders";
 
 const Dashboard = (props) => {
-  // console.log('Dashboard Render');
+  console.log('Dashboard Render');
   const dispatch = useDispatch();
   const [user, setUser] = React.useState();
 
@@ -24,13 +26,14 @@ const Dashboard = (props) => {
 
   // USE SELECTOR CAUSES 3 RE-RENDERS WITH USEREACT, NEED TO FIGURE OUT A WAY OUT OF THIS.
 
-  const cashFlowStates = useSelector((state) => state.finance);
 
-  //  console.log(cashFlowStates);
+  // CashFlowStates can be passed down as props to prevent further renders
+  const cashFlowStates = useSelector((state) => state.finance);
 
   let incomeArr = cashFlowStates.incomeArr;
   let expenseArr = cashFlowStates.expenseArr;
   let savingsArr = cashFlowStates.savingsArr;
+
 
   // Sum of total finances //
   let totalIncome = incomeArr.map((item) => {
@@ -75,13 +78,14 @@ const Dashboard = (props) => {
     if (document.data()) {
       const incomesData = document.data().Income;
       const expensesData = document.data().Expenses;
-      // const savingsAlloData = document.data().Savings;
+      const savingsAlloData = document.data().Savings;
 
       // SET STATES //
 
       batch(() => {
         if (incomesData) dispatch(saveIncomeData(incomesData));
         if (expensesData) dispatch(saveExpenseData(expensesData));
+        if (savingsAlloData) dispatch(saveSavingsData(savingsAlloData));
       });
     }
   }
@@ -110,7 +114,7 @@ const Dashboard = (props) => {
       </section>
 
       <section className="middle-section top-offenders">
-        {/* <TopOffenders /> */}
+        <TopOffenders cashFlow={cashFlowStates} />
       </section>
 
       <section className="financials-section">
