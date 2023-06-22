@@ -14,6 +14,7 @@ function InputModal(props) {
   const user = useAuth().user.uid;
   const dispatch = useDispatch();
   const [category, setCategory] = React.useState(null);
+  const [categoryNullWarning, setIsCategoryNullWarning] = React.useState(false);
 
   const [input, setInput] = React.useState({
     name: "",
@@ -26,6 +27,7 @@ function InputModal(props) {
     let name = e.target.name;
 
     setCategory(name);
+    setIsCategoryNullWarning(false);
   }
 
   function handleChange(e) {
@@ -42,10 +44,15 @@ function InputModal(props) {
     });
   }
 
-  console.log(user);
-
   function addItem(e) {
     e.preventDefault();
+
+    if (category === null) {
+      setIsCategoryNullWarning(true);
+      return;
+    }
+
+    // How do we handle an error for no cat selected?
 
     let newExpenseObj = {
       category: category,
@@ -68,13 +75,11 @@ function InputModal(props) {
   // Array mapped for input selections with dynamic highlighting of each individual button
   let inputChoices = ["Income", "Expenses", "Savings"]
 
-  // except for a few exceptions.
-  // Don't need to props of incomes,expenses, etc since the modal will be the one to set this.
-
   return (
     <div className="modal-screen">
       <div className="modal-container">
         <form className="form-container" onSubmit={addItem}>
+        {categoryNullWarning && <p>Please Select a Category!</p>}
           <div className="cashFlow-choices">
             {inputChoices.map(item => {
               return (
