@@ -18,14 +18,12 @@ function TopOffenders(props) {
   // Component gathers each category of expenses and shows the highest spending.
   // Component will pull from the dispatch store of Items
 
-console.log(cashFlows);
-
 
 // Refine this
 const offenderElements = cashFlows.map(item => {
   return item.map(item => {
     return (
-    <div key={item.id}>
+    <div className="top-offender" key={item.id}>
       <p>{item.name}</p>
       <p>{item.amount}</p>
     </div>
@@ -44,9 +42,9 @@ const offenderElements = cashFlows.map(item => {
 //     });
 
   return (
-    <>
+    <div className="high-offenders">
       {offenderElements}
-    </>
+    </div>
   )
 }
 

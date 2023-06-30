@@ -15,7 +15,7 @@ import {
 import TopOffenders from "./TopOffenders";
 
 const Dashboard = (props) => {
-  console.log('Dashboard Render');
+  // console.log('Dashboard Render');
   const dispatch = useDispatch();
   const [user, setUser] = React.useState();
 
@@ -34,8 +34,7 @@ const Dashboard = (props) => {
   let expenseArr = cashFlowStates.expenseArr;
   let savingsArr = cashFlowStates.savingsArr;
 
-
-  // Sum of total finances //
+  // Sum of total finances
   let totalIncome = incomeArr.map((item) => {
     return item.amount;
   });
@@ -44,19 +43,26 @@ const Dashboard = (props) => {
     return item.amount;
   });
 
-  // let totalSavings = savingsAllocation.map((item) => {
-  //   return item.amount;
-  // });
+  let totalSavings = savingsArr.map((item) => {
+    return item.amount;
+  });
+
+
+  let remainingMonthly = addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
+
+
+ 
 
   // Add values of filtered array to display;
   function addValues(arr) {
     let final;
-    let newArr = arr.filter((item) => parseInt(item));
 
-    if (newArr.length === 1) return parseInt(newArr[0]);
+    console.log(arr);
+    if (arr.length === 0) return 0;
+    if (arr.length === 1) return parseInt(arr[0]);
 
-    if (newArr.length > 1) {
-      final = newArr.reduce((a, b) => {
+    if (arr.length > 1) {
+      final = arr.reduce((a, b) => {
         return parseInt(a) + parseInt(b);
       });
     }
@@ -65,8 +71,7 @@ const Dashboard = (props) => {
 
   // let remaining = addValues(totalIncome) - addValues(totalExpenses);
 
-  // let remainingAfterSavings =
-  //   addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
+  // console.log(remainingMonthly);
 
   /////////////////////////////////
   // PULL IN DATA FROM FIREBASE //
@@ -98,8 +103,8 @@ const Dashboard = (props) => {
     <main className="dashboard">
       <section className="top-section">
         <div className="current-bal">
-          <p>Current Balance</p>
-          <p>$102,305</p>
+          <p>Monthly Remaining</p>
+          <p>{remainingMonthly}</p>
         </div>
 
         <div className="goals-container"></div>
@@ -113,9 +118,10 @@ const Dashboard = (props) => {
         {/* <button className="new-entry" onClick={handleClick}>Manage</button> */}
       </section>
 
-      <section className="middle-section top-offenders">
-        <TopOffenders cashFlow={cashFlowStates} />
-      </section>
+      {/* <section className="middle-section">
+        <h2>Highest Offenders</h2> 
+         <TopOffenders cashFlow={cashFlowStates} /> 
+      </section> */}
 
       <section className="financials-section">
         <CashFlowModule cashFlow={incomeArr} moduleName="Income" />

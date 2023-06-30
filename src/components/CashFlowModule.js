@@ -69,7 +69,7 @@ function CashFlowModule(props) {
                     alt="Delete"
                   />
                   </div>
-                  <div>
+                  <div className="finance-item-info">
                   <p>{item.name}</p>
                   <p>{item.date}</p>
                   <p>${item.amount}</p>
