@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteExpense,
   deleteIncome,
+  deleteSavings
 } from "../features/financials/financeSlice";
 import { Link } from "react-router-dom";
 import ViewAll from "../ViewAll";
