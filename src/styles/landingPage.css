@@ -38,7 +38,7 @@
     flex-direction: column;
     font-family: Cinzel-Black, Quicksand, Geneva, Tahoma, sans-serif;
     justify-content: center;
-    align-items: start;
+    align-items:flex-start;
     width: 100%;
     color: var(--text-color);
     background: url('../assets/images/login-bg.jpg');
