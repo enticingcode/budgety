@@ -57,7 +57,7 @@ const Dashboard = (props) => {
   function addValues(arr) {
     let final;
 
-    console.log(arr);
+    // console.log(arr);
     if (arr.length === 0) return 0;
     if (arr.length === 1) return parseInt(arr[0]);
 
@@ -118,10 +118,10 @@ const Dashboard = (props) => {
         {/* <button className="new-entry" onClick={handleClick}>Manage</button> */}
       </section>
 
-      {/* <section className="middle-section">
+      <section className="middle-section">
         <h2>Highest Offenders</h2> 
          <TopOffenders cashFlow={cashFlowStates} /> 
-      </section> */}
+      </section>
 
       <section className="financials-section">
         <CashFlowModule cashFlow={incomeArr} moduleName="Income" />
