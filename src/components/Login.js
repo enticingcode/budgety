@@ -70,38 +70,52 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <div className="login-bg-blur"></div>
-      <div className="form-container">
-        <h3>Login to Budgety</h3>
-        <form>
-          <label htmlFor="email"></label>
-          <input
-            className="login-input my-2"
-            placeholder="Email"
-            onChange={handleChange}
-            id="email"
-            name="email"
-            type="email"
-          ></input>
-          <label htmlFor="password"></label>
-          <input
-            className="login-input my-2"
-            placeholder="Password"
-            onChange={handleChange}
-            id="password"
-            name="password"
-            type="password"
-          ></input>
-          <Link to="/password-reset">Forgot your password?</Link>
-
-          <button className="btn" onClick={handleLogin}>
-            Login
-          </button>
-        </form>
-        <div className="text-center">
-          <p className="mt-4 mb-1">New Here?<br /><Link to="/signup">Sign up for an account today!</Link></p>
+      <section className="info-banner">
+        <div>
+        <h1>Budgety</h1>
+        <p><span style={{color: "#31b099"}}>Personalized budgeting application</span> to track all your financial needs.</p>
         </div>
-      </div>
+      </section>
+      <section className="login-section">
+        <div className="form-container">
+          <h3>Login to Begin Budgeting</h3>
+          <form>
+            <label htmlFor="email">Email</label>
+            <input
+              className="login-input my-2"
+              placeholder="savings@budgety.com"
+              onChange={handleChange}
+              id="email"
+              name="email"
+              type="email"
+            ></input>
+            <label htmlFor="password">Password</label>
+            <input
+              className="login-input my-2"
+              placeholder="*****"
+              onChange={handleChange}
+              id="password"
+              name="password"
+              type="password"
+            ></input>
+            <div className="login-options">
+            <span>
+            <label htmlFor="remember-me">Remember me</label>
+            <input name="remember-me" type="checkbox"></input>
+            </span>
+            <Link to="/password-reset">Forgot your password?</Link></div>
+            
+
+            <button className="landingpage-btn" onClick={handleLogin}>
+              Login
+            </button>
+          </form>
+          <div className="text-center">
+            <p className="mt-4 mb-1">New Here?<br /><Link to="/signup">Sign up for an account today!</Link></p>
+          </div>
+        </div>
+      </section>
+
 
 
     </div>

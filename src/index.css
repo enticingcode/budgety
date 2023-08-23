@@ -9,6 +9,24 @@
   --text-color: #e0e1dd;
 }
 
+/*
+  ALTERNATIVE COLORS WHICH WILL BECOME MAIN AFTERWARDS
+
+  body {
+
+
+    dark blue
+    background-color:#1d2735; 
+
+    light greenish and blue
+    background-color: #54d6d6;
+
+
+    light greenish
+    background-color:#31b099;
+  }
+*/
+
 html, body, #root {
   height: 100%;
 }
@@ -249,7 +267,7 @@ option:hover {
 
 .btn {
   margin-top: 1.3rem;
-  max-width: fit-content !important;
+  max-width: fit-content;
 }
 
 /* this needs to be specific to charts container or it could cause issues with other classes */

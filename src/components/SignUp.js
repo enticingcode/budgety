@@ -101,7 +101,7 @@ const SignUp = () => {
             name="confirmPassword"
             type="password"
           ></input>
-          <button className="btn" onClick={submitSignup}>
+          <button className="landingpage-btn" onClick={submitSignup}>
             Sign Up
           </button>
         </form>
