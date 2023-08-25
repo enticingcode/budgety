@@ -12,14 +12,25 @@
 
   .info-banner {
     display:flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
     height: 100%;
     width: 50%;
     background-color:#1d2735;
     color:white;
     border-radius:30px;
+    padding: 0 40px;
   }
+
+  .web-title {
+    display:flex;
+    padding-bottom: 10px;
+  }
+
+  .web-title > img {
+    margin-right: 10px;
+  }
+
   .login-section {
     width: 50%;
   }
@@ -58,6 +69,17 @@
     border: solid 0.2px rgba(105, 105, 105, 0.407);
     font-family: serif;
     width: 400px;
+  }
+
+  .visible-toggle {
+    margin-left:-35px;
+    cursor:pointer;
+  }
+
+  .pw-field {
+    display:flex;
+    align-items: center;
+
   }
 
   .landingpage-btn {

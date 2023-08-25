@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, browserLocalPersistence, setPersistence } from "firebase/auth";
 import { auth } from "../authFiles/FirebaseAuth";
 import "../styles/landingPage.css";
+import budgetyLogo from "../assets/images/budgety.png";
+import visibilityOff from "../assets/images/visibility-off.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +13,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [isPWVisible, setIsPWVisible] = React.useState(false);
 
 
   function handleChange(e) {
@@ -23,6 +27,12 @@ const Login = () => {
         [name]: value,
       };
     });
+  }
+
+
+  function handlePasswordVis() {
+    // e.preventDefault();
+    setIsPWVisible(prev => !prev);
   }
 
   function handleLogin(e) {
@@ -42,39 +52,16 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
-
-    // signInWithEmailAndPassword(auth, credentials.email, credentials.password)
-    //   .then((userCredential) => {
-    //     const user = userCredential.user.uid;
-    //     // auth.setUser(user);
-    //     navigate("/dashboard");
-    //     return user;
-    //     // Signed in
-    //   })
-    //   .then((user) => {
-    //     let name = getPersonName(user);
-    //     return name;
-    //   })
-    //   .then((name) => {
-    //     localStorage.setItem("username", name);
-    //     console.log(auth.currentUser);
-
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     alert(errorCode, errorMessage);
-    //     console.log(errorCode, errorMessage);
-    //   });
   }
 
   return (
     <div className="login-page">
       <section className="info-banner">
-        <div>
-        <h1>Budgety</h1>
-        <p><span style={{color: "#31b099"}}>Personalized budgeting application</span> to track all your financial needs.</p>
+          <div className="web-title">
+            <img width="50" height="50" src={budgetyLogo}></img>
+            <h1>Budgety</h1>
         </div>
+        <h2><span style={{ color: "#31b099" }}>Personalized budgeting application</span> to track all your financial needs.</h2>
       </section>
       <section className="login-section">
         <div className="form-container">
@@ -90,21 +77,25 @@ const Login = () => {
               type="email"
             ></input>
             <label htmlFor="password">Password</label>
+            <div className="pw-field">
             <input
               className="login-input my-2"
               placeholder="*****"
               onChange={handleChange}
               id="password"
               name="password"
-              type="password"
+              type={`${!isPWVisible ? "password": "text"}`}
             ></input>
-            <div className="login-options">
-            <span>
-            <label htmlFor="remember-me">Remember me</label>
-            <input name="remember-me" type="checkbox"></input>
-            </span>
-            <Link to="/password-reset">Forgot your password?</Link></div>
+            <i className={`${isPWVisible ? "bi bi-eye-slash": "bi-eye"} visible-toggle`} id="togglePassword" onClick={handlePasswordVis}></i>
+            </div>
             
+            <div className="login-options">
+              {/* <span>
+                <label htmlFor="remember-me">Remember me</label>
+                <input name="remember-me" type="checkbox"></input>
+              </span> */}
+              <Link to="/password-reset">Forgot your password?</Link></div>
+
 
             <button className="landingpage-btn" onClick={handleLogin}>
               Login
