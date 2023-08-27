@@ -34,9 +34,13 @@
   .top-offender {
     display:flex;
     flex-direction: column;
+    font: "Quicksand", sans-serif;
+    font-weight:bolder;
     align-items: center;
     justify-content: center;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color:white;
+    border-radius:10px;
+    background-color: var(--secondary-color);
     padding: .5rem 3rem;
   }
 

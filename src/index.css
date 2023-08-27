@@ -2,30 +2,25 @@
 
 
 :root {
-  --primary-color: #0d1b2a;
-  --secondary-color: #1b263b;
+  --primary-color: #1d2735;
+  --secondary-color: #31b099;
   --tertiary-color: #415a77;
   --btn-color: #778da9;
   --text-color: #e0e1dd;
 }
 
-/*
-  ALTERNATIVE COLORS WHICH WILL BECOME MAIN AFTERWARDS
-
-  body {
-
-
-    dark blue
+  .info-bark {
+    /* dark blue */
     background-color:#1d2735; 
 
-    light greenish and blue
+    /* light greenish and blue */
     background-color: #54d6d6;
 
 
-    light greenish
+    /* light greenish */
     background-color:#31b099;
   }
-*/
+
 
 html, body, #root {
   height: 100%;
