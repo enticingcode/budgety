@@ -28,10 +28,32 @@
 
 .finance-item {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border-radius: 5px;
     padding: 15px 15px;
     border-radius: 5px;
+  }
+
+  .finance-item:hover {
+    background-color: rgb(243, 243, 243);
+    transition: .5s all;
+  }
+
+  .finance-item-info {
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+  }
+
+  .finance-item p {
+    text-align: left;
+    margin: 0;
+    font-size: 1rem;
+    width: 150px;
+  }
+  .finance-item > span {
+    width: 25px;
   }
  
   .finance-item > :nth-child(2) {
