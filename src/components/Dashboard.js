@@ -109,13 +109,12 @@ const Dashboard = (props) => {
 
         <div className="goals-container"></div>
 
-        <button
+        {/* <button
           className="new-entry"
           onClick={() => dispatch(changeActiveStatus(true))}
         >
           Manage
-        </button>
-        {/* <button className="new-entry" onClick={handleClick}>Manage</button> */}
+        </button> */}
       </section>
 
       <section className="middle-section">

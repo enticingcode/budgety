@@ -73,26 +73,13 @@ function InputModal(props) {
   }
 
   // Array mapped for input selections with dynamic highlighting of each individual button
-  let inputChoices = ["Income", "Expenses", "Savings"]
-
   return (
     <div className="modal-screen">
       <div className="modal-container">
         <form className="form-container" onSubmit={addItem}>
         {categoryNullWarning && <p>Please Select a Category!</p>}
           <div className="cashFlow-choices">
-            {inputChoices.map(item => {
-              return (
-              <input
-                key={item}
-                className={`button input-category ${category == item ? "selected" : ""}`}
-                type="button"
-                value={item}
-                name={item}
-                onClick={handleCategory}
-              />
-              )
-            })}
+            <h2>Category here</h2>
           </div>
           <div className="input-amounts">
             <input

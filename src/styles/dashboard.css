@@ -104,20 +104,6 @@
     overflow:hidden;
   }
 
-  .finance-legend {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 15px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-  }
-
-  .finance-legend > p {
-    text-align: left;
-    margin: 0;
-    padding: 10px 0;
-    width: 150px;
-  }
-
   .emptyMsg>p {
     margin: 0;
     padding: 10px 0;

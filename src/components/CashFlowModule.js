@@ -8,7 +8,7 @@ import {
 } from "../features/financials/financeSlice";
 import { Link } from "react-router-dom";
 import ViewAll from "../ViewAll";
-import MoreOptions from "./MoreOptions";
+import AddNew from "./AddNew";
 import "../styles/cashFlowModule.css"
 import { useAuth } from "../authFiles/auth";
 
@@ -16,6 +16,8 @@ function CashFlowModule(props) {
   const user = useAuth().user.uid;
   const dispatch = useDispatch();
   const { cashFlow, moduleName } = props;
+
+  // This is for deletion purposes.
   const [isSelectActive, setIsSelectActive] = React.useState(false);
 
   function deleteItem(e) {
@@ -46,12 +48,13 @@ function CashFlowModule(props) {
       <h2>{moduleName}</h2>
       <div className="financeItem-containers">
         <div className="finance-legend">
-        {/* <button className="deleteItem">Done</button> */}
           <p>Name</p>
           <p>Date</p>
           <p>Amount</p>
-          {/* More Options to be rolled out later */}
-          <MoreOptions setIsSelectActive={setIsSelectActive} />
+
+          {/* When I click add new, it should pop up a modal for the corresponding category of income, expenses or savings */}
+          <AddNew />
+          
         </div>
         <div className="items-container">
           {cashFlow.length > 0 ? (
