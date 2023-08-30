@@ -53,7 +53,7 @@ function CashFlowModule(props) {
           <p>Amount</p>
 
           {/* When I click add new, it should pop up a modal for the corresponding category of income, expenses or savings */}
-          <AddNew />
+          <AddNew  moduleName={moduleName}/>
           
         </div>
         <div className="items-container">

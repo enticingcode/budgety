@@ -8,27 +8,17 @@ import {
   addExpense,
   addSavings,
 } from "../features/financials/financeSlice";
-import { changeActiveStatus } from "../features/utilities/modalSlice";
 
 function InputModal(props) {
   const user = useAuth().user.uid;
   const dispatch = useDispatch();
-  const [category, setCategory] = React.useState(null);
-  const [categoryNullWarning, setIsCategoryNullWarning] = React.useState(false);
+  const [category, setCategory] = React.useState(props.cat);
 
   const [input, setInput] = React.useState({
     name: "",
     amount: "",
     category: category,
   });
-
-  function handleCategory(e) {
-    e.preventDefault();
-    let name = e.target.name;
-
-    setCategory(name);
-    setIsCategoryNullWarning(false);
-  }
 
   function handleChange(e) {
     let value = e.target.value;
@@ -47,13 +37,7 @@ function InputModal(props) {
   function addItem(e) {
     e.preventDefault();
 
-    if (category === null) {
-      setIsCategoryNullWarning(true);
-      return;
-    }
-
     // How do we handle an error for no cat selected?
-
     let newExpenseObj = {
       category: category,
       name: input.name,
@@ -69,7 +53,7 @@ function InputModal(props) {
     
     updateFirebaseValues(user, category, newExpenseObj, "add");
     setInput({ name: "", amount: "", category: "" });
-    dispatch(changeActiveStatus(false));
+    props.setIsModalActive(false);
   }
 
   // Array mapped for input selections with dynamic highlighting of each individual button
@@ -77,9 +61,8 @@ function InputModal(props) {
     <div className="modal-screen">
       <div className="modal-container">
         <form className="form-container" onSubmit={addItem}>
-        {categoryNullWarning && <p>Please Select a Category!</p>}
           <div className="cashFlow-choices">
-            <h2>Category here</h2>
+            <h2>{props.cat}</h2>
           </div>
           <div className="input-amounts">
             <input
@@ -89,6 +72,7 @@ function InputModal(props) {
               name="name"
               value={input.name}
               required
+              autoFocus
             ></input>
             <input
               className="input-box"
@@ -102,7 +86,7 @@ function InputModal(props) {
           <div className="input-selection">
             <button
               type="button"
-              onClick={(e) => dispatch(changeActiveStatus(false))}
+              onClick={() => props.setIsModalActive(false)}
               className="button"
             >
               Close
