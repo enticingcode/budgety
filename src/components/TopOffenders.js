@@ -61,8 +61,6 @@ function TopOffenders(props) {
       let prevAmount = parseInt(prev.amount);
       let currAmount = parseInt(current.amount);
 
-      console.log(prevAmount, currAmount);
-
       return currAmount > prevAmount ? current : prev;
     });
   };
