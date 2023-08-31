@@ -102,3 +102,12 @@
     fill: black;
     border: solid 1px rgb(0, 0, 0);
   }
+
+  .edit-item {
+    fill: grey;
+    cursor: pointer;
+  }
+
+  .edit-item:hover {
+    fill: black;
+  }

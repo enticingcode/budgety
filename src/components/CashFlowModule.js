@@ -11,14 +11,19 @@ import ViewAll from "../ViewAll";
 import AddNew from "./AddNew";
 import "../styles/cashFlowModule.css"
 import { useAuth } from "../authFiles/auth";
+import MoreOptions from "./MoreOptions";
+import EditModal from "./EditModal";
 
 function CashFlowModule(props) {
+
   const user = useAuth().user.uid;
   const dispatch = useDispatch();
   const { cashFlow, moduleName } = props;
+  let firstFewItems = cashFlow.slice(0, 4);
 
   // This is for deletion purposes.
   const [isSelectActive, setIsSelectActive] = React.useState(false);
+  const [isEditActive, setIsEditActive] = React.useState(false);
 
   function deleteItem(e) {
     e.preventDefault();
@@ -34,17 +39,24 @@ function CashFlowModule(props) {
 
     if (elementCategory == "Income") dispatch(deleteIncome(newArr));
     if (elementCategory == "Expenses") dispatch(deleteExpense(newArr));
-    if(elementCategory == "Savings")dispatch(deleteSavings(newArr));
+    if (elementCategory == "Savings") dispatch(deleteSavings(newArr));
     updateFirebaseValues(user, moduleName, newArr, "del");
 
     // Once 1 item is left, we setIsSelectActive to false
     if (cashFlow.length == 1) setIsSelectActive(false);
   }
 
-  let firstSevenItems = cashFlow.slice(0, 7);
+  // handleEdit should somehow create input fields on item? or bring modal back up?
+  function handleEdit(e) {
+    console.log(e.currentTarget.parentElement);
+    console.log(cashFlow);
+    setIsEditActive(true);
+  }
 
   return (
     <div className="module">
+      {/* Editing Modal Activates here */}
+      {isEditActive && <EditModal cashFlowItems={cashFlow} />}
       <h2>{moduleName}</h2>
       <div className="financeItem-containers">
         <div className="finance-legend">
@@ -53,33 +65,40 @@ function CashFlowModule(props) {
           <p>Amount</p>
 
           {/* When I click add new, it should pop up a modal for the corresponding category of income, expenses or savings */}
-          <AddNew  moduleName={moduleName}/>
-          
+          <AddNew moduleName={moduleName} />
+
         </div>
         <div className="items-container">
           {cashFlow.length > 0 ? (
-            firstSevenItems.map((item) => {
+            firstFewItems.map((item) => {
               return (
                 <div
-                // If isSelectActive, animation to select items will appear on left side;
-                  className={`finance-item ${isSelectActive ? "select-items": ""}`}
+                  // If isSelectActive, animation to select items will appear on left side;
+                  className={`finance-item ${isSelectActive ? "select-items" : ""}`}
                   data-category={item.category}
                   key={item.id}
                   id={item.id}
                 >
-                  <div onClick={deleteItem} className={`closeOut ${isSelectActive ? "selectWidth": ""}`}>
-                  <img
-                    src="/xout.png"
-                    alt="Delete"
-                  />
+                  <div onClick={deleteItem} className={`closeOut ${isSelectActive ? "selectWidth" : ""}`}>
+                    <img
+                      src="/xout.png"
+                      alt="Delete"
+                    />
                   </div>
+
                   <div className="finance-item-info">
-                  <p>{item.name}</p>
-                  <p>{item.date}</p>
-                  <p>${item.amount}</p>
-                  <span></span>
+                    <p>{item.name}</p>
+                    <p>{item.date}</p>
+                    <p>${item.amount}</p>
+                    <span></span>
                   </div>
-                  
+
+
+                  <div onClick={handleEdit}>
+                    <svg className="edit-item" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20">
+                      <path pointerEvents="none" d="M200-200h56l345-345-56-56-345 345v56Zm572-403L602-771l56-56q23-23 56.5-23t56.5 23l56 56q23 23 24 55.5T829-660l-57 57Zm-58 59L290-120H120v-170l424-424 170 170Zm-141-29-28-28 56 56-28-28Z" />
+                    </svg>
+                  </div>
                 </div>
               );
             })
