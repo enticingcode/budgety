@@ -87,6 +87,14 @@ async function updateFirebaseValues(userID, category, object, action) {
       console.error("error deleting document", err);
     }
   }
+  else if (action === "edit") {
+    try {
+      await setDoc(userRef, {[category]: object}, {merge: true});
+      
+    } catch(err) {
+      console.error("Error Editing Item: ", err);
+    }
+  }
 }
 
 export { connectUserNameAcc, getPersonName, updateFirebaseValues };

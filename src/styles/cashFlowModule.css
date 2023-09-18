@@ -90,17 +90,17 @@
     width: 150px;
   }
 
-  .plus-sign {
-    border: solid 1px rgb(148, 148, 148);
+  .modify-entries {
+    /* border: solid 1px rgb(148, 148, 148); */
+    /* padding-right: 5px; */
     border-radius: 100%;
   }
 
-  .plus-sign:hover {
+  .modify-entries:hover {
     cursor: pointer;
     width: 25px;
     height: 25px;
     fill: black;
-    border: solid 1px rgb(0, 0, 0);
   }
 
   .edit-item {

@@ -51,8 +51,6 @@ const Dashboard = (props) => {
   let remainingMonthly = addValues(totalIncome) - addValues(totalExpenses) - addValues(totalSavings);
 
 
- 
-
   // Add values of filtered array to display;
   function addValues(arr) {
     let final;
@@ -69,9 +67,6 @@ const Dashboard = (props) => {
     return final;
   }
 
-  // let remaining = addValues(totalIncome) - addValues(totalExpenses);
-
-  // console.log(remainingMonthly);
 
   /////////////////////////////////
   // PULL IN DATA FROM FIREBASE //

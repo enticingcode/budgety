@@ -4,7 +4,7 @@ import uniqid from "uniqid";
 import { useAuth } from "../authFiles/auth";
 import { useDispatch } from "react-redux";
 import {
-  addIncome,
+  editIncome,
   addExpense,
   addSavings,
 } from "../features/financials/financeSlice";
@@ -12,14 +12,16 @@ import {
 function InputModal(props) {
   const user = useAuth().user.uid;
   const dispatch = useDispatch();
-  const [category, setCategory] = React.useState(props.cat);
+  const { currentEdit } = props;
 
-  console.log(props.cashFlowItems);
+
 
   const [input, setInput] = React.useState({
-    name: "",
-    amount: "",
-    category: category,
+    name: currentEdit.name,
+    amount: currentEdit.amount,
+    category: currentEdit.category,
+    id: currentEdit.id,
+    date: currentEdit.date,
   });
 
   function handleChange(e) {
@@ -32,33 +34,25 @@ function InputModal(props) {
       return {
         ...prev,
         [name]: value,
+        date: new Date().toLocaleDateString(),
       };
     });
   }
 
-  function addItem(e) {
-    e.preventDefault();
-    // How do we handle an error for no cat selected?
-    let newExpenseObj = {
-      category: category,
-      name: input.name,
-      amount: input.amount,
-      id: uniqid(),
-      date: new Date().toLocaleDateString(),
-    };
-
-
-    if (category === "Income") dispatch(addIncome(newExpenseObj));
-    if (category === "Expenses") dispatch(addExpense(newExpenseObj));
-    if (category === "Savings") dispatch(addSavings(newExpenseObj));
-    
-    updateFirebaseValues(user, category, newExpenseObj, "add");
-    setInput({ name: "", amount: "", category: "" });
-    props.setIsModalActive(false);
-  }
+  console.log(input);
 
   function editItem(e) {
+    e.preventDefault();
 
+
+    // Need to dispatch an edit here
+    if (input.category === "Income") dispatch(editIncome(input));
+    // if (input.category === "Expenses") dispatch(addExpense(input));
+    // if (input.category === "Savings") dispatch(addSavings(input));
+    
+    // updateFirebaseValues(user, input.category, input, "edit");
+    // setInput({ name: "", amount: "", category: "" });
+    // props.setIsEditActive(false);
   }
 
 
@@ -66,9 +60,9 @@ function InputModal(props) {
   return (
     <div className="modal-screen">
       <div className="modal-container">
-        <form className="form-container" onSubmit={addItem}>
+        <form className="form-container" onSubmit={editItem}>
           <div className="cashFlow-choices">
-            <h2>{props.cat}</h2>
+            <h2>{currentEdit.category}</h2>
           </div>
           <div className="input-amounts">
             <input
@@ -92,7 +86,7 @@ function InputModal(props) {
           <div className="input-selection">
             <button
               type="button"
-              onClick={() => props.setIsModalActive(false)}
+              onClick={() => props.setIsEditActive(false)}
               className="button"
             >
               Close

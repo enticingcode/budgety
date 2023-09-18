@@ -24,6 +24,7 @@ function CashFlowModule(props) {
   // This is for deletion purposes.
   const [isSelectActive, setIsSelectActive] = React.useState(false);
   const [isEditActive, setIsEditActive] = React.useState(false);
+  const [currentEdit, setCurrentEdit] = React.useState(null);
 
   function deleteItem(e) {
     e.preventDefault();
@@ -48,15 +49,25 @@ function CashFlowModule(props) {
 
   // handleEdit should somehow create input fields on item? or bring modal back up?
   function handleEdit(e) {
-    console.log(e.currentTarget.parentElement);
-    console.log(cashFlow);
+    let elementID = e.currentTarget.parentElement.id;
+    // console.log(e.currentTarget.parentElement.id);
+
+    let selectedItem = cashFlow.find(item => {
+      return item.id == elementID;
+    })
+    // console.log(selectedItem);
+
+    // console.log(cashFlow);
+
+    // Selected Item is passed into a state which will be passed unto "EditModal" component.
+    setCurrentEdit(selectedItem);
     setIsEditActive(true);
   }
 
   return (
     <div className="module">
       {/* Editing Modal Activates here */}
-      {isEditActive && <EditModal cashFlowItems={cashFlow} />}
+      {isEditActive && <EditModal currentEdit={currentEdit} setIsEditActive={setIsEditActive} cashFlowItems={cashFlow} />}
       <h2>{moduleName}</h2>
       <div className="financeItem-containers">
         <div className="finance-legend">
@@ -65,7 +76,10 @@ function CashFlowModule(props) {
           <p>Amount</p>
 
           {/* When I click add new, it should pop up a modal for the corresponding category of income, expenses or savings */}
+          <div onClick={()=> {setIsSelectActive(prev => !prev)}}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="grey" className="modify-entries" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-440v-80h560v80H200Z"/></svg>
           <AddNew moduleName={moduleName} />
+          </div>
 
         </div>
         <div className="items-container">
