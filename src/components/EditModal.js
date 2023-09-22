@@ -46,6 +46,8 @@ function InputModal(props) {
 
 
     // Need to dispatch an edit here
+
+    // This dispatch will either need to look for the current id item within the existing array of items and edit it, or return a new list
     if (input.category === "Income") dispatch(editIncome(input));
     // if (input.category === "Expenses") dispatch(addExpense(input));
     // if (input.category === "Savings") dispatch(addSavings(input));

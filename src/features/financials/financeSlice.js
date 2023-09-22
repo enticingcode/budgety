@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
+import { arrayRemove } from "firebase/firestore";
+import { PageItem } from "react-bootstrap";
 
 export const financeSlice = createSlice({
     name: "finance",
@@ -15,15 +17,31 @@ export const financeSlice = createSlice({
         },
 
         addIncome(state, action) {
-            state.incomeArr.push(action.payload);
+
+            state.incomeArr = [...state.incomeArr, action.payload];
+            // state.incomeArr.push(action.payload);
         },
         
         deleteIncome(state, action) {
             state.incomeArr = action.payload;
         },
 
+
+        // Need to filter out item object based on key to replace it.
         editIncome(state, action) {
-            console.log(state);
+            // state.incomeArr = [...state.incomeArr, action.payload];
+             state.incomeArr = state.incomeArr.map((item) => {
+                if(item.id !== action.payload.id) {
+                    return item
+                }
+                return {
+                    ...item,
+                    ...action.payload
+                }
+                // console.log(current(item));
+            })
+            // console.log([...state.incomeArr, action.payload])
+            // state.incomeArr = [...state, action.payload]
         },
 
 
@@ -32,8 +50,9 @@ export const financeSlice = createSlice({
         },
 
         addExpense(state, action) {
-            state.expenseArr.push(action.payload);
+            state.expenseArr = [...state.expenseArr, action.payload];
         },
+
         deleteExpense(state, action) {
             state.expenseArr = action.payload;
         },
@@ -42,8 +61,9 @@ export const financeSlice = createSlice({
         saveSavingsData(state, action) {
             state.savingsArr = action.payload;
         },
+
         addSavings(state, action) {
-            state.savingsArr.push(action.payload);
+            state.savingsArr = [...state.savingsArr, action.payload];
         },
         
         deleteSavings(state, action) {
