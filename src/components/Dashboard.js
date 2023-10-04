@@ -6,7 +6,6 @@ import CashFlowModule from "./CashFlowModule";
 import "../styles/dashboard.css";
 // import TopOffenders from "./TopOffenders";
 import { useSelector, useDispatch, batch } from "react-redux";
-import { changeActiveStatus } from "../features/utilities/modalSlice";
 import {
   saveIncomeData,
   saveExpenseData,
@@ -122,7 +121,7 @@ const Dashboard = (props) => {
 
         <CashFlowModule cashFlow={expenseArr} moduleName="Expenses" />
 
-        <CashFlowModule cashFlow={savingsArr} moduleName="Savings" />
+        <CashFlowModule cashFlow={savingsArr} moduleName="Savings" /> 
       </section>
     </main>
   );

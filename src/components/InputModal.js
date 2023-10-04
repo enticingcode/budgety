@@ -8,11 +8,14 @@ import {
   addExpense,
   addSavings,
 } from "../features/financials/financeSlice";
+import { isModalActive } from "../features/utilities/modalSlice";
 
 function InputModal(props) {
   const user = useAuth().user.uid;
   const dispatch = useDispatch();
-  const [category, setCategory] = React.useState(props.cat);
+  const [category, setCategory] = React.useState(props.category);
+
+// console.log(category);
 
   const [input, setInput] = React.useState({
     name: "",
@@ -53,7 +56,8 @@ function InputModal(props) {
     
     updateFirebaseValues(user, category, newExpenseObj, "add");
     setInput({ name: "", amount: "", category: "" });
-    props.setIsModalActive(false);
+    // props.setIsModalActive(false);
+    dispatch(isModalActive(false));
   }
 
   // Array mapped for input selections with dynamic highlighting of each individual button
@@ -62,7 +66,7 @@ function InputModal(props) {
       <div className="modal-container">
         <form className="form-container" onSubmit={addItem}>
           <div className="cashFlow-choices">
-            <h2>{props.cat}</h2>
+            <h2>{props.category}</h2>
           </div>
           <div className="input-amounts">
             <input
@@ -86,7 +90,7 @@ function InputModal(props) {
           <div className="input-selection">
             <button
               type="button"
-              onClick={() => props.setIsModalActive(false)}
+              onClick={() => dispatch(isModalActive(false))}
               className="button"
             >
               Close
