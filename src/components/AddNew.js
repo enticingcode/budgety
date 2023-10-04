@@ -1,22 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { select } from "../features/utilities/selectItems";
-import { changeActiveStatus } from "../features/utilities/modalSlice";
+import { isModalActive } from "../features/utilities/modalSlice";
 import InputModal from "../components/InputModal";
 
 function AddNew(props) {
   const dispatch = useDispatch();
-  const [isModalActive, setIsModalActive] = React.useState(false);
+  // const isInputModalActive = useSelector((state) => state.modal.isActive);
 
-  function checkTargetElement(e) {
-      e.preventDefault();
-  }
+
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+  // Correction the issue seems to be I am both rendering it here, and in RouteSwitch.
 
 
   return (
     <>
-      <svg onClick={() => setIsModalActive(true)} className="modify-entries" fill="grey" xmlns="http://www.w3.org/2000/svg" height="24"viewBox="0 -960 960 960" width="24"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
-      {isModalActive && <InputModal setIsModalActive={setIsModalActive} cat={props.moduleName} />}
+      <svg onClick={() => dispatch(isModalActive({isActive: true, category:props.moduleName}))} className="modify-entries" fill="grey" xmlns="http://www.w3.org/2000/svg" height="24"viewBox="0 -960 960 960" width="24"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+      {/* {isInputModalActive && <InputModal category={props.moduleName} />} */}
       </>
   );
 }

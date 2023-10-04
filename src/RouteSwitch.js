@@ -21,8 +21,8 @@ const RouteSwitch = () => {
   
   const user = useAuth().user;
 
-  const isModalActive = useSelector((state) => state.modal.isActive);
-  // const isModalActive = false;
+  const isModalActive = useSelector((state) => state.modal);
+  // console.log(isModalActive);
 
   // Since I have two instances of dashboard route, it causes a bug where I'm,
   // rendering one or the other, need to delete one/consolidate
@@ -31,7 +31,7 @@ const RouteSwitch = () => {
     <>
        {user && <Sidebar />}
        {/* INCOME-EXPENSE MODULE */}
-      {isModalActive && (<InputModal />)}
+      {isModalActive.isActive && (<InputModal category={isModalActive.category} />)}
         <Routes>
           <Route
             path="/"
