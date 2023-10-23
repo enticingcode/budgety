@@ -76,8 +76,8 @@ function CashFlowModule(props) {
           <p>Amount</p>
 
           {/* When I click add new, it should pop up a modal for the corresponding category of income, expenses or savings */}
-          <div onClick={()=> {setIsSelectActive(prev => !prev)}}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="grey" className="modify-entries" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-440v-80h560v80H200Z"/></svg>
+          <div>
+            <svg onClick={()=> {setIsSelectActive(prev => !prev)}}xmlns="http://www.w3.org/2000/svg" fill="grey" className="modify-entries" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-440v-80h560v80H200Z"/></svg>
           <AddNew moduleName={moduleName} />
           </div>
 

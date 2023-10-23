@@ -80,7 +80,8 @@ async function updateFirebaseValues(userID, category, object, action) {
     } catch (err) {
       console.error("error adding document", err);
     }
-  } else if (action === "del") {
+  } 
+  else if (action === "del") {
     try {
       await setDoc(userRef, { [category]: object }, { merge: true });
     } catch (err) {
@@ -89,9 +90,9 @@ async function updateFirebaseValues(userID, category, object, action) {
   }
   else if (action === "edit") {
     try {
-      await setDoc(userRef, {[category]: object}, {merge: true});
-      
-    } catch(err) {
+      await setDoc(userRef, { [category]: object }, { merge: true });
+
+    } catch (err) {
       console.error("Error Editing Item: ", err);
     }
   }
