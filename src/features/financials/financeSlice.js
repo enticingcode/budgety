@@ -40,6 +40,10 @@ export const financeSlice = createSlice({
                 }
                 // console.log(current(item));
             })
+
+            console.log(state.incomeArr);
+
+            // This needs to return an array.
             // console.log([...state.incomeArr, action.payload])
             // state.incomeArr = [...state, action.payload]
         },

@@ -52,9 +52,11 @@ function InputModal(props) {
     // if (input.category === "Expenses") dispatch(addExpense(input));
     // if (input.category === "Savings") dispatch(addSavings(input));
     
-    // updateFirebaseValues(user, input.category, input, "edit");
-    // setInput({ name: "", amount: "", category: "" });
-    // props.setIsEditActive(false);
+
+    // this is currently sending an object instead of array to firebase, change the way this is sent.
+    updateFirebaseValues(user, input.category, input, "edit");
+    setInput({ name: "", amount: "", category: "" });
+    props.setIsEditActive(false);
   }
 
 

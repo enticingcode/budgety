@@ -34,6 +34,7 @@ const Dashboard = (props) => {
   let expenseArr = cashFlowStates.expenseArr;
   let savingsArr = cashFlowStates.savingsArr;
 
+  // console.log(incomeArr);
   // Sum of total finances
   let totalIncome = incomeArr.map((item) => {
     return item.amount;
