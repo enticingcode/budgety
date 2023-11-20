@@ -35,23 +35,38 @@ const Login = () => {
     setIsPWVisible(prev => !prev);
   }
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
-    setPersistence(auth, browserLocalPersistence).then(() => {
-      // Existing and future Auth states are now persisted in the current
-      // session only. Closing the window would clear any existing state even
-      // if a user forgets to sign out.
-      // ...
-      // New sign-in will be persisted with session persistence.
-      return signInWithEmailAndPassword(auth, credentials.email, credentials.password);
-    }).then(() => {
-      navigate("/");
-    })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    console.log(credentials)
+  
+    let response = await fetch('/login', {
+      method: "POST",
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials),
+    });
+
+    let data = await response.json();
+
+    console.log(data);
+
+
+    // setPersistence(auth, browserLocalPersistence).then(() => {
+    //   // Existing and future Auth states are now persisted in the current
+    //   // session only. Closing the window would clear any existing state even
+    //   // if a user forgets to sign out.
+    //   // ...
+    //   // New sign-in will be persisted with session persistence.
+    //   return signInWithEmailAndPassword(auth, credentials.email, credentials.password);
+    // }).then(() => {
+    //   navigate("/");
+    // })
+    //   .catch((error) => {
+    //     // Handle Errors here.
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //   });
   }
 
   return (

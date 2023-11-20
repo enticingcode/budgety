@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { select } from "../features/utilities/selectItems";
 import { isModalActive } from "../features/utilities/modalSlice";
-import InputModal from "../components/InputModal";
+import InputModal from "./InputModal";
 
 function AddNew(props) {
   const dispatch = useDispatch();
