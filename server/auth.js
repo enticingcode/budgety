@@ -12,11 +12,13 @@ async function registerUser(email, password) {
 
 async function validateUser(email, password) {
     let dbCreds = await getUserCreds(email);
-    // let cryptedPass = await bcrypt.hash(password, 15)
-    let comparison = await bcrypt.compare(password, dbCreds.password)
-
-    console.log(comparison);
-    console.log('db cred: ', dbCreds);
+    let isPassValid = await bcrypt.compare(password, dbCreds.password)
+    
+    dbCreds.validPassword = isPassValid;
+    // if(!isPassValid) dbCreds.validPassword = isPassValid;
+    // if(isPassValid) dbCreds.validPassword = isPassValid;
+    console.log(dbCreds);
+    return dbCreds;
 }
 
 
